@@ -71,6 +71,7 @@ const hotels = [
         location: "Kingdom Tower, Brazil",
         image: hotelImg,
     },
+
 ];
 
 export default function HotelsPage() {
@@ -140,5 +141,7 @@ export default function HotelsPage() {
                 </div>
             </div>
         </div>
+
     )
+
 }
