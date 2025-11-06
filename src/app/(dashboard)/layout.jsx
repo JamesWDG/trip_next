@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
         {/* Overall layout */}
         <div className="d-flex">
           <Sidebar />
-          <div className="flex flex-1">
+          <div className="flex flex-1 custom-flex">
             
             <Header />
             {/* Main content area */}
