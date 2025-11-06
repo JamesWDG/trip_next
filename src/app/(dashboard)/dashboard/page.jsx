@@ -7,7 +7,11 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import homeCardIMg from "@/app/(dashboard)/assets/images/home-card-1.png"
+import dashboardBtnImg from "@/app/(dashboard)/assets/images/dashboard-btn-img.png"
 import { Dropdown } from "react-bootstrap";
+import BookingsChart from "@/app/components/booking-charts";
+import TotalRevenueChart from "@/app/components/totalchart";
+
 
 
 const stats = [
@@ -46,43 +50,66 @@ export default function HomePage() {
 
 
       <section className="order-sec">
-       
-          <div className="row">
-            <div className="col-lg-5">
-              <div className="d-flex justify-content-between align-items-center">
-                <h2 className={`order-hd ${Outfit500.className}`}>Order Summary</h2>
-                <Dropdown className="dropdown-prnt">
-                  <Dropdown.Toggle variant="outline-dark" size="sm" className={`dropdown-para ${Outfit400.className}`}>
-                    Date Range
-                  </Dropdown.Toggle>
 
-                  <Dropdown.Menu>
-                    <Dropdown.Item>Today</Dropdown.Item>
-                    <Dropdown.Item>This Week</Dropdown.Item>
-                    <Dropdown.Item>This Month</Dropdown.Item>
-                    <Dropdown.Item>Custom Range</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </div>
+
+        <div className="row">
+          <div className="col-lg-5">
+            <div className="d-flex justify-content-between align-items-center">
+              <h2 className={`order-hd ${Outfit500.className}`}>Order Summary</h2>
+              <Dropdown className="dropdown-prnt">
+                <Dropdown.Toggle variant="outline-dark" size="sm" className={`dropdown-para ${Outfit400.className}`}>
+                  Date Range
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item>Today</Dropdown.Item>
+                  <Dropdown.Item>This Week</Dropdown.Item>
+                  <Dropdown.Item>This Month</Dropdown.Item>
+                  <Dropdown.Item>Custom Range</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </div>
-            <div className="col-lg-7">
-              <div className="d-flex justify-content-between align-items-center">
-                <h2 className={`order-hd ${Outfit500.className}`}>Total Revenuey</h2>
-                <Dropdown className="dropdown-prnt">
-                  <Dropdown.Toggle variant="outline-dark" size="sm" className={`dropdown-para ${Outfit400.className}`}>
-                    Date Range
-                  </Dropdown.Toggle>
+            <div className="booking-chart total-chart">
+               <BookingsChart />
+            </div>
+           
+          </div>
+          <div className="col-lg-7">
+            <div className="d-flex justify-content-between align-items-center">
+              <h2 className={`order-hd ${Outfit500.className}`}>Total Revenuey</h2>
+              <Dropdown className="dropdown-prnt">
+                <Dropdown.Toggle variant="outline-dark" size="sm" className={`dropdown-para ${Outfit400.className}`}>
+                  Date Range
+                </Dropdown.Toggle>
 
-                  <Dropdown.Menu>
-                    <Dropdown.Item>Today</Dropdown.Item>
-                    <Dropdown.Item>This Week</Dropdown.Item>
-                    <Dropdown.Item>This Month</Dropdown.Item>
-                    <Dropdown.Item>Custom Range</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </div>
+                <Dropdown.Menu>
+                  <Dropdown.Item>Today</Dropdown.Item>
+                  <Dropdown.Item>This Week</Dropdown.Item>
+                  <Dropdown.Item>This Month</Dropdown.Item>
+                  <Dropdown.Item>Custom Range</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+            <div className="total-chart">
+              <TotalRevenueChart />
+
             </div>
           </div>
+        </div>
+        <div className="row">
+          <div className="dashboard-button-container">
+            <button class="gradient-button active">
+              <Image src={dashboardBtnImg} alt="Users" className="img-fluid" />
+              <span className={`button-span ${Outfit500.className}`}>Manage Users</span>
+            </button>
+
+            <button class="gradient-button">
+              <Image src={dashboardBtnImg} alt="Approvals" className="img-fluid" />
+              <span className={`button-span ${Outfit500.className}`}>Approvals Pending</span>
+            </button>
+          </div>
+        </div>
+
       </section>
 
     </div>

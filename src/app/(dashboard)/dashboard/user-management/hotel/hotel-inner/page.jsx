@@ -41,12 +41,41 @@ const hotels = [
         image: hotelImg,
     },
 
-    
+    {
+        name: "Lux Hotel Casino",
+        price: "$180/night",
+        rating: 4.5,
+        beds: "3 Bed",
+        bath: "2 Bath",
+        parking: "2 Parking",
+        location: "Kingdom Tower, Brazil",
+        image: hotelImg,
+    },
+    {
+        name: "Lux Hotel Casino",
+        price: "$180/night",
+        rating: 4.5,
+        beds: "3 Bed",
+        bath: "2 Bath",
+        parking: "2 Parking",
+        location: "Kingdom Tower, Brazil",
+        image: hotelImg,
+    },
+    {
+        name: "Lux Hotel Casino",
+        price: "$180/night",
+        rating: 4.5,
+        beds: "3 Bed",
+        bath: "2 Bath",
+        parking: "2 Parking",
+        location: "Kingdom Tower, Brazil",
+        image: hotelImg,
+    },
 ];
 
 export default function HotelsPage() {
     return (
-        <div className="dashboard-content" style={{ background: "#fffaf9" }}>
+        <div className="dashboard-content hotels-dashboard" style={{ background: "#fffaf9" }}>
             <h3 className={`dashboard-heading ${Outfit600.className}`}>Hotels</h3>
 
             <div className="hotels-card-prnt">
@@ -111,5 +140,5 @@ export default function HotelsPage() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
