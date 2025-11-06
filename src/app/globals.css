@@ -39,8 +39,10 @@ body {
   background-repeat: no-repeat;
   width: 450px;
   padding: 30px 10px 0 10px;
+
   height: auto;
   justify-content: space-between;
+
 }
 
 .sidebar-logo {
@@ -106,6 +108,139 @@ body {
 .sidebar-menu-list-open li:hover {
   background: transparent;
 }
+
+.content-ara {
+  width: 85%;
+}
+.dashboard-content {
+  padding: 60px 55px 43px 36px;
+}
+.dashboard-heading {
+  font-size: 35px;
+  color: #000000;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #000000;
+  margin: 0 !important;
+}
+.card-dashboad {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 24px 24px;
+  border: 1px solid #d5d5d5;
+  box-shadow: 0px 2px 12px 0px #00000026;
+  display: flex;
+  width: 348px;
+  border-radius: 2px !important;
+}
+.text-muted {
+  font-size: 24px;
+  color: #313131;
+  margin: 0 !important;
+  margin-bottom: 10px !important;
+}
+.count-hd {
+  font-size: 45px;
+  color: #000000;
+  margin: 0 !important;
+  font-weight: bold;
+}
+
+.dropdown-toggle {
+  background-color: #fff !important;
+  border: 1px solid #ccc !important;
+  color: #000 !important;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 6px 12px;
+}
+
+.dropdown-menu {
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.order-sec {
+  padding-top: 40px;
+  border-top: 1px solid #000000;
+}
+.order-hd {
+  font-size: 27px;
+  color: #000000;
+}
+.dropdown-para {
+  font-size: 16px;
+  background: #000000;
+}
+.dropdown-prnt button {
+  background-color: transparent;
+  border-radius: 2px !important;
+  width: 136px;
+}
+.dropdown-prnt {
+  border: 1px solid #d5d5d5;
+  background: #ffffff;
+  box-shadow: 0px 2px 8px 0px #00000014;
+  border-radius: 5px !important;
+}
+
+.hotel-card {
+  border: 0.63px solid #666666;
+  overflow: hidden;
+  background: #fff;
+  padding: 7px;
+  box-shadow: 0px 1.26px 15.07px 0px #00000026;
+  border-radius: 10px;
+}
+
+.hotel-title {
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.hotel-location {
+  font-size: 12px;
+}
+.hotels-card-prnt {
+  margin-top: 60px;
+}
+.hotel-img {
+  width: 158px !important;
+}
+.hotel-title {
+  font-size: 21px;
+  color: #2b2b2b;
+  margin-bottom: 10px;
+}
+.hotel-price {
+  font-size: 15px;
+  color: #2b2b2b;
+  font-weight: bold;
+  width: fit-content;
+  margin-bottom: 15px;
+}
+.card-body-1 {
+  width: 100%;
+}
+.bed-para {
+  margin-bottom: 0;
+}
+.bed-para {
+  font-size: 10px;
+  color: #ee4026;
+}
+.hotel-location {
+  font-size: 12px;
+  color: #2b2b2b;
+  margin-top: 12px !important;
+}
+.hotel-card {
+  width: 100%;
+  max-width: 100%;
+}
+.hotel-img {
+  width: 100px; /* ya jo suitable size ho */
+  height: auto;
+}
+
 
 
 /* style start by anas */
@@ -599,3 +734,4 @@ td {
   font-weight: 400;
   font-size: 16px;
 }
+
