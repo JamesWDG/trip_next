@@ -80,8 +80,8 @@ export default function HotelsPage() {
 
             <div className="hotels-card-prnt">
                 <div className="row gy-3">
-                    {hotels.map((hotel) => (
-                        <div key={hotel.id} className="col-lg-4 col-md-6">
+                    {hotels.map((hotel,i) => (
+                        <div key={i} className="col-lg-4 col-md-6">
                             <Card className="hotel-card">
                                 <div className="d-flex align-items-center gap-3">
                                     <div className="hotel-img-wrap">
