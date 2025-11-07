@@ -922,6 +922,7 @@ td {
   margin-bottom: 50px;
 }
 
+
 .alerts-card {
   background-color: var(--bg-color);
   border: 1.06px solid #d5d5d5;
@@ -957,6 +958,7 @@ td {
   background: #F4F4F4;
 }
 
+
 .input-wrapper .input-div select,
 input {
   width: 650px;
@@ -974,12 +976,15 @@ input {
   color: #656565;
 }
 
+
 .textarea-wrapper label {
   font-size: 20px;
+
   color: #656565;
   margin-top: 29px;
   margin-bottom: 15px;
 }
+
 
 .textarea-wrapper textarea {
   font-size: 16px;
@@ -991,6 +996,7 @@ input {
 
 }
 
+
 .form-button {
   font-size: 30px;
   padding: 12px 30px;
@@ -1001,9 +1007,11 @@ input {
   margin-bottom: 30px;
 }
 
+
 .setting-card {
   padding: 25px;
 }
+
 
 .setting-button {
   font-size: 25px;
@@ -1024,3 +1032,4 @@ input {
 .profile-btn {
   padding: 10px 35px;
 }
+
