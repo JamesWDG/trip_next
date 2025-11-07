@@ -13,17 +13,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {/* Overall layout */}
         <div className="d-flex">
           <Sidebar />
-          <div className="flex flex-1 custom-flex">
-            
+
+
+          <main className="flex-1 bg-gray-50" style={{ flexGrow: 1 }}>
             <Header />
-            {/* Main content area */}
-            <main className="flex-1 p-6 bg-gray-50">
+
+            <div className="flex flex-1" >
+
               {children}
-            </main>
-          </div>
+            </div>
+
+          </main>
         </div>
       </body>
     </html>
