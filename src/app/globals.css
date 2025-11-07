@@ -730,7 +730,7 @@ td {
 /* Transactions & Monetization page start */
 
 .management {
-  height: 175vh;
+    height: 100%;
 }
 
 .management .table-container {
