@@ -786,7 +786,9 @@ td {
   color: var(--light-gray);
   font-weight: bold;
   padding-right: 10px;
+
   border-right: 2px solid #969696;
+
   height: 30px;
   display: flex;
   align-items: center;
@@ -797,6 +799,7 @@ td {
   color: var(--light-gray);
   font-weight: bold;
 }
+
 
 .order-name-prnt .order-name {
   font-size: 17px;
@@ -816,6 +819,7 @@ td {
   margin-bottom: 25px;
 }
 
+
 .order-status {
   border-radius: 100px;
   background-color: var(--light-green);
@@ -834,9 +838,11 @@ td {
   border-radius: 8px;
   text-align: center;
   font-weight: 600;
+
   padding: 17px;
   border-radius: 100px;
 }
+
 
 .total-chart {
   margin-top: 40px;
@@ -849,17 +855,20 @@ td {
   margin-top: 45px;
 }
 
+
 .gradient-button {
   padding: 17px 30px;
   border: none;
   border-radius: 5px;
   box-shadow: 7px 0px 80px 0px #0000000d;
   background: linear-gradient(180deg, #120f34, #6d1697);
+
   display: flex;
   align-items: center;
   gap: 9px;
   color: var(--background);
   font-size: 31px;
+
 }
 
 
@@ -967,7 +976,8 @@ input {
   font-size: 16px;
   padding: 15px 22px;
   color: #A3A3A3;
-  margin-top: 15px;
+
+
   border-radius: 6px;
 }
 
@@ -1032,4 +1042,5 @@ input {
 .profile-btn {
   padding: 10px 35px;
 }
+
 
