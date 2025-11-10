@@ -11,6 +11,7 @@ import { Outfit400, Outfit500, Outfit600, Poppins400, Poppins500 } from "@/fonts
 
 const hotels = [
     {
+        id: 1,
         name: "Lux Hotel Casino",
         price: "$180/night",
         rating: 4.5,
@@ -21,6 +22,7 @@ const hotels = [
         image: hotelImg,
     },
     {
+        id: 2,
         name: "Lux Hotel Casino",
         price: "$180/night",
         rating: 4.5,
@@ -31,6 +33,7 @@ const hotels = [
         image: hotelImg,
     },
     {
+        id: 3,
         name: "Lux Hotel Casino",
         price: "$180/night",
         rating: 4.5,
@@ -42,6 +45,7 @@ const hotels = [
     },
 
     {
+        id: 4,
         name: "Lux Hotel Casino",
         price: "$180/night",
         rating: 4.5,
@@ -52,6 +56,7 @@ const hotels = [
         image: hotelImg,
     },
     {
+        id: 5,
         name: "Lux Hotel Casino",
         price: "$180/night",
         rating: 4.5,
@@ -62,6 +67,7 @@ const hotels = [
         image: hotelImg,
     },
     {
+        id: 6,
         name: "Lux Hotel Casino",
         price: "$180/night",
         rating: 4.5,

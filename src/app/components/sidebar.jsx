@@ -1,7 +1,7 @@
 "use client";
+import React, { useState } from 'react';
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 
 import sidebarLogo from "@/app/(dashboard)/assets/images/sidebar-logo.png";
 import sidebarImg1 from "@/app/(dashboard)/assets/images/side-bar-img-1.png";
@@ -13,214 +13,109 @@ import sidebarImg6 from "@/app/(dashboard)/assets/images/side-bar-img-6.png";
 import sidebarImg7 from "@/app/(dashboard)/assets/images/side-bar-img-7.png";
 import sidebarImg8 from "@/app/(dashboard)/assets/images/side-bar-img8.png";
 
-export default function Sidebar() {
+const Sidebar2 = () => {
     const [openMenu, setOpenMenu] = useState(null);
 
-    // All menu items except logout
-    const menuItems = [
-        { id: "dashboard", label: "Dashboard", icon: sidebarImg1, href: "/" },
-        {
-            id: "userManagement",
-            label: "User Management",
-            icon: sidebarImg2,
-            children: [
-                { label: "Hotels", href: "/user-management/hotels" },
-                { label: "Restaurants", href: "/user-management/restaurants" },
-                { label: "Customers", href: "/user-management/customers" },
-                { label: "Staff", href: "/user-management/staff" },
-            ],
-        },
-        {
-            id: "Onboarding & Verification",
-            label: "Onboarding & Verification",
-            icon: sidebarImg3,
-            children: [
-                { label: "Hotels", href: "/user-management/hotels" },
-                { label: "Restaurants", href: "/user-management/restaurants" },
-                { label: "Customers", href: "/user-management/customers" },
-                { label: "Staff", href: "/user-management/staff" },
-            ],
-        },
-        {
-            id: "Transactions & Monetization",
-            label: "Transactions & Monetization",
-            icon: sidebarImg4,
-            children: [
-                { label: "Hotels", href: "/user-management/hotels" },
-                { label: "Restaurants", href: "/user-management/restaurants" },
-                { label: "Customers", href: "/user-management/customers" },
-                { label: "Staff", href: "/user-management/staff" },
-            ],
-        },
-        {
-            id: "Analytics Reports",
-            label: "Analytics Reports",
-            icon: sidebarImg5,
-            children: [
-                { label: "Hotels", href: "/user-management/hotels" },
-                { label: "Restaurants", href: "/user-management/restaurants" },
-                { label: "Customers", href: "/user-management/customers" },
-                { label: "Staff", href: "/user-management/staff" },
-            ],
-        },
-        {
-            id: "Email Notifications",
-            label: "Email Notifications",
-            icon: sidebarImg6,
-            href: "/Email Notifications",
-        },
-        {
-            id: "Settings",
-            label: "Settings",
-            icon: sidebarImg7,
-            href: "/Settings",
-        },
-    ];
-
-    // Logout item (separate)
-    const logoutItem = {
-        id: "logout",
-        label: "Logout",
-        icon: sidebarImg8,
-        href: "/logout",
-    };
+    const toggleDropdown = (menuName) => {
+        setOpenMenu(openMenu === menuName ? null : menuName);
+    };  
 
     return (
-        <section
-            className="sidebar"
-            style={{
-                display: "flex",
-                flexDirection: "column",
-            }}
-        >
-            <div>
-                {/* Logo */}
-                <div className="logo-area" style={{ marginBottom: "30px" }}>
-                    <Link href="/">
-                        <Image
-                            src={sidebarLogo}
-                            alt="Logo"
-                            className="img-fluid sidebar-logo"
-                        />
-                    </Link>
-                </div>
-
-                {/* Menu items */}
-                <ul
-                    className="sidebar-menu"
-                    style={{ padding: 0, margin: 0, listStyle: "none" }}
-                >
-                    {menuItems.map((item) => (
-                        <li key={item.id} style={{}}>
-                            {item.children ? (
-                                <>
-                                    <button
-                                        className="menu-button"
-                                        onClick={() =>
-                                            setOpenMenu(
-                                                openMenu === item.id ? null : item.id
-                                            )
-                                        }
-                                        style={{
-                                            display: "flex",
-                                            alignItems: "center",
-                                            justifyContent: "space-between",
-                                            border: "none",
-                                            background: "none",
-                                            cursor: "pointer",
-                                            padding: "5px 0",
-                                            width: "100%",
-                                        }}
-                                    >
-                                        <div
-                                            className="d-flex justify-content-center gap-2 align-items-center"
-                                        >
-                                            <Image
-                                                src={item.icon}
-                                                alt={item.label}
-                                                className="im-fluid"
-                                            />
-                                            <span>{item.label}</span>
-                                        </div>
-                                        <span>
-                                            {openMenu === item.id ? "▲" : "▼"}
-                                        </span>
-                                    </button>
-
-                                    {openMenu === item.id && (
-                                        <ul
-                                            className="sidebar-menu-list-open"
-                                        >
-                                            {item.children.map((child, index) => (
-                                                <li key={index}
-                                                    style={{
-                                                        border: "none"
-                                                    }}
-                                                >
-
-                                                    <Link
-                                                        href={child.href}
-                                                        style={{
-                                                            display: "block",
-                                                            padding: "5px 0",
-                                                        }}
-                                                    >
-                                                        {child.label}
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    )}
-                                </>
-                            ) : (
-                                <Link href={item.href}>
-                                    <div
-                                        style={{
-                                            display: "flex",
-                                            alignItems: "center",
-                                            gap: "10px",
-                                            padding: "5px 0",
-                                        }}
-                                    >
-                                        <Image
-                                            src={item.icon}
-                                            alt={item.label}
-                                            className="img-fluid"
-                                        />
-                                        <span>{item.label}</span>
-                                    </div>
-                                </Link>
-                            )}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-
-            {/* Logout (Fixed at bottom & centered) */}
-            <div
-                className="logout-section"
-                style={{
-                    marginTop: "200px",
-                }}
-            >
-                <Link
-                    href={logoutItem.href}
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "10px",
-                        textDecoration: "none",
-                    }}
-                >
-                    <Image
-                        src={logoutItem.icon}
-                        alt={logoutItem.label}
-                        width={34}
-                        height={34}
-                    />
-                    <span>{logoutItem.label}</span>
+        <section className="sidebar-panel">
+            <div className="side-bar-logo">
+                <Link href="/dashboard">
+                    <Image src={sidebarLogo} alt="" className="img-fluid" />
                 </Link>
             </div>
+            <ul className="sidebar-links">
+                <div>
+                    <li>
+                        <Image src={sidebarImg1} alt="" className="img-fluid" />
+                        <p className="sidebar-hd">Dashboard</p>
+                    </li>
+                    <li onClick={() => toggleDropdown("user")}>
+                        <div className="custom-flex">
+                            <Image src={sidebarImg2} alt="" className="img-fluid" />
+                            <p className="sidebar-hd">User Management</p>
+                        </div>
+                        <i className={`fa-solid fa-play ${openMenu === "user" ? "rotate" : ""}`}></i>
+                    </li>
+                    {openMenu === "user" && (
+                        <ul className="dropdown-submenu">
+                            <li><Link href="#">All Users</Link></li>
+                            <li><Link href="#">Add User</Link></li>
+                        </ul>
+                    )}
+                    <li onClick={() => toggleDropdown("onboarding")}>
+                        <div className="custom-flex">
+                            <Image src={sidebarImg3} alt="" className="img-fluid" />
+                            <p className="sidebar-hd">Onboarding & Verification</p>
+                        </div>
+                        <i className={`fa-solid fa-play ${openMenu === "onboarding" ? "rotate" : ""}`}></i>
+                    </li>
+                    {openMenu === "onboarding" && (
+                        <ul className="dropdown-submenu">
+                            <li><Link href="#">KYC Requests</Link></li>
+                            <li><Link href="#">Documents</Link></li>
+                        </ul>
+                    )}
+
+                    <li onClick={() => toggleDropdown("transactions")}>
+                        <div className="custom-flex">
+                            <Image src={sidebarImg4} alt="" className="img-fluid" />
+                            <p className="sidebar-hd">Transactions & Monetization</p>
+                        </div>
+                        <i className={`fa-solid fa-play ${openMenu === "transactions" ? "rotate" : ""}`}></i>
+                    </li>
+                    {openMenu === "transactions" && (
+                        <ul className="dropdown-submenu">
+                            <li><Link href="#">All Transactions</Link></li>
+                            <li><Link href="#">Earnings</Link></li>
+                        </ul>
+                    )}
+
+
+                    <li onClick={() => toggleDropdown("analytics")} className='reports-li'>
+                        <div className="custom-flex">
+                            <Image src={sidebarImg5} alt="" className="img-fluid" />
+                            <p className="sidebar-hd">Analytics Reports</p>
+                        </div>
+                        <i className={`fa-solid fa-play ${openMenu === "analytics" ? "rotate" : ""}`}></i>
+                    </li>
+                    {openMenu === "analytics" && (
+                        <ul className="dropdown-submenu">
+                            <li><Link href="#">Monthly Reports</Link></li>
+                            <li><Link href="#">Performance</Link></li>
+                        </ul>
+                    )}
+                    <li>
+                        <Image src={sidebarImg6} alt="" className="img-fluid" />
+                        <p className="sidebar-hd">Email Notifications</p>
+                    </li>
+
+
+                    <li onClick={() => toggleDropdown("settings")}>
+                        <div className="custom-flex">
+                            <Image src={sidebarImg7} alt="" className="img-fluid" />
+                            <p className="sidebar-hd">Settings</p>
+                        </div>
+                        <i className={`fa-solid fa-play ${openMenu === "settings" ? "rotate" : ""}`}></i>
+                    </li>
+                    {openMenu === "settings" && (
+                        <ul className="dropdown-submenu">
+                            <li><Link href="#">General</Link></li>
+                            <li><Link href="#">Security</Link></li>
+                        </ul>
+                    )}
+                </div>
+                <div className="w-100 custom-link">
+                    <li>
+                        <Image src={sidebarImg8} alt="" className="img-fluid" />
+                        <p className="sidebar-hd">Logout</p>
+                    </li>
+                </div>
+            </ul>
         </section>
     );
-}
+};
+export default Sidebar2;

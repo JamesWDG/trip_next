@@ -325,7 +325,7 @@ body {
   justify-content: space-between;
   box-shadow: 0px 2px 12px 0px #00000026;
   background: var(--white);
-  border: 1px solid #D5D5D5;
+  border: 1px solid #d5d5d5;
   box-shadow: 0px 2px 12px 0px #00000026;
 }
 
@@ -780,7 +780,6 @@ td {
   font-size: 16px;
 }
 
-
 .food-card-prnt {
   margin-top: 60px;
 }
@@ -883,10 +882,9 @@ td {
 
 }
 
-
 /* Analytics & Reports page start */
 .filter-mega-wrapper {
-  background: #F4F4F4;
+  background: #f4f4f4;
   box-shadow: 0px 1px 6px 0px #00000026;
   border: 1px solid #464646;
   border-radius: 10px;
@@ -906,14 +904,14 @@ td {
   margin-bottom: 15px;
   font-weight: 300;
   font-size: 20px;
-  color: #A3A3A3;
+  color: #a3a3a3;
 }
 
 .date-range-wrapper .range-input {
   padding: 22px;
-  background: #FBFBFB;
+  background: #fbfbfb;
   width: 100%;
-  border: 1px solid #B7B7B7;
+  border: 1px solid #b7b7b7;
   outline: none;
   border-radius: 6px;
   color: var(--black);
@@ -922,15 +920,15 @@ td {
 .date-range-wrapper .range-input::placeholder {
   font-weight: 400;
   font-size: 16px;
-  color: #A3A3A3;
+  color: #a3a3a3;
 }
 
 .date-range-wrapper select {
-  color: #A3A3A3 !important;
+  color: #a3a3a3 !important;
 }
 
 .date-range-wrapper select option {
-  color: #A3A3A3 !important;
+  color: #a3a3a3 !important;
 }
 
 .date-range-wrapper .gradient-button {
@@ -976,19 +974,20 @@ td {
   padding: 33px;
   border: 1px solid #464646;
   box-shadow: 0px 1px 6px 0px #00000026;
-  background: #F4F4F4;
+  background: #f4f4f4;
 }
 
 
 .input-wrapper .input-div select,
 input {
   width: 650px;
-  background: #FBFBFB;
-  border: 1px solid #B7B7B7;
+  background: #fbfbfb;
+  border: 1px solid #b7b7b7;
   font-size: 16px;
   padding: 15px 22px;
-  color: #A3A3A3;
 
+  color: #a3a3a3;
+  margin-top: 15px;
 
   border-radius: 6px;
 }
@@ -1010,12 +1009,11 @@ input {
 
 .textarea-wrapper textarea {
   font-size: 16px;
-  color: #A3A3A3;
+  color: #a3a3a3;
   width: 100%;
   padding: 18px;
   border-radius: 6px;
   margin-bottom: 25px;
-
 }
 
 
@@ -1048,7 +1046,7 @@ input {
 }
 
 .table-container table tbody tr .x-icon {
-  color: #ED0000;
+  color: #ed0000;
 }
 
 .profile-btn {
@@ -1056,11 +1054,16 @@ input {
 }
 
 
+/* 
+sidebar-2 */
+
 
 /* side bar 2 css by anas*/
 
 .sidebar-panel {
-  width: 375px;
+
+  width: 380px;
+
   background: url(../app/side-bar-back.png);
   background-position: center;
   background-size: cover;
@@ -1069,6 +1072,9 @@ input {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+
+  flex-shrink: 0;
+
 }
 
 .side-bar-logo {
@@ -1128,12 +1134,9 @@ input {
   gap: 12px;
 }
 
-.sidebar-links li:nth-child(2),
-.sidebar-links li:nth-child(3),
-.sidebar-links li:nth-child(4),
-.sidebar-links li:nth-child(5),
-.sidebar-links li:nth-child(7),
-.sidebar-links li:nth-child(8) {
+
+.sidebar-links li {
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1144,6 +1147,26 @@ input {
   padding: 25px 12px 25px 40px;
   border-bottom: 1px solid var(--white);
 }
+
+
+.sidebar-links li:nth-child(1) {
+  display: flex;
+  justify-content: unset;
+  align-items: center;
+  gap: 12px;
+  list-style: unset;
+  transition: unset;
+  padding: 25px 12px 25px 40px;
+  border-bottom: unset;
+}
+
+.sidebar-links li:nth-child(5) {
+  justify-content: space-between !important;
+}
+.sidebar-links li:nth-child(7) {
+  justify-content: start !important;
+}
+
 
 .sidebar-links li:hover {
   background: linear-gradient(180deg, #f47e20 -6.76%, #ee4026 101.38%);
@@ -1162,5 +1185,41 @@ input {
   font-size: 17px;
   color: var(--white);
   margin-bottom: 0;
+}
+
+/* chatgbt sidebar css dropdown */
+
+/* Dropdown submenu styling */  
+.dropdown-submenu {
+  list-style: none;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.05);
+  transition: 0.3s;
+}
+
+.dropdown-submenu li a {
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.dropdown-submenu li a:hover {
+  text-decoration: underline;
+}
+
+/* rotate arrow icon when open */
+.rotate {
+  transform: rotate(90deg);
+  transition: 0.3s;
+}
+/* 
+main {
+  height: calc(100vh - 50px);
+  overflow-y: scroll;
+} */
+
+.search-form input {
+  margin: 0 !important;
 }
 

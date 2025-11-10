@@ -104,8 +104,6 @@ export default function HotelsPage() {
                     <Double_table_data Doubletable_heading4={headings4} Doubletable_data4={data4} />
                 </div>
             </section>
-
-
         </>
 
 
