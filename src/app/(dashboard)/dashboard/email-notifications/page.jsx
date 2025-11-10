@@ -5,6 +5,7 @@ import { Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import alertsImg from "@/app/(dashboard)/assets/images/profile-img.png";
 import { Outfit300, Outfit400, Outfit500, Outfit600, Poppins400, Poppins500 } from "@/fonts/index";
+import Double_table_data from "@/app/components/Double_table_data";
 
 const notificationsAlerts = [
     {
@@ -20,12 +21,43 @@ const notificationsAlerts = [
 ];
 
 export default function HotelsPage() {
+    const headings4 = [
+        "Type",
+        "Recipient Group",
+        "Status",
+        "Date Sent",
+    ];
+    const data4 = [
+        {
+            type: "Approval Email",
+            group: "Drivers",
+            status: "Sent",
+            date_sent: "Oct 21, 2025",
+        },
+        {
+            type: "Approval Email",
+            group: "Driving License",
+            status: "Sent",
+            date_sent: "Oct 21, 2025",
+        },
+        {
+            type: "Approval Email",
+            group: "Drivers",
+            status: "Sent",
+            date_sent: "Oct 21, 2025",
+        },
+        {
+            type: "Approval Email",
+            group: "Drivers",
+            status: "Sent",
+            date_sent: "Oct 21, 2025",
+        },
+    ];
     return (
         <>
             <section>
                 <div className="dashboard-content" style={{ background: "#fffaf9" }}>
                     <h3 className={`dashboard-heading ${Outfit600.className}`}>Notifications & Alerts</h3>
-
                     <div className="hotels-card-prnt">
                         <div className="row gy-3">
                             {notificationsAlerts.map((notificationsAlert, i) => (
@@ -42,7 +74,6 @@ export default function HotelsPage() {
                             ))}
                         </div>
                     </div>
-
                     <h3 className="dashboard-hd-mini dashboard-hd-mini-notification">Send Manual Notification</h3>
                     <form action="" className="form-section">
                         <div className="input-wrapper d-flex align-items-center gap-4">
@@ -69,53 +100,8 @@ export default function HotelsPage() {
                         </div>
                         <button className={`gradient-button form-button ${Outfit500.className}`}>Send Notification</button>
                     </form>
-
-
                     <h3 className='dashboard-hd-mini dashboard-hd-mini-notification'>Manage Content</h3>
-                    <div className="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    {/* <th>Sr.No</th> */}
-                                    <th>Type</th>
-                                    <th>Recipient Group</th>
-                                    <th>Status</th>
-                                    <th>Date Sent</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    {/* <td>01</td> */}
-                                    <td>Approval Email</td>
-                                    <td>Drivers</td>
-                                    <td>Sent</td>
-                                    <td className="status-completed">Oct 21, 2025</td>
-                                </tr>
-                                <tr>
-                                    {/* <td>01</td> */}
-                                    <td>Approval Email</td>
-                                    <td>All Users</td>
-                                    <td>Pending</td>
-                                    <td className="status-completed">Oct 20, 2025</td>
-                                </tr>
-                                <tr>
-                                    {/* <td>01</td> */}
-                                    <td>Broadcast Message</td>
-                                    <td>Drivers</td>
-                                    <td>Sent</td>
-                                    <td className="status-completed">Oct 19, 2025</td>
-                                </tr>
-
-                                <tr>
-                                    {/* <td>01</td> */}
-                                    <td>Subscription Reminder</td>
-                                    <td>Restaurants</td>
-                                    <td>Pending</td>
-                                    <td className="status-completed">Oct 18, 2025</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <Double_table_data Doubletable_heading4={headings4} Doubletable_data4={data4} />
                 </div>
             </section>
 

@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../globals.css";
+import Sidebar2 from "../components/sidebar2.jsx";
 import Sidebar from "../components/sidebar.jsx";
 import Header from "../components/header";
 
@@ -11,12 +12,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" style={{scrollBehavior:"auto"}}>
+      <body cz-shortcut-listen="true">
         <div className="d-flex">
           <Sidebar />
-
-
           <main className="flex-1 bg-gray-50" style={{ flexGrow: 1 }}>
             <Header />
 

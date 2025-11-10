@@ -5,6 +5,7 @@ import { Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import alertsImg from "@/app/(dashboard)/assets/images/profile-img.png";
 import { Outfit300, Outfit400, Outfit500, Outfit600, Poppins400, Poppins500 } from "@/fonts/index";
+import Double_table_data from "@/app/components/Double_table_data";
 
 const notificationsAlerts = [
     {
@@ -28,6 +29,39 @@ const notificationsAlerts = [
 ];
 
 export default function HotelsPage() {
+    const headings4 = [
+        "Role",
+        "Analytics",
+        "CMS",
+        "Approvals",
+        "Action",
+    ];
+    const data4 = [
+        {
+            phone: "Super Admin",
+            group: "",
+            status: "",
+            date_sent: "Oct 21, 2025",
+        },
+        {
+            phone: "Super Admin",
+            group: "Driving License",
+            status: "",
+            date_sent: "Oct 21, 2025",
+        },
+        {
+            phone: "Super Admin",
+            group: "",
+            status: "",
+            date_sent: "Oct 21, 2025",
+        },
+        {
+            phone: "Super Admin",
+            group: "",
+            status: "",
+            date_sent: "Oct 21, 2025",
+        },
+    ];
     return (
         <>
             <section>
@@ -52,81 +86,7 @@ export default function HotelsPage() {
                     </div>
 
                     <h3 className='dashboard-hd-mini dashboard-hd-mini-notification'>Sub-admin Roles & Access</h3>
-                    <div className="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    {/* <th>Sr.No</th> */}
-                                    <th>Role</th>
-                                    <th>Analytics</th>
-                                    <th>CMS</th>
-                                    <th>Approvals</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    {/* <td>01</td> */}
-                                    <td>Super Admin</td>
-                                    <td className="td-icon"><i class="fa-solid fa-check"></i></td>
-                                    <td className="td-icon"><i class="fa-solid fa-check"></i></td>
-                                    <td className="status-completed td-icon"><i class="fa-solid fa-check"></i></td>
-                                    <td className="position-relative custom-action-cell">
-                                        <i className="fa-solid fa-ellipsis-vertical custom-toggle" style={{ cursor: "pointer" }}></i>
-                                        <div className="custom-dropdown-menu" style={{ display: "none" }}>
-                                            <div className="custom-dropdown-item">View</div>
-                                            <div className="custom-dropdown-item text-danger">Delete</div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    {/* <td>01</td> */}
-                                    <td>Finance Admin</td>
-                                    <td className="td-icon"><i class="fa-solid fa-check"></i></td>
-                                    <td className="td-icon x-icon"><i class="fa-solid fa-xmark"></i></td>
-                                    <td className="status-completed td-icon x-icon"><i class="fa-solid fa-xmark"></i></td>
-                                    <td className="position-relative custom-action-cell">
-                                        <i className="fa-solid fa-ellipsis-vertical custom-toggle" style={{ cursor: "pointer" }}></i>
-                                        <div className="custom-dropdown-menu" style={{ display: "none" }}>
-                                            <div className="custom-dropdown-item">View</div>
-                                            <div className="custom-dropdown-item text-danger">Delete</div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    {/* <td>01</td> */}
-                                    <td>Super Admin</td>
-                                    <td className="td-icon"><i class="fa-solid fa-check"></i></td>
-                                    <td className="td-icon"><i class="fa-solid fa-check"></i></td>
-                                    <td className="status-completed td-icon"><i class="fa-solid fa-check"></i></td>
-                                    <td className="position-relative custom-action-cell">
-                                        <i className="fa-solid fa-ellipsis-vertical custom-toggle" style={{ cursor: "pointer" }}></i>
-                                        <div className="custom-dropdown-menu" style={{ display: "none" }}>
-                                            <div className="custom-dropdown-item">View</div>
-                                            <div className="custom-dropdown-item text-danger">Delete</div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    {/* <td>01</td> */}
-                                    <td>Content Admin</td>
-                                    <td className="td-icon x-icon"><i class="fa-solid fa-xmark"></i></td>
-                                    <td className="td-icon"><i class="fa-solid fa-check"></i></td>
-                                    <td className="status-completed td-icon x-icon"><i class="fa-solid fa-xmark"></i></td>
-                                    <td className="position-relative custom-action-cell">
-                                        <i className="fa-solid fa-ellipsis-vertical custom-toggle" style={{ cursor: "pointer" }}></i>
-                                        <div className="custom-dropdown-menu" style={{ display: "none" }}>
-                                            <div className="custom-dropdown-item">View</div>
-                                            <div className="custom-dropdown-item text-danger">Delete</div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-
+                    <Double_table_data Doubletable_heading={headings4} Doubletable_data={data4} />
                     <h3 className="dashboard-hd-mini dashboard-hd-mini-notification">Profile & Password Settings</h3>
                     <form action="" className="form-section">
                         <div className="row row-gap-4">
@@ -160,7 +120,7 @@ export default function HotelsPage() {
                             </div>
 
                         </div>
-                        <button className={`gradient-button profile-btn ${Outfit500.className}`}>Update Profile</button>
+                        <button className={`gradient-button profile-btn mt-4 ${Outfit500.className}`}>Update Profile</button>
                     </form>
 
 

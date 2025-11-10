@@ -5,8 +5,36 @@ import Image from "next/image";
 import React from 'react'
 import dashboardBtnImg from "@/app/(dashboard)/assets/images/dashboard-btn-img.png"
 import { Outfit500 } from "@/fonts";
-// import totalchart from "@/app/components/totalchart.jsx"
+import Double_table_data from "@/app/components/Double_table_data";
 const page = () => {
+    const headings2 = [
+        "Report Type",
+        "Entries",
+        "Last Updated",
+        "Action",
+    ];
+    const data2 = [
+        {
+            name: "Bookings Analytics",
+            phone: "125",
+            email: "Oct 21, 2025",
+        },
+        {
+            name: "Bookings Analytics",
+            phone: "Driving License",
+            email: "Oct 21, 2025",
+        },
+        {
+            name: "Bookings Analytics",
+            phone: "125",
+            email: "Oct 21, 2025",
+        },
+        {
+            name: "Bookings Analytics",
+            phone: "125",
+            email: "Oct 21, 2025",
+        },
+    ];
     return (
         <>
             <section className="main-content-area management">
@@ -49,73 +77,7 @@ const page = () => {
                     </div>
                 </div>
                 <h3 className='dashboard-hd-mini'>Reports Summary</h3>
-                <div className="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                {/* <th>Sr.No</th> */}
-                                <th>Report Type</th>
-                                <th>Entries</th>
-                                <th>Last Updated</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                {/* <td>01</td> */}
-                                <td>Bookings Analytics</td>
-                                <td>125</td>
-                                <td>Oct 21, 2025</td>
-                                <td className="position-relative custom-action-cell">
-                                    <i className="fa-solid fa-ellipsis-vertical custom-toggle" style={{ cursor: "pointer" }}></i>
-                                    <div className="custom-dropdown-menu" style={{ display: "none" }}>
-                                        <div className="custom-dropdown-item">View</div>
-                                        <div className="custom-dropdown-item text-danger">Delete</div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                {/* <td>02</td> */}
-                                <td>Revenue Reports</td>
-                                <td>48</td>
-                                <td>Oct 20, 2025</td>
-                                <td className="position-relative custom-action-cell">
-                                    <i className="fa-solid fa-ellipsis-vertical custom-toggle" style={{ cursor: "pointer" }}></i>
-                                    <div className="custom-dropdown-menu" style={{ display: "none" }}>
-                                        <div className="custom-dropdown-item">View</div>
-                                        <div className="custom-dropdown-item text-danger">Delete</div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                {/* <td>03</td> */}
-                                <td>Transactions Overview</td>
-                                <td>85</td>
-                                <td>Oct 19, 2025</td>
-                                <td className="position-relative custom-action-cell">
-                                    <i className="fa-solid fa-ellipsis-vertical custom-toggle" style={{ cursor: "pointer" }}></i>
-                                    <div className="custom-dropdown-menu" style={{ display: "none" }}>
-                                        <div className="custom-dropdown-item">View</div>
-                                        <div className="custom-dropdown-item text-danger">Delete</div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                {/* <td>01</td> */}
-                                <td>Cancellation Metrics</td>
-                                <td>16</td>
-                                <td>Oct 18, 2025</td>
-                                <td className="position-relative custom-action-cell">
-                                    <i className="fa-solid fa-ellipsis-vertical custom-toggle" style={{ cursor: "pointer" }}></i>
-                                    <div className="custom-dropdown-menu" style={{ display: "none" }}>
-                                        <div className="custom-dropdown-item">View</div>
-                                        <div className="custom-dropdown-item text-danger">Delete</div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <Double_table_data Doubletable_heading2={headings2} Doubletable_data2={data2} />
             </section>
         </>
     )

@@ -153,11 +153,11 @@ export default function Sidebar() {
                                         >
                                             {item.children.map((child, index) => (
                                                 <li key={index}
-                                                style={{
-                                                    border: "none"
-                                                }}
+                                                    style={{
+                                                        border: "none"
+                                                    }}
                                                 >
-                                                    
+
                                                     <Link
                                                         href={child.href}
                                                         style={{
