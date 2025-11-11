@@ -1113,6 +1113,9 @@ input {
 /* 
 sidebar-2 */
 
+/* 
+sidebar-2 */
+
 
 /* side bar 2 css by anas*/
 
@@ -1215,7 +1218,6 @@ sidebar-2 */
   transition: unset;
   padding: 25px 12px 25px 40px;
 
-
 }
 
 .sidebar-links li:nth-child(5) {
@@ -1284,6 +1286,7 @@ main {
 }
 
 
+
 .sidebar-panel.active {
   width: 125px;
   transition: 0.5s;
@@ -1300,4 +1303,5 @@ main {
   display: none;
   transition: 0.5s;
 }
+
 

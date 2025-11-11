@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useContext, useState } from 'react';
-
 import Link from "next/link";
 import Image from "next/image";
 
@@ -99,6 +98,7 @@ const Sidebar2 = () => {
                         <Image src={sidebarImg6} alt="" className="img-fluid" />
                         <p className="sidebar-hd">Email Notifications</p>
                     </li>
+
 
 
                     <li onClick={() => toggleDropdown("settings")}>
