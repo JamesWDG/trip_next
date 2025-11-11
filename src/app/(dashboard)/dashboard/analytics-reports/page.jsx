@@ -37,7 +37,7 @@ const page = () => {
     ];
     return (
         <>
-            <section className="main-content-area management">
+            <section className="main-content-area">
                 <h1 className="dashboard-hd">Analytics & Reports</h1>
                 <div className="filter-mega-wrapper">
                     <div className="date-range-wrapper">

@@ -23,7 +23,7 @@ const stats = [
 
 export default function HomePage() {
   return (
-    <div className="dashboard-content" style={{ background: "#fffaf9", }}>
+    <div className="main-content-area" style={{ background: "#fffaf9", }}>
       <h3 className={`dashboard-heading ${Outfit600.className}`}>Dashboard</h3>
       <div className="row">
         {stats.map((item) => (
@@ -102,7 +102,7 @@ export default function HomePage() {
               <Image src={dashboardBtnImg} alt="Users" className="img-fluid" />
               <span className={`button-span ${Outfit500.className}`}>Manage Users</span>
             </button>
-            <button class="gradient-button">
+            <button className="gradient-button">
               <Image src={dashboardBtnImg} alt="Approvals" className="img-fluid" />
               <span className={`button-span ${Outfit500.className}`}>Approvals Pending</span>
             </button>

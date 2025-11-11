@@ -53,7 +53,7 @@ const foodOrders = [
 
 export default function FoodPage() {
     return (
-        <div className="dashboard-content hotels-dashboard" style={{ background: "#fffaf9" }}>
+        <div className="main-content-area" style={{ background: "#fffaf9" }}>
             <h3 className={`dashboard-heading ${Outfit600.className}`}>Food Orders</h3>
 
             <div className="food-card-prnt">

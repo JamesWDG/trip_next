@@ -90,7 +90,7 @@ const page = () => {
   ];
   return (
     <>
-      <section className="main-content-area management">
+      <section className="main-content-area">
         <h1 className="dashboard-hd">Transactions & Monetization</h1>
 
         <h3 className='dashboard-hd-mini'>Orders Overview</h3>
