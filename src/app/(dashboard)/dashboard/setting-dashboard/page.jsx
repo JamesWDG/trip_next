@@ -64,7 +64,7 @@ export default function HotelsPage() {
     ];
     return (
         <>
-            <section>
+            <section className="main-content-area">
                 <div className="dashboard-content" style={{ background: "#fffaf9" }}>
                     <h3 className={`dashboard-heading ${Outfit600.className}`}>Notifications & Alerts</h3>
 

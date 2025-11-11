@@ -4,6 +4,7 @@ import "../globals.css";
 import Sidebar2 from "../components/sidebar2.jsx";
 import Sidebar from "../components/sidebar.jsx";
 import Header from "../components/header";
+import SideBarContextProvider from "@/context/sideBarContextProvider";
 
 export const metadata = {
   title: "Create Next App",
@@ -12,19 +13,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" style={{scrollBehavior:"auto"}}>
+
+    <html lang="en" style={{ scrollBehavior: "auto" }}>
       <body cz-shortcut-listen="true">
         <div className="d-flex">
-          <Sidebar />
-          <main className="flex-1 bg-gray-50" style={{ flexGrow: 1 }}>
-            <Header />
+          <SideBarContextProvider>
+            <Sidebar />
+            <main className="flex-1 bg-gray-50" style={{ flexGrow: 1 }}>
+              <Header />
+              <div className="flex flex-1" >
+                {children}
+              </div>
+            </main>
+          </SideBarContextProvider>
 
-            <div className="flex flex-1" >
-
-              {children}
-            </div>
-
-          </main>
         </div>
       </body>
     </html>

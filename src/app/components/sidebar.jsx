@@ -1,5 +1,7 @@
 "use client";
-import React, { useState } from 'react';
+
+import React, { useContext, useState } from 'react';
+
 import Link from "next/link";
 import Image from "next/image";
 
@@ -12,16 +14,21 @@ import sidebarImg5 from "@/app/(dashboard)/assets/images/side-bar-img-5.png";
 import sidebarImg6 from "@/app/(dashboard)/assets/images/side-bar-img-6.png";
 import sidebarImg7 from "@/app/(dashboard)/assets/images/side-bar-img-7.png";
 import sidebarImg8 from "@/app/(dashboard)/assets/images/side-bar-img8.png";
+import { SideBarContext } from '@/context/sideBarContextProvider';
 
 const Sidebar2 = () => {
     const [openMenu, setOpenMenu] = useState(null);
+    const { sideBarOpen } = useContext(SideBarContext);
+    // console.log(sideBarOpen);
 
     const toggleDropdown = (menuName) => {
         setOpenMenu(openMenu === menuName ? null : menuName);
-    };  
+
+    };
 
     return (
-        <section className="sidebar-panel">
+        <section className={`sidebar-panel ${sideBarOpen ? "active" : ""}`} >
+
             <div className="side-bar-logo">
                 <Link href="/dashboard">
                     <Image src={sidebarLogo} alt="" className="img-fluid" />

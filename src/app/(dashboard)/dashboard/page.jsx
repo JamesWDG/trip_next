@@ -96,11 +96,12 @@ export default function HomePage() {
         <div className="row">
           <div className="dashboard-button-container">
 
-            <button className="gradient-button active">
+            <button className="gradient-button active"> 
               <Image src={dashboardBtnImg} alt="Users" className="img-fluid" />
               <span className={`button-span ${Outfit500.className}`}>Manage Users</span>
             </button>
-            <button class="gradient-button">
+
+            <button className="gradient-button">
 
               <Image src={dashboardBtnImg} alt="Approvals" className="img-fluid" />
               <span className={`button-span ${Outfit500.className}`}>Approvals Pending</span>

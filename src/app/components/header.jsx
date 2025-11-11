@@ -1,12 +1,18 @@
-import React from 'react'
+"use client";
+import React, { useContext } from 'react'
 import Image from 'next/image'
 import profileImage from "@/app/(dashboard)/assets/images/profile-img.png"
+import { SideBarContext } from '@/context/sideBarContextProvider';
 const header = () => {
+    const { setSideBarOpen ,sideBarOpen} = useContext(SideBarContext);
+
     return (
         <>
             <header className="header">
                 <div className="search-area">
-                    <div className="hamburger sidebarOpner">
+                    <div className="hamburger sidebarOpner" onClick={() => {
+                        setSideBarOpen(!sideBarOpen);
+                    }}>
                         <i className="fa-solid fa-bars"></i>
                     </div>
                     <div className="search-form">

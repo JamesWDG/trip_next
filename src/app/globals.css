@@ -294,19 +294,19 @@ body {
   align-items: center;
   gap: 10px;
 }
-
+ 
 .profile-wrapper .profile {
   object-fit: cover;
   border-radius: 100%;
 }
-
+ 
 .profile-wrapper .header-para {
   font-weight: 700;
   font-size: 20px;
   margin-bottom: 0px;
   color: #171B1E;
 }
-
+ 
 .profile-wrapper .header-para-lite {
   font-weight: 700;
   font-size: 15px;
@@ -514,7 +514,10 @@ body {
 .main-content-area {
   padding: 50px;
   background: var(--background2);
-  height: 100%;
+
+  height: calc(100vh - 127px);
+  overflow-y: auto;
+
 }
 
 .my-dropdown-wrapper {
@@ -739,11 +742,6 @@ td {
 
 /* Transactions & Monetization page start */
 
-.management {
-
-    height: 100%;
-
-}
 
 .management .table-container {
   margin-bottom: 50px;
@@ -873,13 +871,11 @@ td {
   border-radius: 5px;
   box-shadow: 7px 0px 80px 0px #0000000d;
   background: linear-gradient(180deg, #120f34, #6d1697);
-
   display: flex;
   align-items: center;
   gap: 9px;
   color: var(--background);
   font-size: 31px;
-
 }
 
 /* Analytics & Reports page start */
@@ -1052,6 +1048,66 @@ input {
 .profile-btn {
   padding: 10px 35px;
 }
+/* side bar 2 css by anas*/
+
+.sidebar-panel {
+  width: 380px;
+  transition: 0.5s;
+  background: url(../app/side-bar-back.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  flex-shrink: 0;
+}
+
+.side-bar-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 30px;
+  margin-bottom: 78px;
+  transition: 1s;
+}
+
+.sidebar-links {
+  padding: 0 10px;
+  margin: 0;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-wrap: nowrap;
+  flex-direction: column;
+}
+
+.sidebar-links li:nth-child(1),
+.sidebar-links li:nth-child(6),
+.sidebar-links li:nth-child(8) {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 12px;
+  list-style: none;
+  cursor: pointer;
+  transition: 0.5s;
+  padding: 25px 40px;
+  border-bottom: 1px solid var(--white);
+}
+
+.sidebar-links .custom-link li {
+  margin-bottom: 58px !important;
+  border-bottom: none !important;
+}
+
+.sidebar-links .custom-link li p {
+  font-size: 26px !important;
+}
 
 
 /* 
@@ -1119,6 +1175,7 @@ sidebar-2 */
   font-size: 26px !important;
 }
 
+
 /* .custom-wrap {
   justify-content: space-between;
   align-items: center;
@@ -1157,12 +1214,14 @@ sidebar-2 */
   list-style: unset;
   transition: unset;
   padding: 25px 12px 25px 40px;
-  border-bottom: unset;
+
+
 }
 
 .sidebar-links li:nth-child(5) {
   justify-content: space-between !important;
 }
+
 .sidebar-links li:nth-child(7) {
   justify-content: start !important;
 }
@@ -1189,7 +1248,7 @@ sidebar-2 */
 
 /* chatgbt sidebar css dropdown */
 
-/* Dropdown submenu styling */  
+
 .dropdown-submenu {
   list-style: none;
   margin: 0;
@@ -1213,6 +1272,7 @@ sidebar-2 */
   transform: rotate(90deg);
   transition: 0.3s;
 }
+
 /* 
 main {
   height: calc(100vh - 50px);
@@ -1221,5 +1281,23 @@ main {
 
 .search-form input {
   margin: 0 !important;
+}
+
+
+.sidebar-panel.active {
+  width: 125px;
+  transition: 0.5s;
+}
+
+.sidebar-panel.active .side-bar-logo {
+  width: 100px;
+  transition: 1s;
+  height: 100px;
+}
+
+.sidebar-panel.active .sidebar-links li p,
+.sidebar-panel.active .sidebar-links li i {
+  display: none;
+  transition: 0.5s;
 }
 
