@@ -71,13 +71,13 @@ export default function HotelsPage() {
                     <div className="hotels-card-prnt">
                         <div className="row gy-3">
                             {notificationsAlerts.map((notificationsAlert, i) => (
-                                <div key={i} className="col-lg-4 col-md-6">
+                                <div key={i} className="col-xxl-4 col-xl-4 col-lg-6 col-md-6">
                                     <Card className="alerts-card setting-card">
                                         <div className="alerts-div d-flex align-items-center gap-3">
                                             <Image src={alertsImg} alt="" className="img-fluid" />
                                             <h2 className={`alerts-hd ${Outfit600.className}`}>{notificationsAlert.alertHd}</h2>
                                         </div>
-                                        <p className={`alert-para ${Outfit400.className}`}>{notificationsAlert.alertDes}</p>
+                                        <p className={`alert-para alert-para-2 ${Outfit400.className}`}>{notificationsAlert.alertDes}</p>
                                         <button className={`gradient-button setting-button ${Outfit500.className}`}>{notificationsAlert.btnText}</button>
                                     </Card>
                                 </div>

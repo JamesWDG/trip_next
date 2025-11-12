@@ -4,7 +4,7 @@ import riderImage from "@/app/(dashboard)/assets/images/rider-img.png"
 const page = () => {
     return (
         <>
-            <section className="main-content-area">
+            <section className="main-content-area main-content-area-driver">
                 <h1 className="dashboard-hd">Rides</h1>
                 <div className="driver-mega-wrapper">
                     <div className="rider-mega-wrapper">

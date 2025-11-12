@@ -55,7 +55,7 @@ export default function HotelsPage() {
     ];
     return (
         <>
-            <section className="main-content-area">
+            <section className="main-content-area main-content-area-email">
                 <div className="dashboard-content" style={{ background: "#fffaf9" }}>
                     <h3 className={`dashboard-heading ${Outfit600.className}`}>Notifications & Alerts</h3>
                     <div className="hotels-card-prnt">
@@ -64,7 +64,7 @@ export default function HotelsPage() {
                                 <div key={i} className="col-lg-6 col-md-6">
                                     <Card className="alerts-card">
                                         <div className="alerts-div d-flex align-items-center gap-3">
-                                            <Image src={alertsImg} alt="" className="img-fluid" />
+                                            <Image src={alertsImg} alt="" className="img-fluid alert-img" />
                                             <h2 className={`alerts-hd ${Outfit600.className}`}>{notificationsAlert.alertHd}</h2>
                                         </div>
                                         <p className={`alert-para ${Outfit400.className}`}>{notificationsAlert.alertDes}</p>
@@ -98,7 +98,7 @@ export default function HotelsPage() {
                                 <textarea name="" id="" placeholder="Write Your message Here..." rows={3} className={`${Outfit400.className}`}></textarea>
                             </div>
                         </div>
-                        <button className={`gradient-button form-button ${Outfit500.className}`}>Send Notification</button>
+                        <button className={`gradient-button form-button send-noti-btn ${Outfit500.className}`}>Send Notification</button>
                     </form>
                     <h3 className='dashboard-hd-mini dashboard-hd-mini-notification'>Manage Content</h3>
                     <Double_table_data Doubletable_heading4={headings4} Doubletable_data4={data4} />

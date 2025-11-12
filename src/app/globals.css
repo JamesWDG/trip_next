@@ -88,7 +88,11 @@ body {
 }
 
 .sidebar-menu .menu-button:hover {
-  background: linear-gradient(180deg, #f47e20 -6.76%, #ee4026 101.38%) !important;
+  background: linear-gradient(
+    180deg,
+    #f47e20 -6.76%,
+    #ee4026 101.38%
+  ) !important;
   border: transparent;
   border-radius: 5px;
 }
@@ -107,7 +111,7 @@ body {
 }
 
 .sidebar-menu-list-open li {
-  border-bottom: 1px solid #E9E9E9 !important;
+  border-bottom: 1px solid #e9e9e9 !important;
   padding: 15px 30px;
 }
 
@@ -117,12 +121,12 @@ body {
 }
 
 .sidebar-menu-list-open {
-  background: #FFFFFF26;
+  background: #ffffff26;
   padding: 0;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  box-shadow: 7px 0px 80px 0px #0000000D;
-  box-shadow: 0px 4px 50px 0px #818181B2 inset;
+  box-shadow: 7px 0px 80px 0px #0000000d;
+  box-shadow: 0px 4px 50px 0px #818181b2 inset;
 }
 
 .sidebar-menu-list-open li:hover {
@@ -133,9 +137,9 @@ body {
   width: 85%;
 }
 
-.dashboard-content {
+/* .dashboard-content {
   padding: 60px 55px 43px 36px;
-}
+} */
 
 .hotels-dashboard {
   padding-bottom: 300px;
@@ -517,7 +521,6 @@ body {
 
   height: calc(100vh - 127px);
   overflow-y: auto;
-
 }
 
 .my-dropdown-wrapper {
@@ -742,7 +745,6 @@ td {
 
 /* Transactions & Monetization page start */
 
-
 .management .table-container {
   margin-bottom: 50px;
   padding: 0;
@@ -809,7 +811,6 @@ td {
   font-weight: bold;
 }
 
-
 .order-name-prnt .order-name {
   font-size: 17px;
   color: var(--orange);
@@ -827,7 +828,6 @@ td {
   margin-top: 15px;
   margin-bottom: 25px;
 }
-
 
 .order-status {
   border-radius: 100px;
@@ -852,7 +852,6 @@ td {
   border-radius: 100px;
 }
 
-
 .total-chart {
   margin-top: 40px;
 }
@@ -863,7 +862,6 @@ td {
   gap: 20px;
   margin-top: 45px;
 }
-
 
 .gradient-button {
   padding: 17px 30px;
@@ -937,7 +935,6 @@ td {
   margin-bottom: 50px;
 }
 
-
 .alerts-card {
   background-color: var(--bg-color);
   border: 1.06px solid #d5d5d5;
@@ -954,8 +951,8 @@ td {
   color: var(--black);
 }
 
-.alerts-div .alert-para {
-  font-size: 20px;
+.alert-para {
+  font-size: 20px !important;
   color: var(--black);
 }
 
@@ -972,7 +969,6 @@ td {
   box-shadow: 0px 1px 6px 0px #00000026;
   background: #f4f4f4;
 }
-
 
 .input-wrapper .input-div select,
 input {
@@ -993,7 +989,6 @@ input {
   color: #656565;
 }
 
-
 .textarea-wrapper label {
   font-size: 20px;
 
@@ -1001,7 +996,6 @@ input {
   margin-top: 29px;
   margin-bottom: 15px;
 }
-
 
 .textarea-wrapper textarea {
   font-size: 16px;
@@ -1011,7 +1005,6 @@ input {
   border-radius: 6px;
   margin-bottom: 25px;
 }
-
 
 .form-button {
   font-size: 30px;
@@ -1023,11 +1016,9 @@ input {
   margin-bottom: 30px;
 }
 
-
 .setting-card {
   padding: 25px;
 }
-
 
 .setting-button {
   font-size: 25px;
@@ -1109,7 +1100,6 @@ input {
   font-size: 26px !important;
 }
 
-
 /* 
 sidebar-2 */
 
@@ -1120,7 +1110,6 @@ sidebar-2 */
 /* side bar 2 css by anas*/
 
 .sidebar-panel {
-
   width: 380px;
 
   background: url(../app/side-bar-back.png);
@@ -1133,7 +1122,6 @@ sidebar-2 */
   align-items: center;
 
   flex-shrink: 0;
-
 }
 
 .side-bar-logo {
@@ -1178,7 +1166,6 @@ sidebar-2 */
   font-size: 26px !important;
 }
 
-
 /* .custom-wrap {
   justify-content: space-between;
   align-items: center;
@@ -1194,9 +1181,7 @@ sidebar-2 */
   gap: 12px;
 }
 
-
 .sidebar-links li {
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1208,7 +1193,6 @@ sidebar-2 */
   border-bottom: 1px solid var(--white);
 }
 
-
 .sidebar-links li:nth-child(1) {
   display: flex;
   justify-content: unset;
@@ -1217,7 +1201,6 @@ sidebar-2 */
   list-style: unset;
   transition: unset;
   padding: 25px 12px 25px 40px;
-
 }
 
 .sidebar-links li:nth-child(5) {
@@ -1227,7 +1210,6 @@ sidebar-2 */
 .sidebar-links li:nth-child(7) {
   justify-content: start !important;
 }
-
 
 .sidebar-links li:hover {
   background: linear-gradient(180deg, #f47e20 -6.76%, #ee4026 101.38%);
@@ -1249,7 +1231,6 @@ sidebar-2 */
 }
 
 /* chatgbt sidebar css dropdown */
-
 
 .dropdown-submenu {
   list-style: none;
@@ -1285,8 +1266,6 @@ main {
   margin: 0 !important;
 }
 
-
-
 .sidebar-panel.active {
   width: 125px;
   transition: 0.5s;
@@ -1303,5 +1282,32 @@ main {
   display: none;
   transition: 0.5s;
 }
+.dashboard-card-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
 
+.dashboard-card {
+  width: calc(100% / 4 - 12px) !important;
+}
+.date-range-wrapper .range-input-2 {
+  margin: 0 !important;
+}
+
+.hotel-card-wrapper {
+   display: flex;
+  justify-content: space-between;
+}
+.hotle-card-prnt  {
+  width: calc(100% / 3 - 12px);
+}
+.class-p {
+  padding: 0 8px;
+}
+.hotels-icon {
+  gap: 16px;
+}
+.rider-mega-wrapper {
+  width: calc(100% / 3 - 10px);
+}
 
