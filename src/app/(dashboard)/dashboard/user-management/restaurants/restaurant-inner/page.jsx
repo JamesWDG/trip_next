@@ -59,7 +59,7 @@ export default function FoodPage() {
             <div className="food-card-prnt">
                 <div className="row gy-4">
                     {foodOrders.map((foodOrder) => (
-                        <div key={foodOrder.id} className="col-lg-4 col-md-6">
+                        <div key={foodOrder.id} className="col-xxl-4 col-xl-4 col-md-6 col-12">
                             <Card className="food-card">
                                 <div class="order-card">
                                     <div class="order-header">

@@ -74,7 +74,7 @@ const header = () => {
                     <div className="dropdown">
                         <button className="btn dropdown-toggle position-relative profile-btn" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <Image src={profileImage} alt="" />
+                            <Image src={profileImage} alt="" className='profile-image'/>
                             <div>
                                 <h5>Augustine Okp</h5>
                                 <h6>Vendor Profile</h6>

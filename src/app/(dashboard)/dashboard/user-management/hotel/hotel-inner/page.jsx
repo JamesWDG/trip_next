@@ -88,14 +88,14 @@ export default function HotelsPage() {
             <div className="hotels-card-prnt">
                 <div className="row gy-3">
                     {hotels.map((hotel,i) => (
-                        <div key={i} className="col-lg-4 col-md-6">
+                        <div key={i} className="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-12 class-p">
                             <Card className="hotel-card">
                                 <div className="d-flex align-items-center gap-3">
                                     <div className="hotel-img-wrap">
                                         <Image
                                             src={hotel.image}
                                             alt={hotel.name}
-                                            className="rounded-start hotel-img"
+                                            className="img-fluid rounded-start hotel-img"
                                         />
                                     </div>
                                     <div className="card-body-1">
@@ -105,12 +105,12 @@ export default function HotelsPage() {
                                                 {hotel.price}
                                             </p>
 
-                                            <span >
+                                            <span className="rating-hotle">
                                                 <i className="fa-solid fa-star"></i>
                                                 {hotel.rating}
                                             </span>
                                         </div>
-                                        <div className="d-flex gap-3">
+                                        <div className="hotels-icon d-flex">
                                             <div className="d-flex align-items-center gap-1">
                                                 <Image
                                                 src={bedImg}

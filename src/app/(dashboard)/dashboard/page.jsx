@@ -25,9 +25,9 @@ export default function HomePage() {
   return (
     <div className="main-content-area" style={{ background: "#fffaf9", }}>
       <h3 className={`dashboard-heading ${Outfit600.className}`}>Dashboard</h3>
-      <div className="row">
+      <div className="dashboard-card-wrapper">
         {stats.map((item) => (
-          <div key={item.id} className="col-md-3 col-sm-6">
+          <div key={item.id} className="dashboard-card">
             <Card className="card-dashboad">
               <div className="d-flex justify-content-between align-items-center">
                 <div>
@@ -74,7 +74,7 @@ export default function HomePage() {
 
           </div>
           <div className="col-lg-7">
-            <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex justify-content-between align-items-center total-chart-2">
               <h2 className={`order-hd ${Outfit500.className}`}>Total Revenuey</h2>
               <Dropdown className="dropdown-prnt">
                 <Dropdown.Toggle variant="outline-dark" size="sm" className={`dropdown-para ${Outfit400.className}`}>

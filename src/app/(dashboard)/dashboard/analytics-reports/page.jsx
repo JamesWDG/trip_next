@@ -42,7 +42,7 @@ const page = () => {
                 <div className="filter-mega-wrapper">
                     <div className="date-range-wrapper">
                         <p>Date Range</p>
-                        <input type="text" name="" id="" className="range-input" placeholder="10-23-2025" />
+                        <input type="text" name="" id="" className="range-input range-input-2" placeholder="10-23-2025" />
                     </div>
                     <div className="date-range-wrapper">
                         <p>Module</p>
@@ -71,7 +71,7 @@ const page = () => {
                             <BookingsChart />
                         </div>
                         <div className="col-lg-6">
-                            <h3 className='dashboard-hd-mini'>Revenue Trends</h3>
+                            <h3 className='dashboard-hd-mini dashboard-hd-mini2-trends'>Revenue Trends</h3>
                             <TotalRevenueChart />
                         </div>
                     </div>

@@ -119,7 +119,7 @@ const page = () => {
 
         </div>
         <button className="gradient-button">
-          <span className={`button-span ${Outfit500.className}`}>Save Settings</span>
+          <span className={`button-span save-sting-btn ${Outfit500.className}`}>Save Settings</span>
         </button>
         <h3 className='dashboard-hd-mini mt-5'>Invoices & Subscriptions</h3>
         <Double_table_data Doubletable_heading3={headings3} Doubletable_data3={data3} />
