@@ -16,7 +16,7 @@ body {
   font-family: "Poppins", sans-serif;
   background: var(--background);
   color: #333;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 :root {
@@ -29,6 +29,9 @@ body {
   --light-green: #dbfce7;
 }
 
+a{
+  text-decoration: none;
+}
 .dashboard-container {
   display: flex;
   min-height: 100vh;
@@ -925,7 +928,7 @@ td {
 
 .date-range-wrapper select option {
   color: #a3a3a3 !important;
-}
+} 
 
 .date-range-wrapper .gradient-button {
   display: block !important;
@@ -1048,6 +1051,7 @@ input {
 .profile-btn {
   padding: 10px 35px;
 }
+
 /* side bar 2 css by anas*/
 
 .sidebar-panel {
@@ -1155,6 +1159,10 @@ sidebar-2 */
   flex-direction: column;
 }
 
+.sidebar-links li:hover a {
+  text-decoration: none !important;
+}
+
 .sidebar-links li:nth-child(1),
 .sidebar-links li:nth-child(6),
 .sidebar-links li:nth-child(8) {
@@ -1165,7 +1173,7 @@ sidebar-2 */
   list-style: none;
   cursor: pointer;
   transition: 0.5s;
-  padding: 25px 40px;
+  padding: 25px 12px 25px 40px;
   border-bottom: 1px solid var(--white);
 }
 
@@ -1254,19 +1262,33 @@ sidebar-2 */
 .dropdown-submenu {
   list-style: none;
   margin: 0;
-  background: rgba(255, 255, 255, 0.05);
-  transition: 0.3s;
+  background: #FFFFFF26;
+  transition: 0.5s;
+  padding: 0;
+  box-shadow: 7px 0px 80px 0px #0000000D;
+  box-shadow: 0px 4px 50px 0px #818181B2 inset;
+}
+
+.dropdown-submenu li {
+  justify-content: start !important;
+  padding: 25px 40px !important;
+  transition: 0.5s;
+}
+.dropdown-submenu li {
+  background: #ffffff26 !important;
+  border-bottom: 1px solid var(--white) !important;
 }
 
 .dropdown-submenu li a {
   color: #fff;
   font-size: 15px;
   text-decoration: none;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 .dropdown-submenu li a:hover {
   text-decoration: underline;
+  color: var(--orange);
 }
 
 /* rotate arrow icon when open */
@@ -1298,10 +1320,32 @@ main {
   height: 100px;
 }
 
+.sidebar-panel.active .sidebar-links li{
+  padding:25px 40px !important;
+}
+
 .sidebar-panel.active .sidebar-links li p,
 .sidebar-panel.active .sidebar-links li i {
   display: none;
   transition: 0.5s;
 }
 
+.sidebar-panel.active .dropdown-submenu {
+  position: absolute;
+  left: 6%;
+  background: var(--gray);
+  padding: 0;
+  transition: 0.5s;
+  z-index: 1;
+}
 
+.sidebar-panel.active .dropdown-submenu li {
+  padding: 15px 40px !important;
+}
+
+.sidebar-panel.active .dropdown-submenu li a {
+  text-decoration: none;
+}
+.sidebar-panel.active .dropdown-submenu li a:hover {
+  color: var(--orange) !important;
+}

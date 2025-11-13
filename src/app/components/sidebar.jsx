@@ -10,7 +10,7 @@ import sidebarImg2 from "@/app/(dashboard)/assets/images/side-bar-img-2.png";
 import sidebarImg3 from "@/app/(dashboard)/assets/images/side-bar-img3.png";
 import sidebarImg4 from "@/app/(dashboard)/assets/images/side-bar-img-4.png";
 import sidebarImg5 from "@/app/(dashboard)/assets/images/side-bar-img-5.png";
-import sidebarImg6 from "@/app/(dashboard)/assets/images/side-bar-img-6.png";
+import sidebarImg6 from "@/app/(dashboard)/assets/images/side-bar-img-77.png";
 import sidebarImg7 from "@/app/(dashboard)/assets/images/side-bar-img-7.png";
 import sidebarImg8 from "@/app/(dashboard)/assets/images/side-bar-img8.png";
 import { SideBarContext } from '@/context/sideBarContextProvider';
@@ -29,16 +29,19 @@ const Sidebar2 = () => {
         <section className={`sidebar-panel ${sideBarOpen ? "active" : ""}`} >
 
             <div className="side-bar-logo">
-                <Link href="/dashboard">
+                <Link href={"/dashboard"}>
                     <Image src={sidebarLogo} alt="" className="img-fluid" />
                 </Link>
             </div>
             <ul className="sidebar-links">
                 <div>
-                    <li>
-                        <Image src={sidebarImg1} alt="" className="img-fluid" />
-                        <p className="sidebar-hd">Dashboard</p>
-                    </li>
+                    <Link href={"/dashboard"}>
+                        <li>
+
+                            <Image src={sidebarImg1} alt="" className="img-fluid" />
+                            <p className="sidebar-hd">Dashboard</p>
+                        </li>
+                    </Link>
                     <li onClick={() => toggleDropdown("user")}>
                         <div className="custom-flex">
                             <Image src={sidebarImg2} alt="" className="img-fluid" />
@@ -48,8 +51,10 @@ const Sidebar2 = () => {
                     </li>
                     {openMenu === "user" && (
                         <ul className="dropdown-submenu">
-                            <li><Link href="#">All Users</Link></li>
-                            <li><Link href="#">Add User</Link></li>
+                            <li><Link href={"/dashboard/user-management/hotel"}>Hotels</Link></li>
+                            <li><Link href={"/dashboard/user-management/drivers"}>Drivers</Link></li>
+                            <li><Link href={"/dashboard/user-management/restaurants"}>Restaurants</Link></li>
+                            <li><Link href={"/dashboard/user-management/food-delivery"}>Food Delivery</Link></li>
                         </ul>
                     )}
                     <li onClick={() => toggleDropdown("onboarding")}>
@@ -61,8 +66,10 @@ const Sidebar2 = () => {
                     </li>
                     {openMenu === "onboarding" && (
                         <ul className="dropdown-submenu">
-                            <li><Link href="#">KYC Requests</Link></li>
-                            <li><Link href="#">Documents</Link></li>
+                            <li><Link href={"/dashboard/user-management/hotel"}>Hotels</Link></li>
+                            <li><Link href={"/dashboard/user-management/drivers"}>Drivers</Link></li>
+                            <li><Link href={"/dashboard/user-management/restaurants"}>Restaurants</Link></li>
+                            <li><Link href={"/dashboard/user-management/food-delivery"}>Food Delivery</Link></li>
                         </ul>
                     )}
 
@@ -75,8 +82,10 @@ const Sidebar2 = () => {
                     </li>
                     {openMenu === "transactions" && (
                         <ul className="dropdown-submenu">
-                            <li><Link href="#">All Transactions</Link></li>
-                            <li><Link href="#">Earnings</Link></li>
+                            <li><Link href={"/dashboard/user-management/hotel"}>Hotels</Link></li>
+                            <li><Link href={"/dashboard/user-management/drivers"}>Drivers</Link></li>
+                            <li><Link href={"/dashboard/user-management/restaurants"}>Restaurants</Link></li>
+                            <li><Link href={"/dashboard/user-management/food-delivery"}>Food Delivery</Link></li>
                         </ul>
                     )}
 
@@ -90,8 +99,10 @@ const Sidebar2 = () => {
                     </li>
                     {openMenu === "analytics" && (
                         <ul className="dropdown-submenu">
-                            <li><Link href="#">Monthly Reports</Link></li>
-                            <li><Link href="#">Performance</Link></li>
+                            <li><Link href={"/dashboard/user-management/hotel"}>Hotels</Link></li>
+                            <li><Link href={"/dashboard/user-management/drivers"}>Drivers</Link></li>
+                            <li><Link href={"/dashboard/user-management/restaurants"}>Restaurants</Link></li>
+                            <li><Link href={"/dashboard/user-management/food-delivery"}>Food Delivery</Link></li>
                         </ul>
                     )}
                     <li>
@@ -110,8 +121,10 @@ const Sidebar2 = () => {
                     </li>
                     {openMenu === "settings" && (
                         <ul className="dropdown-submenu">
-                            <li><Link href="#">General</Link></li>
-                            <li><Link href="#">Security</Link></li>
+                            <li><Link href={"/dashboard/user-management/hotel"}>Hotels</Link></li>
+                            <li><Link href={"/dashboard/user-management/drivers"}>Drivers</Link></li>
+                            <li><Link href={"/dashboard/user-management/restaurants"}>Restaurants</Link></li>
+                            <li><Link href={"/dashboard/user-management/food-delivery"}>Food Delivery</Link></li>
                         </ul>
                     )}
                 </div>
