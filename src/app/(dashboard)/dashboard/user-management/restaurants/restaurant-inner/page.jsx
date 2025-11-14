@@ -61,15 +61,15 @@ export default function FoodPage() {
                     {foodOrders.map((foodOrder) => (
                         <div key={foodOrder.id} className="col-xxl-4 col-xl-4 col-md-6 col-12">
                             <Card className="food-card">
-                                <div class="order-card">
-                                    <div class="order-header">
-                                        <div class="order-id-time d-flex align-items-center gap-3">
-                                            <span class={`order-id ${Poppins700.className}`}>{foodOrder.orderId}</span>
-                                            <span class={`order-time ${Poppins700.className}`}>{foodOrder.ordertime}</span>
+                                <div className="order-card">
+                                    <div className="order-header">
+                                        <div className="order-id-time d-flex align-items-center gap-3">
+                                            <span className={`order-id ${Poppins700.className}`}>{foodOrder.orderId}</span>
+                                            <span className={`order-time ${Poppins700.className}`}>{foodOrder.ordertime}</span>
                                         </div>
                                         <div className="order-name-prnt d-flex align-items-center justify-content-between">
-                                            <div class={`order-name ${Poppins700.className}`}>{foodOrder.orderName}</div>
-                                            <div class={`order-price ${Poppins700.className}`}>{foodOrder.orderPrice}</div>
+                                            <div className={`order-name ${Poppins700.className}`}>{foodOrder.orderName}</div>
+                                            <div className={`order-price ${Poppins700.className}`}>{foodOrder.orderPrice}</div>
                                         </div>
                                     </div>
                                     <div

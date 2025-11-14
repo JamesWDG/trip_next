@@ -59,7 +59,7 @@ export default function HotelsPage() {
                 <div className="dashboard-content" style={{ background: "#fffaf9" }}>
                     <h3 className={`dashboard-heading ${Outfit600.className}`}>Notifications & Alerts</h3>
                     <div className="hotels-card-prnt">
-                        <div className="row gy-3">
+                        <div className="row">
                             {notificationsAlerts.map((notificationsAlert, i) => (
                                 <div key={i} className="col-lg-6 col-md-6">
                                     <Card className="alerts-card">

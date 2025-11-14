@@ -9,10 +9,10 @@ import Double_table_data from "@/app/components/Double_table_data";
 
 const notificationsAlerts = [
     {
-        alertHd: "Role-based Access",
+        alertHd: "Static Pages",
         alertDes: <>Manage sub-admin roles and assign access to <br />
             different modules.</>,
-        btnText: "Manage Role-based Access"
+        btnText: "Manage Permissions"
     },
     {
         alertHd: "Static Pages",
@@ -21,7 +21,7 @@ const notificationsAlerts = [
         btnText: "Manage Permissions"
     },
     {
-        alertHd: "FAQs",
+        alertHd: "Static Pages",
         alertDes: <>Update admin profile, email preferences, and <br />
             reset password.</>,
         btnText: "Manage Profile Settings"
@@ -118,7 +118,6 @@ export default function HotelsPage() {
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <button className={`gradient-button profile-btn mt-4 ${Outfit500.className}`}>Update Profile</button>
                     </form>

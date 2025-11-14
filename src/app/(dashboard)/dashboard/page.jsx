@@ -29,7 +29,7 @@ export default function HomePage() {
         {stats.map((item) => (
           <div key={item.id} className="dashboard-card">
             <Card className="card-dashboad">
-              <div className="d-flex justify-content-between align-items-center">
+              <div className="card-divison">
                 <div>
                   <h6 className={`text-muted ${Outfit400.className}`}>{item.title}</h6>
                   <h4 className={`count-hd ${Outfit600.className}`}>{item.count.toLocaleString()}</h4>
@@ -53,7 +53,7 @@ export default function HomePage() {
 
         <div className="row">
           <div className="col-lg-5">
-            <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex justify-content-between align-items-center total-chart-2">
               <h2 className={`order-hd ${Outfit500.className}`}>Order Summary</h2>
               <Dropdown className="dropdown-prnt">
                 <Dropdown.Toggle variant="outline-dark" size="sm" className={`dropdown-para ${Outfit400.className}`}>

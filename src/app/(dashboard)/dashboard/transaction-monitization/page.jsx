@@ -97,7 +97,7 @@ const page = () => {
 
         <Double_table_data Doubletable_heading={headings2} Doubletable_data={data2} />
 
-        <h3 className='dashboard-hd-mini'>Orders Overview</h3>
+        <h3 className='dashboard-hd-mini mt-5'>Orders Overview</h3>
         <div className="row">
           <div className="col-lg-6 col-md-6 col-sm-12">
             <div className="fee-wrapper">

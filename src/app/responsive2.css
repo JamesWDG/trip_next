@@ -1,0 +1,918 @@
+@media (max-width: 1600px) {
+    .search-form form {
+        width: 38vw;
+    }
+
+    .dashboard-card {
+        width: calc(100% / 4 - 20px) !important;
+    }
+
+    .text-muted {
+        font-size: 16px;
+    }
+
+    .gradient-button {
+        font-size: 22px;
+    }
+
+    .sidebar-panel .sidebar-links {
+        overflow: auto;
+        height: 600px;
+        position: relative;
+    }
+
+    .alert-para br {
+        display: none;
+    }
+
+    .alert-para {
+        font-size: 18px !important;
+    }
+
+    .alerts-div .alerts-hd {
+        font-size: 25px;
+    }
+
+    .gradient-button {
+        font-size: 20px;
+    }
+
+    th,
+    td {
+        padding: 40px 30px 40px;
+    }
+
+    .sidebar-panel.active .dropdown-submenu {
+        position: fixed;
+    }
+
+    .sidebar-panel.active .dropdown-submenu:last-child {
+        bottom: 20px;
+    }
+
+    .date-range-wrapper .range-input {
+        padding: 14px;
+    }
+
+    .filter-mega-wrapper {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .card-dashboad.card .card-divison {
+        flex-wrap: wrap-reverse;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .card-dashboad {
+        padding: 15px;
+    }
+
+    .alert-para {
+        font-size: 16px !important;
+    }
+
+    .alerts-div .alerts-hd {
+        font-size: 22px;
+    }
+
+    .gradient-button {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .main-content-area {
+        padding: 30px;
+    }
+
+    .order-id-time .order-time {
+        font-size: 23px;
+    }
+
+    .order-id-time .order-id {
+        font-size: 23px;
+        height: 26px;
+    }
+
+    .input-div label {
+        font-size: 18px;
+    }
+
+    .gradient-button {
+        font-size: 18px;
+    }
+
+    .date-range-wrapper p {
+        font-size: 18px;
+    }
+
+    .alerts-div .alerts-hd {
+        font-size: 25px;
+    }
+
+    .fee-wrapper h3 {
+        font-size: 18px;
+    }
+
+    .fee-wrapper {
+        padding: 15px 20px;
+    }
+
+    .fee-wrapper select {
+        font-size: 15px;
+        padding: 15px 20px;
+    }
+
+    .text-muted {
+        font-size: 22px;
+    }
+
+    .hotel-price {
+        font-size: 14px;
+    }
+
+    .hotel-location {
+        font-size: 16px;
+    }
+
+    .order-name-prnt .order-name {
+        color: var(--orange);
+        font-size: 16px;
+    }
+
+    .order-name-prnt .order-price {
+        font-size: 16px;
+    }
+
+    .order-status {
+        padding: 14px !important;
+        font-size: 20px;
+    }
+
+    .hotel-title {
+        font-size: 19px;
+    }
+
+    .sidebar-panel {
+        width: 355px;
+    }
+
+    .dashboard-heading {
+        font-size: 30px !important;
+    }
+
+    th {
+        font-size: 18px;
+        padding: 30px;
+    }
+
+    td {
+        padding: 30px;
+        font-size: 15px;
+    }
+
+    .rider-mega-wrapper {
+        padding: 17px 18px;
+    }
+
+    .status-title {
+        padding: 11px 35px;
+    }
+
+    .rider-card-wrapper h3 {
+        font-size: 16px;
+    }
+
+    .alert-para {
+        font-size: 17px !important;
+    }
+
+    .dashboard-hd-mini {
+        font-size: 24px;
+    }
+
+    .alerts-div .alerts-hd {
+        font-size: 23px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .search-form form {
+        width: 36vw;
+    }
+
+    .profile-det-area .dropdown button {
+        font-size: 25px;
+    }
+
+    .profile-det-area {
+        gap: 10px;
+    }
+
+    .setting-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 1366px) {
+
+    .order-id-time .order-time {
+        font-size: 21px;
+    }
+
+    .order-id-time .order-id {
+        font-size: 21px;
+        height: 26px;
+    }
+
+    .order-status {
+        font-size: 20px;
+    }
+
+    .card-divison {
+        justify-content: space-between !important;
+    }
+
+    .setting-card {
+        padding: 16px;
+    }
+
+    .dashboard-card-wrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .date-range-wrapper .range-input {
+        padding: 20px;
+    }
+
+    .alert-para {
+        color: var(--black);
+        font-size: 18px !important;
+    }
+
+    .dashboard-card {
+        width: calc(100% / 2 - 20px) !important;
+    }
+
+    .count-hd {
+        font-size: 40px;
+    }
+
+    .sidebar-links li,
+    .sidebar-links li:first-child,
+    .sidebar-links li:nth-child(6) {
+        padding: 25px 12px 25px 20px;
+    }
+
+    .side-bar-logo {
+        height: 120px;
+        width: 160px;
+    }
+
+    .sidebar-hd {
+        font-size: 15px;
+    }
+
+    .sidebar-panel {
+        width: 320px;
+    }
+
+    .sidebar-links .custom-link li p {
+        font-size: 15px !important;
+    }
+
+    .sidebar-panel.active .dropdown-submenu {
+        position: fixed;
+    }
+
+    .sidebar-panel.active .dropdown-submenu:last-child {
+        bottom: 20px;
+    }
+
+    .booking-chart>div {
+        padding: 20px 30px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .count-hd {
+        font-size: 35px;
+    }
+
+    .order-hd {
+        font-size: 22px;
+    }
+
+    .dropdown-para,
+    .dropdown-item {
+        font-size: 15px;
+    }
+
+    .alerts-div .alerts-hd {
+        font-size: 20px;
+    }
+
+    .profile-det-area .dropdown .profile-btn h5 {
+        font-size: 18px;
+    }
+
+    .input-div label,
+    .gradient-button {
+        font-size: 16px;
+    }
+
+    .hotel-location {
+        font-size: 17px;
+    }
+
+    .hotels-icon {
+        gap: 10px;
+    }
+
+    .profile-det-area {
+        gap: 10px;
+    }
+
+    .hotel-title {
+        font-size: 17px;
+    }
+
+    .search-form form input,
+    .search-form form button {
+        font-size: 13px;
+    }
+
+    .dropdown-submenu li {
+        padding: 15px 40px !important;
+    }
+
+    .header {
+        padding: 25px 45px;
+    }
+
+    .profile-det-area .profile-area {
+        width: 255px !important;
+    }
+
+    .profile-det-area .dropdown-menu {
+        padding: 20px 30px;
+    }
+
+    th {
+        font-size: 17px;
+    }
+
+    .dashboard-hd {
+        font-size: 25px;
+    }
+
+    th,
+    td {
+        padding: 30px 20px;
+    }
+
+    .sidebar-panel {
+        height: 100vh;
+    }
+
+    .main-content-area {
+        height: calc(103vh - 127px);
+    }
+
+    .rider-mega-wrapper {
+        width: calc(100% / 2 - 10px);
+    }
+
+    .rider-card-wrapper h3 {
+        font-size: 16px;
+    }
+
+    .calendar-wrapper p {
+        font-size: 15px;
+    }
+
+    .time-wrapper p {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .booking-chart>div {
+        padding: 20px 10px;
+    }
+
+    .alert-para {
+        font-size: 18px !important;
+        color: var(--black);
+    }
+
+    .food-card {
+        padding: 30px 18px;
+    }
+
+    .order-name-prnt .order-name {
+        font-size: 15px;
+    }
+
+    .order-name-prnt .order-price {
+        font-size: 15px;
+    }
+
+    .order-status {
+        font-size: 18px;
+    }
+
+    .alerts-div {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 1024px) {
+    .booking-chart>div {
+        padding: 25px 15px;
+    }
+
+    .profile-det-area .dropdown .profile-btn {
+        padding: 10px 12px !important;
+    }
+
+    body {
+        overflow: auto;
+    }
+
+    .main-content-area {
+        overflow-y: hidden;
+        height: 100% !important;
+    }
+
+    .order-id-time .order-time {
+        font-size: 18px;
+    }
+
+    .alerts-div .alerts-hd {
+        font-size: 20px;
+    }
+
+    .date-range-wrapper p {
+        font-size: 16px;
+    }
+
+    .alert-para {
+        font-size: 17px !important;
+        color: var(--black);
+    }
+
+    .textarea-wrapper label {
+        font-size: 16px;
+    }
+
+    .textarea-wrapper textarea {
+        font-size: 14px;
+    }
+
+    .input-wrapper .input-div select,
+    input {
+        font-size: 14px;
+    }
+
+    .input-div label {
+        font-size: 16px;
+    }
+
+    .text-muted {
+        font-size: 19px;
+    }
+
+    .fee-wrapper select {
+        font-size: 18px;
+    }
+
+    .fee-wrapper h3 {
+        font-size: 17px;
+    }
+
+    .order-status {
+        padding: 12px !important;
+    }
+
+    .order-id-time .order-id {
+        height: 20px;
+        font-size: 18px;
+    }
+
+    .sidebar-panel {
+        display: block;
+        position: fixed;
+        z-index: 1;
+        height: 100vh;
+    }
+
+    .side-bar-logo {
+        width: 100%;
+        height: auto;
+        padding-top: 50px;
+    }
+
+    .sidebar-panel.active {
+        display: none;
+    }
+
+    .close-sidebar {
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: -5px;
+        background: transparent;
+        border: none;
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 1002;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .dashboard-hd-mini {
+        font-size: 21px;
+    }
+
+    .close-sidebar i {
+        color: var(--white);
+    }
+
+    .header .hamburger i {
+        font-size: 23px;
+    }
+
+    .dashboard-button-container {
+        justify-content: center;
+    }
+
+    .gradient-button {
+        font-size: 18px;
+    }
+
+    .search-form form {
+        width: 55vw;
+    }
+
+    .dashboard-heading {
+        font-size: 30px;
+    }
+
+    .main-content-area {
+        height: 100vh;
+    }
+
+}
+
+@media (max-width: 991px) {
+    .search-form form {
+        display: none;
+    }
+
+    .table-container {
+        overflow-x: scroll !important;
+        width: 100%;
+    }
+
+    table {
+        min-width: 1000px;
+    }
+
+    main {
+        flex-grow: unset !important;
+        width: 100%;
+        flex: unset !important;
+    }
+
+    .hotel-location {
+        font-size: 15px !important;
+    }
+
+    .filter-mega-wrapper {
+        flex-wrap: wrap;
+        gap: 25px;
+    }
+
+    .dashboard-hd-mini2-trends {
+        margin-top: 30px;
+    }
+
+    .header {
+        padding: 15px 35px;
+    }
+
+    .total-chart-2 {
+        margin-top: 50px;
+    }
+
+    .profile-det-area .dropdown .profile-btn h5 {
+        font-size: 15px;
+    }
+
+    .profile-det-area .dropdown .profile-btn h6 {
+        font-size: 13px;
+    }
+
+    .profile-btn img {
+        height: 50px;
+        width: 50px;
+    }
+
+    .header .hamburger i {
+        font-size: 25px;
+    }
+
+    .profile-det-area .dropdown-menu .prof-li a {
+        gap: 12px;
+        font-size: 15px;
+    }
+
+    .profile-det-area .profile-area {
+        width: 215px !important;
+    }
+
+    .profile-det-area .notify-li {
+        padding-bottom: 10px;
+    }
+
+    .side-bar-logo {
+        margin-bottom: 30px;
+        padding-top: 80px;
+    }
+
+    .side-bar-logo img {
+        height: 100px;
+        width: 150px;
+    }
+}
+
+@media (max-width: 767px) {
+    .order-id-time .order-time {
+        font-size: 16px;
+    }
+
+    .order-id-time .order-id {
+        height: 20px;
+        font-size: 16px;
+    }
+
+    .order-name-prnt .order-name,
+    .order-name-prnt .order-price {
+        font-size: 14px;
+    }
+
+    .text-muted {
+        font-size: 17px;
+    }
+
+    .dashboard-hd-mini {
+        font-size: 19px;
+    }
+
+    .alert-para {
+        font-size: 17px !important;
+    }
+
+    .rider-mega-wrapper {
+        width: calc(100% / 1 - 10px);
+    }
+
+    .setting-card {
+        text-align: center;
+    }
+
+    .alerts-card .gradient-button {
+        margin: 0 auto;
+    }
+
+    .input-div label {
+        font-size: 14px;
+    }
+
+    .textarea-wrapper label {
+        font-size: 14px;
+    }
+
+    .input-wrapper {
+        flex-wrap: wrap;
+    }
+
+    .input-wrapper .input-div select,
+    input {
+        width: 100%;
+        padding: 12px 22px;
+    }
+
+    .alerts-div .alerts-hd {
+        font-size: 18px;
+    }
+
+    .status-title {
+        padding: 10px 30px;
+        font-size: 13px;
+    }
+
+    .rider-card-wrapper h3 {
+        font-size: 15px;
+    }
+
+    .fee-wrapper h3 {
+        font-size: 15px;
+    }
+
+    .fee-wrapper select {
+        font-size: 16px;
+    }
+
+    .fee-wrapper {
+        padding: 20px 25px;
+    }
+
+    .form-section {
+        background: #f4f4f4;
+        border: 1px solid #464646;
+        padding: 25px;
+        box-shadow: 0 1px 6px #00000026;
+    }
+}
+
+@media (max-width: 500px) {
+    .dashboard-card {
+        width: calc(100% - 20px) !important;
+    }
+
+    th,
+    td {
+        padding: 20px;
+    }
+
+    .dashboard-hd {
+        font-size: 23px;
+    }
+
+    body {
+        overflow: auto;
+    }
+
+    .date-range-wrapper .range-input {
+        padding: 15px;
+    }
+
+    .dashboard-hd-mini {
+        font-size: 19px;
+    }
+
+    .date-range-wrapper p {
+        font-size: 14px;
+    }
+
+    .alerts-div .alerts-hd {
+        font-size: 16px;
+    }
+
+    .dashboard-button-container {
+        flex-wrap: wrap;
+    }
+
+    .order-status {
+        font-size: 16px;
+    }
+
+    .total-chart-2 {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .textarea-wrapper textarea,
+    .input-wrapper .input-div select,
+    input {
+        font-size: 13px;
+    }
+
+    .input-wrapper .input-div select,
+    input {
+        width: 100%;
+        padding: 12px 22px;
+    }
+
+    .main-content-area {
+        overflow: hidden;
+        height: 100%;
+    }
+
+    .count-hd {
+        font-size: 30px;
+    }
+
+    .fee-wrapper select {
+        font-size: 14px;
+    }
+
+    .fee-wrapper h3 {
+        font-size: 14px;
+    }
+
+    .gradient-button {
+        font-size: 15px;
+    }
+
+    .total-chart>div {
+        padding: 25px 15px;
+    }
+
+    .card-divison {
+        justify-content: space-between !important;
+    }
+
+    .rider-card-wrapper h3 {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 375px) {
+    .sidebar-hd {
+        font-size: 13px;
+    }
+
+    .order-id-time .order-time {
+        font-size: 14px;
+    }
+
+    .order-id-time .order-id {
+        height: 20px;
+        font-size: 14px;
+    }
+
+    .sidebar-panel {
+        width: 300px;
+    }
+
+    .order-name-prnt .order-name,
+    .order-name-prnt .order-price {
+        font-size: 13px;
+    }
+
+    .hotels-icon {
+        flex-wrap: wrap;
+    }
+
+    .sidebar-links li,
+    .sidebar-links li:first-child,
+    .sidebar-links li:nth-child(6),
+    .sidebar-links li:nth-child(8) {
+        padding: 20px 12px 20px 20px;
+    }
+
+    .sidebar-links .custom-link li {
+        margin-bottom: 0 !important;
+    }
+
+    .main-content-area {
+        padding: 30px 15px;
+    }
+
+    .input-wrapper .input-div select,
+    input {
+        width: 100%;
+        padding: 12px 22px;
+    }
+
+    .booking-chart>div,
+    .total-chart>div {
+        padding: 25px 20px !important;
+    }
+
+    .profile-det-area {
+        gap: 10px !important;
+    }
+
+    .dropdown-menu p,
+    .dropdown-menu span {
+        font-size: 12px;
+    }
+
+    .profile-det-area .dropdown-menu {
+        width: 270px !important;
+        left: -55px !important;
+    }
+
+    .status-title {
+        padding: 9px 25px;
+        font-size: 13px;
+    }
+
+    .rider-card-wrapper h3 {
+        font-size: 13px;
+    }
+
+    .header {
+        padding: 15px 22px;
+    }
+}
