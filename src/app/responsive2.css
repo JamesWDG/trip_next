@@ -350,6 +350,10 @@
 }
 
 @media (max-width: 1280px) {
+  .search-area img {
+  height: 20px;
+  width: 100%;
+}
   .count-hd {
     font-size: 35px;
   }
