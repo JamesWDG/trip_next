@@ -1403,3 +1403,9 @@ main {
 .sidebar-panel.active .dropdown-submenu li a:hover {
   color: var(--orange) !important;
 }
+
+.profile-btn i {
+  font-size: 12px !important;
+  transform: rotate(90deg) !important;
+  color: var(--gray);
+}
