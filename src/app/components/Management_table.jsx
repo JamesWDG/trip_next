@@ -1,3 +1,4 @@
+import { Roboto500 } from '@/fonts'
 import React from 'react'
 
 const Management_table = ({ heading = [], data = [] }) => {
@@ -8,29 +9,26 @@ const Management_table = ({ heading = [], data = [] }) => {
           <thead>
             <tr>
               {heading.map((heading, i) => (
-                <th key={i}>{heading}</th>
+                <th className={`${Roboto500.className}`} key={i}>{heading}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {data.map((item, i) => (
               <tr key={i}>
-                <td>{item.name}</td>
-                <td>{item.phone}</td>
-                <td>{item.email}</td>
-                <td>{item.date}</td>
-                <td
-                  className={
-                    item.status === "Completed"
+                <td className={`${Roboto500.className}`}>{item.name}</td>
+                <td className={`${Roboto500.className}`}>{item.phone}</td>
+                <td className={`${Roboto500.className}`}>{item.email}</td>
+                <td className={`${Roboto500.className}`}>{item.date}</td>
+                <td className={`${Roboto500.className} ${item.status === "Completed"
                       ? "status-completed"
                       : item.status === "Pending"
                         ? "status-pending"
-                        : "status-cancelled"
-                  }
+                        : "status-cancelled"}`}
                 >
                   {item.status}
                 </td>
-                <td className="position-relative custom-action-cell">
+                <td className={`${Roboto500.className} position-relative custom-action-cell`}>
                   <i
                     className="fa-solid fa-ellipsis-vertical custom-toggle"
                     style={{ cursor: "pointer" }}

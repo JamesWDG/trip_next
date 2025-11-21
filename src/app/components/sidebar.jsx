@@ -18,16 +18,14 @@ import { SideBarContext } from '@/context/sideBarContextProvider';
 const Sidebar2 = () => {
     const [openMenu, setOpenMenu] = useState(null);
     const { sideBarOpen, setSideBarOpen } = useContext(SideBarContext);
-    console.log(sideBarOpen);
-
     const toggleDropdown = (menuName) => {
         setOpenMenu(openMenu === menuName ? null : menuName);
 
     };
 
     return (
-        <section className={`sidebar-panel ${!sideBarOpen ? "active" : ""}`} >
-            <button className="close-sidebar" onClick={() => setSideBarOpen(false)}>
+        <section className={`sidebar-panel ${sideBarOpen ? "active" : ""}`} >
+            <button className="close-sidebar" onClick={() => setSideBarOpen(true)}>
                 <i className="fa-regular fa-circle-xmark"></i>
             </button>
             <div className="side-bar-logo">

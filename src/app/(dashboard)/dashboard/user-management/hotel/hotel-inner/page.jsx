@@ -90,7 +90,7 @@ export default function HotelsPage() {
                     {hotels.map((hotel,i) => (
                         <div key={i} className="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-12 class-p">
                             <Card className="hotel-card">
-                                <div className="d-flex align-items-center gap-3">
+                                <div className="d-flex align-items-center gap-3 card-flex">
                                     <div className="hotel-img-wrap">
                                         <Image
                                             src={hotel.image}
@@ -100,7 +100,7 @@ export default function HotelsPage() {
                                     </div>
                                     <div className="card-body-1">
                                         <h5 className={`hotel-title ${Poppins500.className}`}>{hotel.name}</h5>
-                                        <div className="d-flex gap-2">
+                                        <div className="d-flex gap-2 card-flex2">
                                             <p className={`hotel-price ${Poppins500.className}`}>
                                                 {hotel.price}
                                             </p>

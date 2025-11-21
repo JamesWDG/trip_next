@@ -10,7 +10,7 @@ import Double_table_data from "@/app/components/Double_table_data";
 const notificationsAlerts = [
     {
         alertHd: "Automated Alerts",
-        alertDes: <>System-triggered emails and in-app notifications for registration,<br /> approvals, and transactions.</>,
+        alertDes: <>Send custom announcements or alerts to all users, specific roles,<br /> or regions.</>,
         btnText: "Manage Automated Alerts"
     },
     {

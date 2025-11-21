@@ -96,9 +96,11 @@ main {
 }
 
 .sidebar-menu .menu-button:hover {
-  background: linear-gradient(180deg,
-      #f47e20 -6.76%,
-      #ee4026 101.38%) !important;
+  background: linear-gradient(
+    180deg,
+    #f47e20 -6.76%,
+    #ee4026 101.38%
+  ) !important;
   border: transparent;
   border-radius: 5px;
 }
@@ -610,7 +612,9 @@ main {
   /* overflow: hidden; */
   margin-top: 35px;
 }
-
+tbody {
+  background: #fcfcfc;
+}
 tbody tr:hover {
   background-color: var(--white);
   box-shadow: 0px 10px 49px 0px #8585854f;
@@ -623,7 +627,15 @@ table {
   border-collapse: collapse;
   text-align: left;
 }
-
+th {
+  background: #f4f4f4;
+}
+th:first-child,
+th:last-child,
+td:first-child,
+td:last-child {
+  border-radius: 12px;
+}
 th {
   padding: 40px 50px 24px 50px;
   border-bottom: 3px solid #464646;
@@ -1139,7 +1151,6 @@ sidebar-2 */
 /* 
 sidebar-2 */
 
-
 /* side bar 2 css by anas*/
 
 .sidebar-panel {
@@ -1271,11 +1282,11 @@ sidebar-2 */
 .dropdown-submenu {
   list-style: none;
   margin: 0;
-  background: #FFFFFF26;
+  background: #ffffff26;
   transition: 0.5s;
   padding: 0;
-  box-shadow: 7px 0px 80px 0px #0000000D;
-  box-shadow: 0px 4px 50px 0px #818181B2 inset;
+  box-shadow: 7px 0px 80px 0px #0000000d;
+  box-shadow: 0px 4px 50px 0px #818181b2 inset;
 }
 
 .dropdown-submenu li {

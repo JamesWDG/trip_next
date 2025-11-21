@@ -16,9 +16,9 @@ import TotalRevenueChart from "@/app/components/totalchart";
 
 const stats = [
   { id: 1, title: "Total Users", count: 15565, icon: homeCardIMg },
-  { id: 2, title: "Total Restaurants", count: 15565, icon: homeCardIMg },
-  { id: 3, title: "Total Drivers", count: 15565, icon: homeCardIMg },
-  { id: 4, title: "Total Orders", count: 15565, icon: homeCardIMg },
+  { id: 2, title: "Total Users", count: 15565, icon: homeCardIMg },
+  { id: 3, title: "Total Users", count: 15565, icon: homeCardIMg },
+  { id: 4, title: "Total Users", count: 15565, icon: homeCardIMg },
 ];
 
 export default function HomePage() {
