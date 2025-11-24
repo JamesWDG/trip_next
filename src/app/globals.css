@@ -524,7 +524,7 @@ main {
 .profile-det-area .dropdown .profile-btn h5 {
   color: var(--black);
   margin-bottom: 8px;
-  font-size: 20px;
+  font-size: 19px;
   /* font-family: var(--roboto-font); */
   font-weight: bold;
 }
@@ -544,11 +544,10 @@ main {
 /* content wrapper area Start */
 
 .main-content-area {
-  padding: 50px;
   background: var(--background2);
-
-  height: calc(100vh - 127px);
-  overflow-y: auto;
+  height: calc(100vh - 100%);
+  padding: 50px;
+  /* overflow-y: auto; */
 }
 
 .my-dropdown-wrapper {
@@ -1086,20 +1085,17 @@ input {
 
 /* side bar 2 css by anas*/
 
-/* .sidebar-panel {
-  width: 380px;
-  transition: 0.5s;
-  background: url(../app/side-bar-back.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
+.sidebar-panel {
+  background: url("/media/side-bar-back.png") 50% / cover no-repeat;
   flex-direction: column;
-  align-items: center;
-  height: 100vh;
   flex-shrink: 0;
-} */
+  /* justify-content: center; */
+  align-items: center;
+  width: 380px;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  gap: 50px;
+}
 
 .side-bar-logo {
   display: flex;
@@ -1402,6 +1398,10 @@ main {
 
 .sidebar-panel.active .dropdown-submenu li a:hover {
   color: var(--orange) !important;
+}
+.main-content-area {
+  height: 100vh;
+  padding: 30px;
 }
 
 .profile-btn i {

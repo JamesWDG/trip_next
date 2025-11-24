@@ -14,6 +14,10 @@
   }
   .sidebar-panel {
     width: 350px;
+    max-height: 100%;
+    height: 1100px;
+    justify-content: unset !important;
+
   }
   .side-bar-logo {
     margin-bottom: 20px !important;
@@ -109,7 +113,7 @@
 @media (max-width: 1440px) {
   .main-content-area {
     padding: 30px;
-    height: calc(100vh - 107px);
+    height: calc(100vh - 100%);
   }
   .order-id-time .order-time {
     font-size: 23px;
@@ -221,11 +225,27 @@
   .alerts-div .alerts-hd {
     font-size: 23px;
   }
+
+  .sidebar-panel {
+    height: 1170px;
+  }
+  .profile-det-area .dropdown .profile-btn h5 {
+    font-size: 18px;
+  }
+  .search-form form {
+    width: 35vw !important;
+  }
+
 }
 
 @media (max-width: 1400px) {
   .search-form form {
     width: 36vw;
+  }
+
+  .main-content-area {
+    height: calc(100vh - 100%);
+    padding: 30px;
   }
 
   .profile-det-area .dropdown button {
@@ -256,6 +276,11 @@
   .card-divison {
     text-align: start;
   }
+
+  .sidebar-panel {
+    height: 1145px;
+  }
+
 }
 
 @media (max-width: 1367px) {
@@ -347,7 +372,12 @@
   .profile-det-area .dropdown .profile-btn h5 {
     font-size: 18px;
   }
+  .sidebar-panel {
+    height: 1200px !important;
+  }
 }
+
+
 
 @media (max-width: 1280px) {
   .search-area img {
@@ -455,7 +485,7 @@
   }
 
   .main-content-area {
-    height: calc(103vh - 127px);
+    height: calc(103vh - 100%);
   }
 
   .rider-mega-wrapper {
@@ -941,6 +971,114 @@
   .side-bar-logo {
     padding-top: 30px;
   }
+}
+
+@media (max-width: 376px) {
+  .sidebar-hd {
+    font-size: 13px;
+  }
+
+  .order-id-time .order-time {
+    font-size: 14px;
+  }
+
+  .order-id-time .order-id {
+    height: 20px;
+    font-size: 14px;
+  }
+
+  .sidebar-panel {
+    width: 300px;
+  }
+  .side-bar-logo img {
+    width: 130px;
+    height: 80px;
+  }
+  .order-name-prnt .order-name,
+  .order-name-prnt .order-price {
+    font-size: 13px;
+  }
+  .header {
+    padding: 15px 25px;
+  }
+  .hotels-icon {
+    flex-wrap: wrap;
+  }
+  .profile-det-area .dropdown button {
+    font-size: 18px;
+  }
+  .badge i {
+    font-size: 5px;
+  }
+  .search-area {
+    gap: 0;
+  }
+  .sidebar-links li,
+  .sidebar-links li:first-child,
+  .sidebar-links li:nth-child(6),
+  .sidebar-links li:nth-child(8) {
+    padding: 20px 12px 20px 20px;
+  }
+
+  .sidebar-links .custom-link li {
+    margin-bottom: 0 !important;
+  }
+
+  .main-content-area {
+    padding: 30px 15px;
+  }
+
+  .input-wrapper .input-div select,
+  input {
+    width: 100%;
+    padding: 12px 22px;
+  }
+
+  .booking-chart > div,
+  .total-chart > div {
+    padding: 25px 20px !important;
+  }
+
+  .profile-det-area {
+    gap: 10px !important;
+  }
+
+  .dropdown-menu p,
+  .dropdown-menu span {
+    font-size: 12px;
+  }
+
+  .profile-det-area .dropdown-menu {
+    width: 270px !important;
+    left: -55px !important;
+  }
+
+  .status-title {
+    padding: 9px 25px;
+    font-size: 13px;
+  }
+
+  .rider-card-wrapper h3 {
+    font-size: 13px;
+  }
+
+  .header {
+    padding: 15px 22px;
+  }
+  th,
+  td {
+    padding: 15px;
+  }
+  .profile-det-area .dropdown button .badge,
+  .profile-det-area .dropdown .cart-view .badge {
+    width: 9px;
+    height: 9px;
+    font-size: 5px;
+    top: 15px;
+    right: 17px;
+  }
+}
+
 }
 
 @media (max-width: 376px) {
