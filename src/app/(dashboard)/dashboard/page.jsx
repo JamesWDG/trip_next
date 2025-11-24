@@ -21,6 +21,7 @@ const stats = [
   { id: 4, title: "Total Users", count: 15565, icon: homeCardIMg },
 ];
 
+
 export default function HomePage() {
   return (
     <div className="main-content-area" style={{ background: "#fffaf9", }}>
