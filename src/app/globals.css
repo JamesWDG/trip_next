@@ -1103,7 +1103,7 @@ input {
   align-items: center;
   flex-direction: column;
   padding-top: 30px;
-  margin-bottom: 78px;
+  /* margin-bottom: 78px; */
   transition: 1s;
 }
 
@@ -1169,7 +1169,7 @@ sidebar-2 */
   align-items: center;
   flex-direction: column;
   padding-top: 30px;
-  margin-bottom: 78px;
+  /* margin-bottom: 78px; */
 }
 
 /* .sidebar-links {
@@ -1408,4 +1408,24 @@ main {
   font-size: 12px !important;
   transform: rotate(90deg) !important;
   color: var(--gray);
+}
+
+.sidebar-panel{
+  height: 100vh;
+  justify-content: unset;
+}
+
+.sidebar-links{
+  max-height: 100%;
+  overflow-y: auto
+}
+
+.sidebar-links::-webkit-scrollbar{
+  display: none;
+}
+
+main {
+    flex: 1;
+    height: 100vh;
+    overflow-y: auto;
 }

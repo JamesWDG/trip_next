@@ -20,7 +20,9 @@ export default function RootLayout({ children }) {
 
         <SideBarContextProvider>
 
-          <div className="d-flex">
+          <div className="d-flex" style={{
+            height:"100vh"
+          }}>
             <Sidebar />
             <main className="flex-1 bg-gray-50" style={{ flexGrow: 1 }}>
               <Header />
