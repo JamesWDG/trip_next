@@ -14,7 +14,7 @@
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background: var(--background);
+  background: #fff8f7;
   color: #333;
   overflow-x: hidden;
 }
@@ -1429,3 +1429,6 @@ main {
     height: 100vh;
     overflow-y: auto;
 }
+.main-content-area {
+  margin-bottom: 130px;
+} 

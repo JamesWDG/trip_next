@@ -109,9 +109,9 @@ const page = () => {
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12">
             <div className="fee-wrapper">
-              <h3>Fee Type</h3>
+              <h3>Fee Value</h3>
               <select name="" id="">
-                <option value="">Percentage (%)</option>
+                <option value="">Enter Value...</option>
               </select>
             </div>
           </div>
