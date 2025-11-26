@@ -111,10 +111,10 @@
 }
 
 @media (max-width: 1440px) {
-  .main-content-area {
+  /* .main-content-area {
     padding: 30px;
     height: calc(100vh - 100%);
-  }
+  } */
   .order-id-time .order-time {
     font-size: 23px;
   }
@@ -243,10 +243,10 @@
     width: 36vw;
   }
 
-  .main-content-area {
+  /* .main-content-area {
     height: calc(100vh - 100%);
     padding: 30px;
-  }
+  } */
 
   .profile-det-area .dropdown button {
     font-size: 25px;
@@ -484,9 +484,9 @@
     height: auto;
   }
 
-  .main-content-area {
+  /* .main-content-area {
     height: calc(103vh - 100%);
-  }
+  } */
 
   .rider-mega-wrapper {
     width: calc(100% / 2 - 10px);
@@ -683,10 +683,10 @@
   .dashboard-heading {
     font-size: 30px;
   }
-
+/* 
   .main-content-area {
     height: 100vh;
-  }
+  } */
 }
 
 @media (max-width: 991px) {

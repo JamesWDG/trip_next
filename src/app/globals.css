@@ -545,7 +545,7 @@ main {
 
 .main-content-area {
   background: var(--background2);
-  height: calc(100vh - 100%);
+  /* height: calc(100vh - 100%); */
   padding: 50px;
   /* overflow-y: auto; */
 }
@@ -1400,7 +1400,7 @@ main {
   color: var(--orange) !important;
 }
 .main-content-area {
-  height: 100vh;
+  /* height: 100vh; */
   padding: 30px;
 }
 
@@ -1410,22 +1410,23 @@ main {
   color: var(--gray);
 }
 
-.sidebar-panel{
+.sidebar-panel {
   height: 100vh;
   justify-content: unset;
 }
 
-.sidebar-links{
+.sidebar-links {
   max-height: 100%;
-  overflow-y: auto
+  overflow-y: auto;
 }
 
-.sidebar-links::-webkit-scrollbar{
+.sidebar-links::-webkit-scrollbar {
   display: none;
 }
 
 main {
-    flex: 1;
-    height: 100vh;
-    overflow-y: auto;
+  flex: 1;
+  height: 100vh;
+  overflow-y: auto;
+  background: var(--background2);
 }
