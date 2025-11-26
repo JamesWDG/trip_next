@@ -1,4 +1,5 @@
 import { Poppins500, Roboto500 } from "@/fonts";
+import Image from "next/image";
 import React from "react";
 
 const Double_table_data = ({
@@ -10,6 +11,8 @@ const Double_table_data = ({
   Doubletable_data3 = [],
   Doubletable_heading4 = [],
   Doubletable_data4 = [],
+  Doubletable_heading5 = [],
+  Doubletable_data5 = [],
 }) => {
   return (
     <>
@@ -37,6 +40,49 @@ const Double_table_data = ({
                 >
                   {item.status}
                 </td>
+                <td className={`${Roboto500.className} position-relative custom-action-cell`}>
+                  <i
+                    className="fa-solid fa-ellipsis-vertical custom-toggle"
+                    style={{ cursor: "pointer" }}
+                  ></i>
+                  <div className="custom-dropdown-menu" style={{ display: "none" }}>
+                    <div className="custom-dropdown-item">View</div>
+                    <div className="custom-dropdown-item text-danger">Delete</div>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <table>
+          <thead>
+            <tr>
+              {Doubletable_heading5.map((heading, i) => (
+                <th className={`${Roboto500.className}`} key={i}>{heading}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {Doubletable_data5.map((item, i) => (
+              <tr key={i}>
+                <td className={`${Roboto500.className}`}>{item.Name}</td>
+                <td>
+                  {item.image1 && (
+                    <Image src={item.image1} alt="" width={20} height={20} />
+                  )}
+                </td>
+                 <td>
+                  {item.image1 && (
+                    <Image src={item.image2} alt="" width={20} height={20} />
+                  )}
+                </td>
+                 <td>
+                  {item.image1 && (
+                    <Image src={item.image3} alt="" width={20} height={20} />
+                  )}
+                </td>
+                {/* <td className={`${Roboto500.className}`}>{item.image2}</td>
+                <td className={`${Roboto500.className}`}>{item.image3}</td> */}
                 <td className={`${Roboto500.className} position-relative custom-action-cell`}>
                   <i
                     className="fa-solid fa-ellipsis-vertical custom-toggle"

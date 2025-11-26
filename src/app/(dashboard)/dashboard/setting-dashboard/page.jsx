@@ -6,13 +6,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import alertsImg from "@/app/(dashboard)/assets/images/profile-img.png";
 import { Outfit300, Outfit400, Outfit500, Outfit600, Poppins400, Poppins500 } from "@/fonts/index";
 import Double_table_data from "@/app/components/Double_table_data";
+import checkImage from "@/app/(dashboard)/assets/images/check.png";
+import croxImage from "@/app/(dashboard)/assets/images/crox.png";
 
 const notificationsAlerts = [
     {
-        alertHd: "Static Pages",
+        alertHd: "Role-based Access",
         alertDes: <>Manage sub-admin roles and assign access to <br />
             different modules.</>,
-        btnText: "Manage Permissions"
+        btnText: "Manage Role-based Access"
     },
     {
         alertHd: "Static Pages",
@@ -21,7 +23,7 @@ const notificationsAlerts = [
         btnText: "Manage Permissions"
     },
     {
-        alertHd: "Static Pages",
+        alertHd: "FAQs",
         alertDes: <>Update admin profile, email preferences, and <br />
             reset password.</>,
         btnText: "Manage Profile Settings"
@@ -38,35 +40,35 @@ export default function HotelsPage() {
     ];
     const data4 = [
         {
-            phone: "Super Admin",
-            group: "",
-            status: "",
-            date_sent: "Oct 21, 2025",
+            Name: "Super Admin",
+            image1: checkImage,
+            image2: checkImage,
+            image3: checkImage,
         },
         {
-            phone: "Super Admin",
-            group: "Driving License",
-            status: "",
-            date_sent: "Oct 21, 2025",
+            Name: "Super Admin",
+            image1: checkImage,
+            image2: croxImage,
+            image3: croxImage,
         },
         {
-            phone: "Super Admin",
-            group: "",
-            status: "",
-            date_sent: "Oct 21, 2025",
+            Name: "Super Admin",
+            image1: checkImage,
+            image2: checkImage,
+            image3: checkImage,
         },
         {
-            phone: "Super Admin",
-            group: "",
-            status: "",
-            date_sent: "Oct 21, 2025",
+            Name: "Super Admin",
+            image1: croxImage,
+            image2: checkImage,
+            image3: croxImage,
         },
     ];
     return (
         <>
             <section className="main-content-area">
                 <div className="dashboard-content" style={{ background: "#fffaf9" }}>
-                    <h3 className={`dashboard-heading ${Outfit600.className}`}>Settings</h3>
+                    <h3 className={`dashboard-heading ${Outfit600.className}`}>Settings & Access Control</h3>
 
                     <div className="hotels-card-prnt">
                         <div className="row gy-3">
@@ -86,7 +88,7 @@ export default function HotelsPage() {
                     </div>
 
                     <h3 className='dashboard-hd-mini dashboard-hd-mini-notification'>Sub-admin Roles & Access</h3>
-                    <Double_table_data Doubletable_heading={headings4} Doubletable_data={data4} />
+                    <Double_table_data Doubletable_heading5={headings4} Doubletable_data5={data4} />
                     <h3 className="dashboard-hd-mini dashboard-hd-mini-notification">Profile & Password Settings</h3>
                     <form action="" className="form-section">
                         <div className="row row-gap-4">

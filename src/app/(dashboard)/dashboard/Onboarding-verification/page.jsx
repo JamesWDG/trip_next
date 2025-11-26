@@ -79,7 +79,7 @@ const page = () => {
         <>
             <section className="main-content-area">
                 <h1 className="dashboard-hd">Onboarding & Verification</h1>
-                <h3 className='dashboard-hd-mini'>Invoices & Subscriptions</h3>
+                <h3 className='dashboard-hd-mini'>Pending Approvals</h3>
                 <Double_table_data Doubletable_heading={headings} Doubletable_data={data} />
                 <h3 className='dashboard-hd-mini mt-5'>Identity Verification Queue </h3>
                 <Double_table_data Doubletable_heading2={headings2} Doubletable_data2={data2} />

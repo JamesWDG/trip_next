@@ -79,10 +79,9 @@ export default function HotelsPage() {
                         <div className="input-wrapper d-flex align-items-center gap-4">
                             <div className="input-div">
                                 <label htmlFor="" className={`${Outfit300.className}`}>Recipient Group</label>
-                                <select id="recipientGroup" className={`form-select ${Outfit400.className}`}>
-                                    <option value="all">All Users</option>
-                                    <option value="admins">Admins</option>
-                                    <option value="members">Members</option>
+                                <select name="" id="">
+                                    <option value="">Admin</option>
+                                    <option value="">Users</option>
                                 </select>
                             </div>
                             <div className="input-div">

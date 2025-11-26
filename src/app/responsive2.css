@@ -2,11 +2,21 @@
   .search-form form {
     width: 38vw;
   }
+  .dashboard-button-container {
+    margin-bottom: 40px !important;
+  }
   .sidebar-panel.active .dropdown-submenu {
     display: none;
   }
   .dashboard-card {
     width: calc(100% / 4 - 20px) !important;
+  }
+  .main-content-area {
+    padding-bottom: 60px;
+  }
+  .main-content-area {
+    padding-bottom: 60px;
+    padding-bottom: 66rem !important;
   }
 
   .text-muted {
@@ -17,7 +27,6 @@
     max-height: 100%;
     height: 1100px;
     justify-content: unset !important;
-
   }
   .side-bar-logo {
     margin-bottom: 20px !important;
@@ -86,7 +95,7 @@
     text-align: center;
   }
   .hotels-icon {
-    gap: 16px;
+    gap: 13px;
     flex-wrap: wrap;
   }
   th,
@@ -108,6 +117,22 @@
   .gradient-button {
     font-size: 18px;
   }
+  .bed-para {
+    font-size: 9px;
+  }
+  .hotel-location {
+    font-size: 14.5px !important;
+  }
+  .hotel-img {
+    width: 158px !important;
+    height: 105px !important;
+  }
+  .food-card {
+    padding: 20px 25px;
+  }
+  .order-name-prnt {
+    margin-bottom: 15px !important;
+  }
 }
 
 @media (max-width: 1440px) {
@@ -116,11 +141,11 @@
     height: calc(100vh - 100%);
   } */
   .order-id-time .order-time {
-    font-size: 23px;
+    font-size: 20px;
   }
 
   .order-id-time .order-id {
-    font-size: 23px;
+    font-size: 20px;
     height: 26px;
   }
   .time-mega-wrapper {
@@ -161,10 +186,6 @@
 
   .hotel-price {
     font-size: 14px;
-  }
-
-  .hotel-location {
-    font-size: 16px;
   }
 
   .order-name-prnt .order-name {
@@ -211,11 +232,16 @@
   }
 
   .rider-card-wrapper h3 {
-    font-size: 16px;
+    font-size: 13px;
   }
-
+  .time-wrapper {
+    gap: 6px !important;
+  }
+  .rider-wrapper {
+    padding-top: 8px;
+  }
   .alert-para {
-    font-size: 17px !important;
+    font-size: 15px !important;
   }
 
   .dashboard-hd-mini {
@@ -235,7 +261,18 @@
   .search-form form {
     width: 35vw !important;
   }
-
+  .alerts-div .alerts-hd {
+    font-size: 20px;
+  }
+  .alerts-div {
+    margin-bottom: 13px;
+  }
+  .main-content-area {
+    margin-bottom: 30px !important;
+  }
+   .main-content-area {
+    padding-bottom: 0rem !important;
+   }
 }
 
 @media (max-width: 1400px) {
@@ -280,22 +317,25 @@
   .sidebar-panel {
     height: 1145px;
   }
-
+  .hotels-icon {
+    flex-wrap: wrap;
+    gap: 7px;
+  }
 }
 
 @media (max-width: 1367px) {
   .order-id-time .order-time {
-    font-size: 21px;
+    font-size: 18px;
   }
   .header {
     padding: 15px 25px !important;
   }
   .order-id-time .order-id {
-    font-size: 21px;
+    font-size: 18px;
     height: 26px;
   }
   .date-range-wrapper .range-input {
-    padding: 13px;
+    padding: 10px;
   }
   .order-status {
     font-size: 20px;
@@ -316,9 +356,9 @@
     gap: 20px;
   }
 
-  .date-range-wrapper .range-input {
+  /* .date-range-wrapper .range-input {
     padding: 20px;
-  }
+  } */
 
   .alert-para {
     color: var(--black);
@@ -375,15 +415,16 @@
   .sidebar-panel {
     height: 1200px !important;
   }
+  .alerts-div .alerts-hd {
+    font-size: 18px;
+  }
 }
-
-
 
 @media (max-width: 1280px) {
   .search-area img {
-  height: 20px;
-  width: 100%;
-}
+    height: 20px;
+    width: 100%;
+  }
   .count-hd {
     font-size: 35px;
   }
@@ -502,6 +543,9 @@
 
   .time-wrapper p {
     font-size: 13px;
+  }
+  .date-range-wrapper .range-input {
+    padding: 12px;
   }
 }
 
@@ -1078,8 +1122,6 @@
     right: 17px;
   }
 }
-
-
 
 @media (max-width: 376px) {
   .sidebar-hd {
