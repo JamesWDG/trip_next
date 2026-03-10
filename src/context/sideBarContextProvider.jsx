@@ -1,6 +1,8 @@
 "use client";
+
 import React, { createContext, useState } from 'react'
 export const SideBarContext = createContext();
+
 const SideBarContextProvider = ({ children }) => {
   const [sideBarOpen, setSideBarOpen] = useState(false);
   return (

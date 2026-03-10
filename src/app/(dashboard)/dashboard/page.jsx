@@ -12,15 +12,12 @@ import { Dropdown } from "react-bootstrap";
 import BookingsChart from "@/app/components/booking-charts";
 import TotalRevenueChart from "@/app/components/totalchart";
 
-
-
 const stats = [
   { id: 1, title: "Total Users", count: 15565, icon: homeCardIMg },
   { id: 2, title: "Total Users", count: 15565, icon: homeCardIMg },
   { id: 3, title: "Total Users", count: 15565, icon: homeCardIMg },
   { id: 4, title: "Total Users", count: 15565, icon: homeCardIMg },
 ];
-
 
 export default function HomePage() {
   return (
@@ -48,10 +45,8 @@ export default function HomePage() {
         ))}
       </div>
 
-
       <section className="order-sec">
-
-
+        
         <div className="row">
           <div className="col-lg-5">
             <div className="d-flex justify-content-between align-items-center total-chart-2">
