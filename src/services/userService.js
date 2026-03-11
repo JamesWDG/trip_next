@@ -1,4 +1,6 @@
-import { api } from "./api"
+import { api } from "./api";
+import { ENDPOINTS } from "../constants/endpoints";
+import { attachToken } from "./authService";
 
 /**
  * GET /users?search=
@@ -12,8 +14,14 @@ export async function fetchUsers() {
  * GET /users
  * Get all users.
  */
-export async function getUsers() {
-  return await api.get();
+export async function getUsers(page = 1, limit = 10) {
+
+  const response = await api.get(
+    ENDPOINTS.GET_USERS(page, limit),
+    { headers: attachToken() }
+  );
+
+  return response.data;
 }
 
 /**

@@ -8,7 +8,10 @@ if (!process.env.NEXT_PUBLIC_API_BASE_URL) {
 }
 
 export const ENDPOINTS = Object.freeze({
+  // AUTH
   LOGIN: "user/admin/login",
   LOGOUT: "user/logout",
-  // USER: (id) => `user/${id}`,
+
+  // USER
+  GET_USERS: (page = 1, limit = 10) => `user/all-users?page=${page}&limit=${limit}`,
 });

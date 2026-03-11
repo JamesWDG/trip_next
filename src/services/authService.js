@@ -10,10 +10,10 @@ import { ENDPOINTS } from "../constants/endpoints";
 const TOKEN_KEY = "trip_next_token";
 
 // Attach auth token to headers
-export async function attachToken(headers = {}) {
+export function attachToken(headers = {}) {
   const token = getStorageItem(TOKEN_KEY); // Get Token
   if (token) {
-    console.log("Updated headers with token:", updatedHeaders);
+    console.log("Headers updated with the token.");
     return { ...headers, Authorization: `Bearer ${token}` };
   }
   console.log("🚫 No token found. Returning original headers.");
@@ -22,9 +22,9 @@ export async function attachToken(headers = {}) {
 
 // LOGIN
 export async function login(credentials) {
-  const data = await api.post(ENDPOINTS.LOGIN, credentials);
+  const response = await api.post(ENDPOINTS.LOGIN, credentials);
   
-  if (data?.data?.accessToken) setStorageItem(TOKEN_KEY, data.data?.accessToken);
+  if (response?.data?.accessToken) setStorageItem(TOKEN_KEY, response.data?.accessToken);
 
   console.log("✅ Login Successful.");
   return data;

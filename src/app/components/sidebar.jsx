@@ -17,11 +17,11 @@ import { SideBarContext } from "@/context/sideBarContextProvider";
 
 const Sidebar2 = () => {
 
-  const [openMenu, setOpenMenu] = useState(null);
+  // const [openMenu, setOpenMenu] = useState(null);
   const { sideBarOpen, setSideBarOpen } = useContext(SideBarContext);
-  const toggleDropdown = (menuName) => {
-    setOpenMenu(openMenu === menuName ? null : menuName);
-  };
+  // const toggleDropdown = (menuName) => {
+  //   setOpenMenu(openMenu === menuName ? null : menuName);
+  // };
 
   // HANDLE LOGOUT
   const handleLogout = async () => {
@@ -54,21 +54,22 @@ const Sidebar2 = () => {
             </li>
           </Link>
 
-          <li onClick={() => toggleDropdown("user")}>
+          {/* <li onClick={() => toggleDropdown("user")}> */}
+          <li>
             <Link href={"/dashboard/user-management"}>
               <div className="custom-flex">
                 <Image src={sidebarImg2} alt="" className="img-fluid" />
                 <p className="sidebar-hd">User Management</p>
               </div>
             </Link>
-            <i
+            {/* <i
               className={`fa-solid fa-play ${
                 openMenu === "user" ? "rotate" : ""
               }`}
-            ></i>
+            ></i> */}
           </li>
 
-          {openMenu === "user" && (
+          {/* {openMenu === "user" && (
             <ul className="dropdown-submenu">
               <li>
                 <Link href={"/dashboard/user-management/hotel"}>Hotels</Link>
@@ -87,7 +88,7 @@ const Sidebar2 = () => {
                 </Link>
               </li>
             </ul>
-          )}
+          )} */}
 
           <li>
             <Link href={"/dashboard/Onboarding-verification"}>
@@ -199,7 +200,7 @@ const Sidebar2 = () => {
             </Link>
           </li>
 
-          {openMenu === "settings" && (
+          {/* {openMenu === "settings" && (
             <ul className="dropdown-submenu">
               <li>
                 <Link href={"/dashboard/user-management/hotel"}>Hotels</Link>
@@ -218,7 +219,7 @@ const Sidebar2 = () => {
                 </Link>
               </li>
             </ul>
-          )}
+          )} */}
 
         </div>
 
