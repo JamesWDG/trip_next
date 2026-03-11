@@ -1,77 +1,58 @@
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000/api";
+import { API_BASE_URL } from "../constants/endpoints";
 
-if (!API_BASE_URL) {
-  // This will show up in the server / browser console to help during setup
-  // but it won't break the app at runtime.
-  // eslint-disable-next-line no-console
-  console.warn("NEXT_PUBLIC_API_BASE_URL is not set. Using fallback base URL.");
-}
-
-async function request(endpoint, options = {}) {
+export async function request(endpoint, options = {}) {
   const {
     method = "GET",
+    headers: customHeaders = {},
     data,
-    headers: customHeaders,
     ...restOptions
   } = options;
 
   const headers = {
     "Content-Type": "application/json",
-    ...(customHeaders || {})
+    ...(customHeaders || {}),
   };
-
+  
   const config = {
     method,
     headers,
-    ...restOptions
+    ...restOptions,
+    ...(data !== undefined && { body: JSON.stringify(data) }),
   };
-
-  if (data !== undefined) {
-    config.body = JSON.stringify(data);
-  }
 
   const url = `${API_BASE_URL}${endpoint}`;
 
   const response = await fetch(url, config);
 
   const text = await response.text();
-  let parsedBody = null;
-
-  if (text) {
-    try {
-      parsedBody = JSON.parse(text);
-    } catch {
-      parsedBody = text;
-    }
-  }
+  const parsedData = text ? JSON.parse(text) : text;
 
   if (!response.ok) {
-    const error = new Error(
-      parsedBody?.message || `Request failed with status ${response.status}`
+    throw new Error(
+      parsedData?.message || `Request failed with status ${response.status}`,
     );
-    error.status = response.status;
-    error.body = parsedBody;
-    throw error;
   }
 
-  return parsedBody;
+  // COMMENT LATER
+  console.log(`=========== FETCH RESPONSE ===========`);
+  console.log(parsedData);
+
+  return parsedData;
 }
 
 export const api = {
-  get(endpoint, options) {
-    return request(endpoint, { ...(options || {}), method: "GET" });
-  },
-  post(endpoint, data, options) {
-    return request(endpoint, { ...(options || {}), method: "POST", data });
-  },
-  put(endpoint, data, options) {
-    return request(endpoint, { ...(options || {}), method: "PUT", data });
-  },
-  patch(endpoint, data, options) {
-    return request(endpoint, { ...(options || {}), method: "PATCH", data });
-  },
-  delete(endpoint, options) {
-    return request(endpoint, { ...(options || {}), method: "DELETE" });
-  }
+  get: (endpoint, options = {}) =>
+    request(endpoint, { method: "GET", ...(options || {}) }),
+
+  post: (endpoint, data, options = {}) =>
+    request(endpoint, { method: "POST", data, ...(options || {}) }),
+
+  put: (endpoint, data, options = {}) =>
+    request(endpoint, { method: "PUT", data, ...(options || {}) }),
+
+  patch: (endpoint, data, options = {}) =>
+    request(endpoint, { method: "PATCH", data, ...(options || {}) }),
+
+  remove: (endpoint, options = {}) =>
+    request(endpoint, { method: "DELETE", ...(options || {}) }),
 };

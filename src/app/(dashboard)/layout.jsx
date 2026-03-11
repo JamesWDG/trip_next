@@ -2,7 +2,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../globals.css";
 import "../responsive2.css";
-import Sidebar2 from "../components/sidebar2.jsx";
 import Sidebar from "../components/sidebar.jsx";
 import Header from "../components/header";
 import SideBarContextProvider from "@/context/sideBarContextProvider";

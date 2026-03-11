@@ -16,10 +16,23 @@ import sidebarImg8 from "@/app/(dashboard)/assets/images/side-bar-img8.png";
 import { SideBarContext } from "@/context/sideBarContextProvider";
 
 const Sidebar2 = () => {
+
   const [openMenu, setOpenMenu] = useState(null);
   const { sideBarOpen, setSideBarOpen } = useContext(SideBarContext);
   const toggleDropdown = (menuName) => {
     setOpenMenu(openMenu === menuName ? null : menuName);
+  };
+
+  // HANDLE LOGOUT
+  const handleLogout = async () => {
+    try {
+      await logout();
+      success("Logged out successfully");
+      router.push("/login");
+
+    } catch (err) {
+      error(err?.message || "Logout failed");
+    }
   };
 
   return (
@@ -40,6 +53,7 @@ const Sidebar2 = () => {
               <p className="sidebar-hd">Dashboard</p>
             </li>
           </Link>
+
           <li onClick={() => toggleDropdown("user")}>
             <Link href={"/dashboard/user-management"}>
               <div className="custom-flex">
@@ -53,6 +67,7 @@ const Sidebar2 = () => {
               }`}
             ></i>
           </li>
+
           {openMenu === "user" && (
             <ul className="dropdown-submenu">
               <li>
@@ -73,6 +88,7 @@ const Sidebar2 = () => {
               </li>
             </ul>
           )}
+
           <li>
             <Link href={"/dashboard/Onboarding-verification"}>
               {" "}
@@ -83,6 +99,7 @@ const Sidebar2 = () => {
             </Link>
             {/* <i className={`fa-solid fa-play ${openMenu === "onboarding" ? "rotate" : ""}`}></i> */}
           </li>
+
           {/* {openMenu === "onboarding" && (
                         <ul className="dropdown-submenu">
                             <li><Link href={"/dashboard/user-management/hotel"}>Hotels</Link></li>
@@ -181,6 +198,7 @@ const Sidebar2 = () => {
             ></i> */}
             </Link>
           </li>
+
           {openMenu === "settings" && (
             <ul className="dropdown-submenu">
               <li>
@@ -201,13 +219,16 @@ const Sidebar2 = () => {
               </li>
             </ul>
           )}
+
         </div>
-        <div className="w-100 custom-link">
+
+        <div className="w-100 custom-link" onClick={handleLogout}>
           <li>
             <Image src={sidebarImg8} alt="" className="img-fluid" />
             <p className="sidebar-hd">Logout</p>
           </li>
         </div>
+
       </ul>
     </section>
   );

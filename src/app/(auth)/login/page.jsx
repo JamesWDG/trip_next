@@ -1,37 +1,48 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter } from "next/navigation";
 import Image from "next/image"
 import Link from "next/link"
-import sidebarLogo from "@/app/(dashboard)/assets/images/sidebar-logo.png"
 import { Outfit400, Outfit500, Outfit600 } from "@/fonts/index"
-
-// Email    = admin@tripnxt.com
-// Password = Abcd!234
+import sidebarLogo from "@/app/(dashboard)/assets/images/sidebar-logo.png"
+import { useToast } from '@/hooks/useToast';
+import { login } from "@/services/authService";
 
 export default function LoginPage() {
-  const router = useRouter()
+  const router = useRouter();
 
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [showPassword, setShowPassword] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const { success, error } = useToast(); 
 
-  const handleLogin = (e) => {
-    e.preventDefault()
-    setLoading(true)
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-    // Simulate login delay
-    setTimeout(() => {
-      if (email === "admin@test.com" && password === "123456") {
-        router.push("/dashboard")
+    try {
+      const response = await login({ email, password });
+      
+      if (response.success && response?.data.accessToken) {
+        success(response?.message);
+
+        setTimeout(() => {
+          router.push("/dashboard");
+        }, 1000);
       } else {
-        alert("Invalid credentials")
-        setLoading(false)
+        error("Login Failed.");
       }
-    }, 500)
-  }
+
+    } catch (error) {
+      console.error("Login Error:", error);
+      error(error?.response?.data?.message ?? 'Invalid credentials');
+
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -94,7 +105,7 @@ export default function LoginPage() {
               </Link>
             </div> */}
 
-            <button 
+            <button   
               type="submit" 
               className={`login-btn ${Outfit500.className}`}
               disabled={loading}
