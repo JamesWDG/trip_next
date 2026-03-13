@@ -113,9 +113,11 @@ const page = () => {
       
       if (res?.success) {
         toastSuccess(res.message || "User deleted successfully");
+
+        setTimeout(() => {
+          getAllUsers(currentPage, selectedRole);
+        }, 3000);
         
-        removeStorageItem("trip_next_token");
-        router.push("/login");
       }
       
     } catch (error) {
