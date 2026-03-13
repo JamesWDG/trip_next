@@ -2,9 +2,22 @@
 
 import { useEffect, useState } from "react";
 import Management_table from "@/app/components/Management_table";
-import { getUsers } from "@/services/userService";
+import { getUsers, createUser, deleteUser } from "@/services/userService";
 import { useToast } from "@/hooks/useToast";
 import { format_phone, format_date } from "@/utils/helpers";
+import { ROLE } from "@/constants/role";
+import { removeStorageItem } from "@/utils/storage";
+import { useRouter } from "next/navigation";
+
+// Role options with labels for display
+const ROLE_OPTIONS = [
+  { value: "", label: "All Roles" },
+  { value: ROLE.ADMIN, label: "Admin" },
+  { value: ROLE.USER, label: "User" },
+  { value: ROLE.CAR_OWNER, label: "Car Owner" },
+  { value: ROLE.ACCOMMODATION_OWNER, label: "Accommodation Owner" },
+  { value: ROLE.RESTAURANT_OWNER, label: "Restaurant Owner" },
+];
 
 const page = () => {
   const [data, setData] = useState([]);
@@ -14,24 +27,26 @@ const page = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedRole, setSelectedRole] = useState("");
   const { error: toastError, success: toastSuccess } = useToast();
+  const router = useRouter();
 
   // Form state
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    role: "car_owner",
+    phoneNumber: "",
+    role: "",
   });
-  const [submitting, setSubmitting] = useState(false);
 
-  const getAllUsers = async (page = 1) => {
+  const getAllUsers = async (page = 1, role = "") => {
     try {
       setLoading(true);
-      const res = await getUsers(page, limit);
+      const res = await getUsers(page, limit, role);
 
-      const formattedUsers =
-        res?.data?.map((user) => ({
+      const formattedUsers = res?.data?.map((user) => ({
+          id: user.id,
           name: user.name ?? "(Empty)",
           phone: format_phone(user.phoneNumber),
           email: user.email ?? "(Empty)",
@@ -53,8 +68,14 @@ const page = () => {
 
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
-      getAllUsers(newPage);
+      getAllUsers(newPage, selectedRole);
     }
+  };
+
+  const handleRoleFilterChange = (e) => {
+    const role = e.target.value;
+    setSelectedRole(role);
+    getAllUsers(1, role);
   };
 
   const handleInputChange = (e) => {
@@ -64,35 +85,62 @@ const page = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitting(true);
+    setLoading(true);
 
     try {
-      // API call would go here
-      console.log("Creating user:", formData);
-      toastSuccess("User created successfully!");
-      setIsModalOpen(false);
-      setFormData({ name: "", email: "", password: "", role: "car_owner" });
+      const res = await createUser(formData);
+      
+      if (res.success) {
+        toastSuccess(res.message);
+        setIsModalOpen(false);
+        await getAllUsers(currentPage, selectedRole);
+        setFormData({ name: "", email: "", password: "", phoneNumber: "", role: "" });
+      }
+      
     } catch (error) {
       toastError(error?.message || "Failed to create user");
+
     } finally {
-      setSubmitting(false);
+      setLoading(false);
+    }
+  };
+
+  // Handle delete user
+  const handleDeleteUser = async (userId) => {
+    try {
+      setLoading(true);
+      const res = await deleteUser(userId);
+      
+      if (res?.success) {
+        toastSuccess(res.message || "User deleted successfully");
+        
+        removeStorageItem("trip_next_token");
+        router.push("/login");
+      }
+      
+    } catch (error) {
+      toastError(error?.message || "Failed to delete user");
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const openModal = () => setIsModalOpen(true);
+
   const closeModal = () => {
     setIsModalOpen(false);
-    setFormData({ name: "", email: "", password: "", role: "car_owner" });
+    setFormData({ name: "", email: "", password: "", phoneNumber: "", role: "" });
   };
 
   useEffect(() => {
-    getAllUsers(currentPage);
+    getAllUsers(currentPage, selectedRole);
   }, []);
 
   const headings = [
     "Name",
-    "Mobile Number",
     "Email Address",
+    "Phone Number",
     "Date",
     "Status",
     "Action",
@@ -103,10 +151,22 @@ const page = () => {
       <section className="main-content-area">
         <div className="create-user-header">
           <h1 className="dashboard-hd">User Management</h1>
-          <button className="gradient-button create-user-btn" onClick={openModal}>
-            <i className="fa-solid fa-plus"></i>
-            Create User
-          </button>
+
+          <div className="role-filter-wrapper">
+            <div className="role-filter-dropdown">
+              <select className="role-filter-select" value={selectedRole} onChange={handleRoleFilterChange}>
+                {ROLE_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <button className="gradient-button create-user-btn" onClick={openModal}>
+              <i className="fa-solid fa-plus"></i>
+              Create User
+            </button>
+          </div>
         </div>
 
         <Management_table
@@ -117,6 +177,7 @@ const page = () => {
           total={total}
           limit={limit}
           onPageChange={handlePageChange}
+          onDelete={handleDeleteUser}
           loading={loading}
         />
       </section>
@@ -173,6 +234,19 @@ const page = () => {
               </div>
 
               <div className="form-group">
+                <label htmlFor="phone">Phone Number</label>
+                <input
+                  type="text"
+                  id="phone"
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
+                  onChange={handleInputChange}
+                  placeholder="Enter Phone Number"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
                 <label htmlFor="role">Role</label>
                 <select
                   id="role"
@@ -180,32 +254,29 @@ const page = () => {
                   value={formData.role}
                   onChange={handleInputChange}
                 >
-                  <option value="car_owner">Car Owner</option>
-                  <option value="admin">Admin</option>
-                  <option value="driver">Driver</option>
+                  <option value="" disabled>Select Role</option>
+                  {ROLE_OPTIONS
+                    .filter((option) => !["", ROLE.ADMIN].includes(option.value))
+                    .map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))
+                  }
                 </select>
               </div>
 
-              <div className="form-actions">
-                <button
-                  type="button"
-                  className="cancel-btn"
-                  onClick={closeModal}
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="submit-btn"
-                  disabled={submitting}
-                >
-                  {submitting ? "Creating..." : "Create"}
-                </button>
-              </div>
+              <button
+                type="submit"
+                className="w-100 submit-btn"
+                disabled={loading}
+              >
+                {loading ? "Creating..." : "Create"}
+              </button>
             </form>
           </div>
         </div>
-      )}!
+      )}
     </>
   );
 };

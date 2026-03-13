@@ -40,11 +40,13 @@ const Sidebar2 = () => {
       <button className="close-sidebar" onClick={() => setSideBarOpen(true)}>
         <i className="fa-regular fa-circle-xmark"></i>
       </button>
+      
       <div className="side-bar-logo">
         <Link href={"/dashboard"}>
           <Image src={sidebarLogo} alt="" className="img-fluid" />
         </Link>
       </div>
+
       <ul className="sidebar-links">
         <div>
           <Link href={"/dashboard"}>
@@ -90,7 +92,8 @@ const Sidebar2 = () => {
             </ul>
           )} */}
 
-          <li>
+            {/* WILL WORK */}
+          {/* <li>
             <Link href={"/dashboard/Onboarding-verification"}>
               {" "}
               <div className="custom-flex">
@@ -98,8 +101,8 @@ const Sidebar2 = () => {
                 <p className="sidebar-hd">Onboarding & Verification</p>
               </div>
             </Link>
-            {/* <i className={`fa-solid fa-play ${openMenu === "onboarding" ? "rotate" : ""}`}></i> */}
-          </li>
+          </li> */}
+          {/* <i className={`fa-solid fa-play ${openMenu === "onboarding" ? "rotate" : ""}`}></i> */}
 
           {/* {openMenu === "onboarding" && (
                         <ul className="dropdown-submenu">
@@ -110,19 +113,20 @@ const Sidebar2 = () => {
                         </ul>
                     )} */}
 
-          <li>
+          {/* WILL WORK */}
+          {/* <li>
             <Link href={"/dashboard/transaction-monitization"}>
               <div className="custom-flex">
                 <Image src={sidebarImg4} alt="" className="img-fluid" />
                 <p className="sidebar-hd">Transactions & Monetization</p>
               </div>
+            </Link>
+          </li> */}
               {/* <i
                 className={`fa-solid fa-play ${
                   openMenu === "transactions" ? "rotate" : ""
                 }`}
               ></i> */}
-            </Link>
-          </li>
           {/* {openMenu === "transactions" && (
             <ul className="dropdown-submenu">
               <li>
@@ -144,19 +148,21 @@ const Sidebar2 = () => {
             </ul>
           )} */}
 
-          <li className="reports-li">
+          {/* WILL WORK */}
+          {/* <li className="reports-li">
             <Link href={"/dashboard/analytics-reports"}>
               <div className="custom-flex">
                 <Image src={sidebarImg5} alt="" className="img-fluid" />
                 <p className="sidebar-hd">Analytics Reports</p>
               </div>
-              {/* <i
-              className={`fa-solid fa-play ${
-                openMenu === "analytics" ? "rotate" : ""
-              }`}
-            ></i> */}
             </Link>
-          </li>
+          </li> */}
+            {/* <i
+            className={`fa-solid fa-play ${
+              openMenu === "analytics" ? "rotate" : ""
+            }`}
+          ></i> */}
+
           {/* {openMenu === "analytics" && (
             <ul className="dropdown-submenu">
               <li>
@@ -177,7 +183,9 @@ const Sidebar2 = () => {
               </li>
             </ul>
           )} */}
-          <li>
+
+          {/* WILL WORK */}
+          {/* <li>
             <Link href={"/dashboard/email-notifications"}>
               <div className="custom-flex">
                 <Image src={sidebarImg6} alt="" className="img-fluid" />
@@ -192,13 +200,13 @@ const Sidebar2 = () => {
                 <Image src={sidebarImg7} alt="" className="img-fluid" />
                 <p className="sidebar-hd">Settings</p>
               </div>
+            </Link>
+          </li> */}
               {/* <i
               className={`fa-solid fa-play ${
                 openMenu === "settings" ? "rotate" : ""
               }`}
             ></i> */}
-            </Link>
-          </li>
 
           {/* {openMenu === "settings" && (
             <ul className="dropdown-submenu">

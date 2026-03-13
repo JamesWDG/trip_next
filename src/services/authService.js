@@ -27,7 +27,7 @@ export async function login(credentials) {
   if (response?.data?.accessToken) setStorageItem(TOKEN_KEY, response.data?.accessToken);
 
   console.log("✅ Login Successful.");
-  return data;
+  return response;
 };
 
 // LOGOUT

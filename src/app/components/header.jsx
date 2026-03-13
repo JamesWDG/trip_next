@@ -65,14 +65,14 @@ const header = () => {
               setSideBarOpen(!sideBarOpen);
             }}
           />
-          <div className="search-form">
+          {/* <div className="search-form">
             <form action="">
               <input type="search" placeholder="Searching..." />
               <button>
                 <i className="fa-solid fa-magnifying-glass"></i>
               </button>
             </form>
-          </div>
+          </div> */}
         </div>
 
         <div
@@ -163,11 +163,11 @@ const header = () => {
                 className="dropdown-menu profile-menu profile-area"
                 style={{ display: "block" }}
               >
-                <li className="prof-li">
+                {/* <li className="prof-li">
                   <a href="#">
                     <i className="fa-solid fa-circle-user"></i> Profile
                   </a>
-                </li>
+                </li> */}
                 <li className="prof-li">
                   <a href="javascript:void(0);" onClick={handleLogout}>
                     <i className="fa-solid fa-arrow-right-from-bracket"></i>

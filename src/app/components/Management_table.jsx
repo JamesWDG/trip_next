@@ -1,5 +1,5 @@
 import { Roboto500 } from "@/fonts";
-import React from "react";
+import { useState } from "react";
 
 function getPageNumbers(currentPage, totalPages) {
   const pages = [];
@@ -51,8 +51,10 @@ const Management_table = ({
   total = 0,
   limit = 10,
   onPageChange = () => {},
+  onDelete = () => {},
   loading = false,
 }) => {
+
   return (
     <>
       <div className="table-container">
@@ -67,39 +69,21 @@ const Management_table = ({
             </tr>
           </thead>
           <tbody>
-            {data.map((item, i) => (
-              <tr key={i}>
+            {data.map((item, index) => (
+              <tr key={index}>
                 <td className={`${Roboto500.className}`}>{item.name}</td>
-                <td className={`${Roboto500.className}`}>{item.phone}</td>
                 <td className={`${Roboto500.className}`}>{item.email}</td>
+                <td className={`${Roboto500.className}`}>{item.phone}</td>
                 <td className={`${Roboto500.className}`}>{item.date}</td>
-                <td
-                  className={`${Roboto500.className} ${
-                    item.status === "Completed"
-                      ? "status-completed"
-                      : item.status === "Pending"
-                        ? "status-pending"
-                        : "status-cancelled"
-                  }`}
-                >
-                  {item.status}
-                </td>
-                <td
-                  className={`${Roboto500.className} position-relative custom-action-cell`}
-                >
-                  <i
-                    className="fa-solid fa-ellipsis-vertical custom-toggle"
-                    style={{ cursor: "pointer" }}
-                  ></i>
-                  <div
-                    className="custom-dropdown-menu"
-                    style={{ display: "none" }}
-                  >
-                    <div className="custom-dropdown-item">View</div>
-                    <div className="custom-dropdown-item text-danger">
-                      Delete
-                    </div>
-                  </div>
+                <td className={`${Roboto500.className}`}>{item.status}</td>
+
+                <td className={`${Roboto500.className}`}>
+                  <button
+                    className="btn btn-danger delete-btn"
+                    onClick={() => onDelete(item.id)}>
+                    <i className="fa-solid fa-trash"></i>
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

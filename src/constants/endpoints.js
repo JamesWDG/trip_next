@@ -12,6 +12,12 @@ export const ENDPOINTS = Object.freeze({
   LOGIN: "user/admin/login",
   LOGOUT: "user/logout",
 
+  // DASHBOARD
+  STATS: "analytics/counts",
+  USER_ONBOARDING: `analytics/users-stats`,
+
   // USER
   GET_USERS: (page = 1, limit = 10) => `user/all-users?page=${page}&limit=${limit}`,
+  CREATE_USER: "user/create-user",
+  DELETE_USER: (id) => `user/delete-user/${id}`,
 });
