@@ -3,6 +3,7 @@
 import React, { useContext, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/useToast";
 
 import sidebarLogo from "@/app/(dashboard)/assets/images/sidebar-logo.png";
@@ -22,6 +23,7 @@ const Sidebar2 = () => {
   // const [openMenu, setOpenMenu] = useState(null);
   const { sideBarOpen, setSideBarOpen } = useContext(SideBarContext);
   const { success, error } = useToast();
+  const router = useRouter();
   // const toggleDropdown = (menuName) => {
   //   setOpenMenu(openMenu === menuName ? null : menuName);
   // };
