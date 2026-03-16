@@ -1,45 +1,47 @@
 import { api } from "./api";
+import {
+  setStorageItem,
+  getStorageItem,
+  removeStorageItem,
+} from "../utils/storage";
+import { ENDPOINTS } from "../constants/endpoints";
 
+// Auth Token Local Storage Key
 const TOKEN_KEY = "trip_next_token";
 
-export function setAuthToken(token) {
-  if (typeof window === "undefined") return;
-  window.localStorage.setItem(TOKEN_KEY, token);
-}
-
-export function getAuthToken() {
-  if (typeof window === "undefined") return null;
-  return window.localStorage.getItem(TOKEN_KEY);
-}
-
-export function clearAuthToken() {
-  if (typeof window === "undefined") return;
-  window.localStorage.removeItem(TOKEN_KEY);
-}
-
-export function getAuthHeader() {
-  const token = getAuthToken();
-  if (!token) return {};
-  return { Authorization: `Bearer ${token}` };
-}
-
-export async function login(credentials) {
-  // credentials: { email, password } ya jo bhi aapke API ke hisaab se ho
-  const data = await api.post("/auth/login", credentials);
-
-  if (data?.token) {
-    setAuthToken(data.token);
+// Attach auth token to headers
+export function attachToken(headers = {}) {
+  const token = getStorageItem(TOKEN_KEY); // Get Token
+  if (token) {
+    console.log("Headers updated with the token.");
+    return { ...headers, Authorization: `Bearer ${token}` };
   }
-
-  return data;
+  console.log("🚫 No token found. Returning original headers.");
+  return headers;
 }
 
+// LOGIN
+export async function login(credentials) {
+  const response = await api.post(ENDPOINTS.LOGIN, credentials);
+  
+  if (response?.data?.accessToken) setStorageItem(TOKEN_KEY, response.data?.accessToken);
+
+  console.log("✅ Login Successful.");
+  return response;
+};
+
+// LOGOUT
 export async function logout() {
   try {
-    await api.post("/auth/logout", null, { headers: getAuthHeader() });
-  } catch {
-    // ignore API error on logout
-  }
+    
+    await api.post(ENDPOINTS.LOGOUT, null, {
+      headers: attachToken(),
+    });
 
-  clearAuthToken();
+  } catch (err) {
+    console.error("Logout API failed", err);
+
+  } finally {
+    removeStorageItem(TOKEN_KEY);
+  }
 }

@@ -827,6 +827,10 @@
     height: 100px;
     width: 150px;
   }
+
+  .modal-content {
+    transform: translate(50%, 10%);
+  }
 }
 
 /* ---------- MOBILE ---------- */
