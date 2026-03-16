@@ -1,7 +1,8 @@
 "use client";
 
 import { Roboto500 } from "@/fonts";
-import { useState } from "react";
+
+import ConfirmationModal, { showDeleteSuccess, showDeleteError } from "@/app/components/ConfirmationModal";
 
 function getPageNumbers(currentPage, totalPages) {
   const pages = [];
@@ -53,8 +54,7 @@ const Management_table = ({
   total = 0,
   limit = 10,
   onPageChange = () => {},
-  onDelete = () => {},
-  loading = false,
+  onDelete = () => {}
 }) => {
 
   return (
@@ -82,7 +82,12 @@ const Management_table = ({
                 <td className={`${Roboto500.className}`}>
                   <button
                     className="btn btn-danger delete-btn"
-                    onClick={() => onDelete(item.id)}>
+                    onClick={() => onDelete(item.id)}
+                    // onClick={async () =>
+                    //   (await ConfirmationModal({ itemName: item.name || "this user" })) &&
+                    //   onDelete(item.id)
+                    // }
+                  >
                     <i className="fa-solid fa-trash"></i>
                     Delete
                   </button>

@@ -1,13 +1,13 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Management_table from "@/app/components/Management_table";
 import { getUsers, createUser, deleteUser } from "@/services/userService";
 import { useToast } from "@/hooks/useToast";
 import { format_phone, format_date } from "@/utils/helpers";
 import { ROLE } from "@/constants/role";
-import { removeStorageItem } from "@/utils/storage";
-import { useRouter } from "next/navigation";
+import Loading from "@/app/components/Loading";
 
 // Role options with labels for display
 const ROLE_OPTIONS = [
@@ -150,38 +150,43 @@ const page = () => {
 
   return (
     <>
-      <section className="main-content-area">
-        <div className="create-user-header">
-          <h1 className="dashboard-hd">User Management</h1>
+      <section className="main-content-area" style={{ background: "#fffaf9" }}>
+        <Loading loading={loading} text="Loading users..." />
 
-          <div className="role-filter-wrapper">
-            <div className="role-filter-dropdown">
-              <select className="role-filter-select" value={selectedRole} onChange={handleRoleFilterChange}>
-                {ROLE_OPTIONS.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
+        {!loading && (
+          <>
+            <div className="create-user-header">
+              <h1 className="dashboard-hd">User Management</h1>
+
+              <div className="role-filter-wrapper">
+                <div className="role-filter-dropdown">
+                  <select className="role-filter-select" value={selectedRole} onChange={handleRoleFilterChange}>
+                    {ROLE_OPTIONS.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <button className="gradient-button create-user-btn" onClick={openModal}>
+                  <i className="fa-solid fa-plus"></i>
+                  Create User
+                </button>
+              </div>
             </div>
-            <button className="gradient-button create-user-btn" onClick={openModal}>
-              <i className="fa-solid fa-plus"></i>
-              Create User
-            </button>
-          </div>
-        </div>
 
-        <Management_table
-          heading={headings}
-          data={data}
-          currentPage={currentPage}
-          totalPages={totalPages}
-          total={total}
-          limit={limit}
-          onPageChange={handlePageChange}
-          onDelete={handleDeleteUser}
-          loading={loading}
-        />
+            <Management_table
+              heading={headings}
+              data={data}
+              currentPage={currentPage}
+              totalPages={totalPages}
+              total={total}
+              limit={limit}
+              onPageChange={handlePageChange}
+              onDelete={handleDeleteUser}
+            />
+          </>
+        )}
       </section>
 
       {/* Create User Modal */}
