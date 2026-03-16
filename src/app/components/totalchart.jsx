@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import {
   BarChart,
   Bar,
@@ -10,7 +9,6 @@ import {
   ResponsiveContainer,
   CartesianGrid,
 } from "recharts";
-import { getUserOnboarding } from "@/services/userService";
 
 // ─── Dummy Data Sets (fallback only) ──────────────────────
 
@@ -127,7 +125,6 @@ const getDynamicDomain = (data) => {
 export default function UserOnboardingChart({
   filter = "Monthly",
   apiData,
-  loading,
   error
 }) {
   // GET CHART DATA (API OR FALLBACK)
@@ -190,18 +187,6 @@ export default function UserOnboardingChart({
       </div>
 
       <ResponsiveContainer width="100%" height={270}>
-        {loading ? (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "100%",
-            }}
-          >
-            <p>Loading chart data...</p>
-          </div>
-        ) : (
           <BarChart
             data={currentData}
             margin={{ top: 10, right: 10, left: -10, bottom: 0 }}
@@ -240,7 +225,6 @@ export default function UserOnboardingChart({
               barSize={22}
             />
           </BarChart>
-        )}
       </ResponsiveContainer>
     </div>
   );

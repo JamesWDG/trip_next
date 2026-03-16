@@ -34,7 +34,7 @@ export async function login(credentials) {
 export async function logout() {
   try {
     
-    await api.post(ENDPOINTS.LOGOUT, null, {
+    await api.post(ENDPOINTS.LOGOUT, {}, {
       headers: attachToken(),
     });
 
