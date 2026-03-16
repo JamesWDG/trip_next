@@ -25,72 +25,14 @@ export default async function ConfirmationModal({
     padding: "30px 30px 50px 30px",
     width: "470px",
     cancelButtonColor: "#a3a3a3",
-    cancelButtonBorderRadius: "8px",
-    cancelButtonFontWeight: "500",
-    cancelButtonFontSize: "14px",
-    cancelButtonPadding: "12px 28px"
   });
 
-  // if (result.isConfirmed) {
-  //   if (onConfirm) {
-  //     await onConfirm();
-  //   }
-  //   return true;
-  // }
+  if (result.isConfirmed) {
+    if (onConfirm) {
+      await onConfirm();
+    }
+    return true;
+  }
 
-  // return false;
+  return false;
 };
-
-// export function showDeleteConfirmation(itemName, onConfirm) {
-//   return ConfirmationModal({ itemName, onConfirm });
-// }
-
-/**
- * Success toast after deletion
- */
-// export function showDeleteSuccess(itemName = "Item") {
-//   Swal.fire({
-//     title: "Deleted!",
-//     text: `${itemName} has been deleted successfully.`,
-//     icon: "success",
-//     timer: 2000,
-//     showConfirmButton: false,
-//     customClass: {
-//       popup: "swal-popup",
-//       title: "swal-title",
-//     },
-//     buttonsStyling: false,
-//     background: "#ffffff",
-//     padding: "20px",
-//     width: "350px",
-//     confirmButtonColor: "#ee4026",
-//     confirmButtonBorderRadius: "8px",
-//     confirmButtonPadding: "10px 24px",
-//     confirmButtonFontSize: "14px",
-//   });
-// }
-
-/**
- * Error toast if deletion fails
- */
-// export function showDeleteError(message = "Failed to delete item") {
-//   Swal.fire({
-//     title: "Error!",
-//     text: message,
-//     icon: "error",
-//     timer: 3000,
-//     showConfirmButton: true,
-//     customClass: {
-//       popup: "swal-popup",
-//       title: "swal-title",
-//     },
-//     buttonsStyling: false,
-//     background: "#ffffff",
-//     padding: "20px",
-//     width: "350px",
-//     confirmButtonColor: "#ee4026",
-//     confirmButtonBorderRadius: "8px",
-//     confirmButtonPadding: "10px 24px",
-//     confirmButtonFontSize: "14px",
-//   });
-// }

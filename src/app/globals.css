@@ -1805,7 +1805,6 @@ main {
 }
 
 /* ===== SweetAlert2 Custom Styles ===== */
-/* background: linear-gradient(180deg, #120f34, #6d1697); */
 
 .swal-confirm-btn {
   background: linear-gradient(180deg, #120f34, #6d1697);
@@ -1813,59 +1812,5 @@ main {
 }
 
 .swal-confirm-btn:hover {
-  background: linear-gradient(180deg, #ee4026 -6.76%, #d33620 101.38%) !important;
-  transform: translateY(-1px) !important;
-  /* box-shadow: 0 4px 12px rgba(238, 64, 38, 0.4) !important; */
+  opacity: 0.9;
 }
-
-/* .swal-popup {
-  border-radius: 12px !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
-  font-family: 'Poppins', sans-serif !important;
-}
-
-.swal-title {
-  font-family: 'Poppins', sans-serif !important;
-  font-weight: 600 !important;
-  color: #333 !important;
-  font-size: 20px !important;
-  margin-bottom: 10px !important;
-}
-
-.swal-content {
-  font-family: 'Poppins', sans-serif !important;
-  color: #666 !important;
-  font-size: 14px !important;
-  line-height: 1.6 !important;
-}
-
-.swal-cancel-btn {
-  background: #f4f6fb !important;
-  border: 1px solid #e5e7eb !important;
-  color: #333 !important;
-  font-family: 'Poppins', sans-serif !important;
-  transition: all 0.3s ease !important;
-}
-
-.swal-cancel-btn:hover {
-  background: #e8ecf4 !important;
-  border-color: #d1d5db !important;
-} */
-
-/* Success icon styling */
-/* .swal2-success {
-  border-color: #04850d !important;
-}
-
-.swal2-success-check {
-  color: #04850d !important;
-} */
-
-/* Error icon styling */
-/* .swal2-error {
-  border-color: #ee4026 !important;
-}
-
-.swal2-x-mark {
-  color: #ee4026 !important;
-} */
