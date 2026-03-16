@@ -2,7 +2,7 @@
 
 import { Roboto500 } from "@/fonts";
 
-import ConfirmationModal, { showSuccess, showError } from "@/app/components/ConfirmationModal";
+import ConfirmationModal from "@/app/components/ConfirmationModal";
 
 function getPageNumbers(currentPage, totalPages) {
   const pages = [];
