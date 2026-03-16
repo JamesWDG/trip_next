@@ -1,3 +1,5 @@
+"use client";
+
 import { Roboto500 } from "@/fonts";
 import { useState } from "react";
 
