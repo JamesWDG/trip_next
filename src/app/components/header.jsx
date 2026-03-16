@@ -153,7 +153,7 @@ const header = () => {
               />
               <div>
                 <h5>Augustine Okp</h5>
-                <h6>Vendor Profile</h6>
+                <h6>Admin Profile</h6>
               </div>
               <i className="fa-solid fa-play"></i>
             </button>

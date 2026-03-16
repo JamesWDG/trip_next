@@ -3,22 +3,27 @@
 import React, { useContext, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/useToast";
 
 import sidebarLogo from "@/app/(dashboard)/assets/images/sidebar-logo.png";
 import sidebarImg1 from "@/app/(dashboard)/assets/images/side-bar-img-1.png";
 import sidebarImg2 from "@/app/(dashboard)/assets/images/side-bar-img-2.png";
-import sidebarImg3 from "@/app/(dashboard)/assets/images/side-bar-img3.png";
-import sidebarImg4 from "@/app/(dashboard)/assets/images/side-bar-img-4.png";
-import sidebarImg5 from "@/app/(dashboard)/assets/images/side-bar-img-5.png";
-import sidebarImg6 from "@/app/(dashboard)/assets/images/side-bar-img-77.png";
-import sidebarImg7 from "@/app/(dashboard)/assets/images/side-bar-img-7.png";
+// import sidebarImg3 from "@/app/(dashboard)/assets/images/side-bar-img3.png";
+// import sidebarImg4 from "@/app/(dashboard)/assets/images/side-bar-img-4.png";
+// import sidebarImg5 from "@/app/(dashboard)/assets/images/side-bar-img-5.png";
+// import sidebarImg6 from "@/app/(dashboard)/assets/images/side-bar-img-77.png";
+// import sidebarImg7 from "@/app/(dashboard)/assets/images/side-bar-img-7.png";
 import sidebarImg8 from "@/app/(dashboard)/assets/images/side-bar-img8.png";
 import { SideBarContext } from "@/context/sideBarContextProvider";
+import { logout } from "@/services/authService";
+
 
 const Sidebar2 = () => {
-
   // const [openMenu, setOpenMenu] = useState(null);
   const { sideBarOpen, setSideBarOpen } = useContext(SideBarContext);
+  const { success, error } = useToast();
+  const router = useRouter();
   // const toggleDropdown = (menuName) => {
   //   setOpenMenu(openMenu === menuName ? null : menuName);
   // };
