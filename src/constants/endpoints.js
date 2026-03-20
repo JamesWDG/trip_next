@@ -15,8 +15,7 @@ export const ENDPOINTS = Object.freeze({
   // DASHBOARD
   STATS: "analytics/counts",
   USER_ONBOARDING: "analytics/users-stats",
-  USER_ONBOARDING_EXPORT: (scope = "monthly") =>
-    `analytics/users-stats/export?scope=${scope}`,
+  USER_ONBOARDING_EXPORT: (scope = "monthly") => `analytics/users-stats/export?scope=${scope}`,
   REVENUE_SUMMARY: (from, to) => {
     const params = [];
     if (from) params.push(`from=${from}`);
@@ -45,10 +44,8 @@ export const ENDPOINTS = Object.freeze({
     const qs = params.length ? `?${params.join("&")}` : "";
     return `analytics/revenue-by-type/export${qs}`;
   },
-  EARNINGS_ANALYTICS: (period = "monthly") =>
-    `analytics/earnings?period=${period}`,
-  EARNINGS_ANALYTICS_EXPORT: (period = "monthly") =>
-    `analytics/earnings/export?period=${period}`,
+  EARNINGS_ANALYTICS: (period = "monthly") => `analytics/earnings?period=${period}`,
+  EARNINGS_ANALYTICS_EXPORT: (period = "monthly") => `analytics/earnings/export?period=${period}`,
 
   // USER
   GET_USERS: (page = 1, limit = 10) => `user/all-users?page=${page}&limit=${limit}`,

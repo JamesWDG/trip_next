@@ -106,7 +106,7 @@ export default function HomePage() {
           getRevenueByType(),
           getAdminEarnings("monthly"),
         ]);
-
+ 
       if (userStatsRes) setApiData(userStatsRes);
       if (revenueSummaryRes) setRevenueSummary(revenueSummaryRes);
       if (revenueByTypeRes) setRevenueByType(revenueByTypeRes);
@@ -140,18 +140,10 @@ export default function HomePage() {
 
       {!loading && (
         <>
-          <div
-            className="d-flex justify-content-between align-items-center mb-3"
-          >
+          <div className="d-flex justify-content-start align-items-center mb-3">
             <h3 className={`dashboard-heading ${Outfit600.className}`}>
               Analytics Dashboard
             </h3>
-            <span
-              className={Outfit400.className}
-              style={{ fontSize: 13, color: "#6b7280" }}
-            >
-              High‑level view of revenue, users & earnings.
-            </span>
           </div>
 
           <div className="dashboard-card-wrapper mb-4">
@@ -192,10 +184,10 @@ export default function HomePage() {
                         src={icon}
                         alt={title}
                         className="img-fluid"
-                        style={{ width: 80, height: 80, objectFit: "contain" }}
+                        style={{ width: 90, height: 90, objectFit: "contain" }}
                       />
                     </div>
-                    <div>
+                    <div className="text-center">
                       <h6
                         className={Outfit400.className}
                         style={{
@@ -244,7 +236,7 @@ export default function HomePage() {
                     style={{ borderRadius: 16, border: "1px solid #f3e5ff" }}
                   >
                     <div className="card-divison">
-                      <div>
+                      <div className="d-flex flex-column gap-2">
                         <h6 className={`text-muted ${Outfit400.className}`}>
                           Total Gross Revenue
                         </h6>
@@ -261,7 +253,7 @@ export default function HomePage() {
                     style={{ borderRadius: 16, border: "1px solid #f3e5ff" }}
                   >
                     <div className="card-divison">
-                      <div>
+                      <div className="d-flex flex-column gap-2">
                         <h6 className={`text-muted ${Outfit400.className}`}>
                           Total Platform Commission
                         </h6>
