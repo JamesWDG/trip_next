@@ -33,6 +33,15 @@ function notePreview(note) {
 
 const FOOD_PROMO_SKELETON_ROWS = 8;
 
+function PromoNote({ note }) {
+  const { text, full } = notePreview(note);
+  return (
+    <span className="food-promo-note-text" title={full ?? undefined}>
+      {text}
+    </span>
+  );
+}
+
 function FoodPromosTableSkeleton() {
   return (
     <div className="table-responsive">
@@ -517,17 +526,7 @@ export default function FoodPromosPage() {
                   <tr key={row.id}>
                     <td className="small">{row.name}</td>
                     <td className="small food-promo-note-cell">
-                      {(() => {
-                        const { text, full } = notePreview(row.note);
-                        return (
-                          <span
-                            className="food-promo-note-text"
-                            title={full ?? undefined}
-                          >
-                            {text}
-                          </span>
-                        );
-                      })()}
+                      <PromoNote note={row.note} />
                     </td>
                     <td className="small">
                       {row.moduleScope === "ride"
