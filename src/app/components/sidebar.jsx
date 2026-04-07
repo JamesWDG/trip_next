@@ -75,7 +75,7 @@ const Sidebar2 = () => {
             <Link href={"/dashboard/food-promos"}>
               <div className="custom-flex">
                 <Image src={sidebarImg2} alt="" className="img-fluid" />
-                <p className="sidebar-hd">Food promo codes</p>
+                <p className="sidebar-hd">Promo codes</p>
               </div>
             </Link>
           </li>

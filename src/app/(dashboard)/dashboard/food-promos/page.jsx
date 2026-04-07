@@ -27,6 +27,7 @@ function FoodPromosTableSkeleton() {
         <thead>
           <tr>
             <th>Name</th>
+            <th>Category</th>
             <th>Code</th>
             <th>Value</th>
             <th>Used</th>
@@ -43,6 +44,9 @@ function FoodPromosTableSkeleton() {
                   className="skeleton"
                   style={{ height: 14, width: `${68 + (i % 4) * 6}%` }}
                 />
+              </td>
+              <td>
+                <div className="skeleton" style={{ height: 14, width: 56 }} />
               </td>
               <td>
                 <div className="skeleton" style={{ height: 14, width: "52%" }} />
@@ -90,6 +94,7 @@ export default function FoodPromosPage() {
   const [filterActive, setFilterActive] = useState("all");
   const [filterExpiry, setFilterExpiry] = useState("all");
   const [filterUsage, setFilterUsage] = useState("all");
+  const [filterScope, setFilterScope] = useState("all");
   const [sortBy, setSortBy] = useState("created_desc");
 
   const load = useCallback(async () => {
@@ -187,6 +192,14 @@ export default function FoodPromosPage() {
           (r.code && r.code.toLowerCase().includes(q)),
       );
     }
+    if (filterScope !== "all") {
+      rows = rows.filter((r) => {
+        const s = r.moduleScope || "food";
+        if (filterScope === "food") return s === "food" || s === "all";
+        if (filterScope === "ride") return s === "ride" || s === "all";
+        return true;
+      });
+    }
     if (filterType !== "all") {
       rows = rows.filter((r) => r.type === filterType);
     }
@@ -256,6 +269,7 @@ export default function FoodPromosPage() {
   }, [
     list,
     search,
+    filterScope,
     filterType,
     filterActive,
     filterExpiry,
@@ -265,6 +279,7 @@ export default function FoodPromosPage() {
 
   const clearFilters = () => {
     setSearch("");
+    setFilterScope("all");
     setFilterType("all");
     setFilterActive("all");
     setFilterExpiry("all");
@@ -274,6 +289,7 @@ export default function FoodPromosPage() {
 
   const hasActiveFilters =
     search.trim() ||
+    filterScope !== "all" ||
     filterType !== "all" ||
     filterActive !== "all" ||
     filterExpiry !== "all" ||
@@ -284,11 +300,11 @@ export default function FoodPromosPage() {
     <section className="main-content-area">
       <div className="d-flex flex-wrap align-items-start justify-content-between gap-4 mb-4">
         <div className="flex-grow-1" style={{ minWidth: "min(100%, 280px)" }}>
-          <h1 className="dashboard-hd mb-2">Food delivery — promo codes</h1>
+          <h1 className="dashboard-hd mb-2">Promo codes</h1>
           <p className="text-muted mb-0" style={{ maxWidth: "42rem" }}>
-            Create and manage codes for the customer app checkout. Percentage
-            applies to cart subtotal; fixed is a flat discount. Codes are stored
-            in lowercase. Deleting a promo deactivates it (soft delete).
+            Food and ride promos for the customer app. Pick a category when
+            creating a code. Expiry uses end of the selected day. Codes are
+            stored in lowercase; deactivating keeps history.
           </p>
         </div>
         <Link
@@ -316,6 +332,18 @@ export default function FoodPromosPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
+            </div>
+            <div className="col-6 col-md-4 col-lg-2">
+              <label className="form-label small text-muted mb-1">Category</label>
+              <select
+                className="form-select form-select-sm"
+                value={filterScope}
+                onChange={(e) => setFilterScope(e.target.value)}
+              >
+                <option value="all">All</option>
+                <option value="food">Food</option>
+                <option value="ride">Ride</option>
+              </select>
             </div>
             <div className="col-6 col-md-4 col-lg-2">
               <label className="form-label small text-muted mb-1">Type</label>
@@ -432,6 +460,7 @@ export default function FoodPromosPage() {
               <thead>
                 <tr>
                   <th>Name</th>
+                  <th>Category</th>
                   <th>Code</th>
                   <th>Value</th>
                   <th>Used</th>
@@ -444,6 +473,13 @@ export default function FoodPromosPage() {
                 {filteredRows.map((row) => (
                   <tr key={row.id}>
                     <td>{row.name}</td>
+                    <td className="small">
+                      {row.moduleScope === "ride"
+                        ? "Ride"
+                        : row.moduleScope === "all"
+                          ? "Both"
+                          : "Food"}
+                    </td>
                     <td>
                       <code>{row.code}</code>
                     </td>

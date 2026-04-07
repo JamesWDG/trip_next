@@ -3,12 +3,13 @@
 import React, { useEffect, useState } from "react";
 import { useToast } from "@/hooks/useToast";
 
-export function toDatetimeLocalValue(iso) {
+/** Date-only for <input type="date" /> from ISO */
+export function toDateInputValue(iso) {
   if (!iso) return "";
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "";
   const pad = (n) => String(n).padStart(2, "0");
-  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
 function emptyState() {
@@ -17,10 +18,11 @@ function emptyState() {
     code: "",
     discount: "",
     discountType: "percentage",
+    moduleScope: "food",
     minOrderAmount: "",
     maxDiscountAmount: "",
     usageLimit: "",
-    expiresAtLocal: "",
+    expiresAtDate: "",
     isActive: true,
   };
 }
@@ -32,27 +34,38 @@ function fromRow(row) {
     code: row.code ?? "",
     discount: String(row.discount ?? ""),
     discountType: row.type === "fixed" ? "fixed" : "percentage",
+    moduleScope:
+      row.moduleScope === "ride" || row.moduleScope === "all"
+        ? row.moduleScope
+        : "food",
     minOrderAmount:
       row.minOrderAmount != null ? String(row.minOrderAmount) : "",
     maxDiscountAmount:
       row.maxDiscountAmount != null ? String(row.maxDiscountAmount) : "",
     usageLimit: row.usageLimit != null ? String(row.usageLimit) : "",
-    expiresAtLocal: toDatetimeLocalValue(row.expiresAt),
+    expiresAtDate: toDateInputValue(row.expiresAt),
     isActive: !!row.isActive,
   };
 }
 
+/** Expiry at end of selected calendar day (UTC). */
 export function buildPromoPayload(values) {
   let expiresIso = null;
-  if (values.expiresAtLocal?.trim()) {
-    const d = new Date(values.expiresAtLocal);
+  if (values.expiresAtDate?.trim()) {
+    const raw = values.expiresAtDate.trim();
+    const d = new Date(`${raw}T23:59:59.999Z`);
     expiresIso = Number.isNaN(d.getTime()) ? null : d.toISOString();
   }
+  const scope =
+    values.moduleScope === "ride" || values.moduleScope === "all"
+      ? values.moduleScope
+      : "food";
   return {
     name: values.name.trim(),
     code: values.code.trim(),
     discount: Number(values.discount),
     discountType: values.discountType,
+    moduleScope: scope,
     minOrderAmount:
       values.minOrderAmount === "" ? null : Number(values.minOrderAmount),
     maxDiscountAmount:
@@ -105,6 +118,18 @@ export function FoodPromoForm({
     <form className="food-promo-form" onSubmit={handleSubmit}>
       <div className="row g-3">
         <div className="col-md-6">
+          <label className="form-label">Category</label>
+          <select
+            className="form-select"
+            value={values.moduleScope}
+            onChange={set("moduleScope")}
+          >
+            <option value="food">Food delivery</option>
+            <option value="ride">Ride / cab</option>
+            <option value="all">Both (food & ride)</option>
+          </select>
+        </div>
+        <div className="col-md-6">
           <label className="form-label">Name</label>
           <input
             className="form-control"
@@ -125,7 +150,7 @@ export function FoodPromoForm({
           />
         </div>
         <div className="col-md-6">
-          <label className="form-label">Type</label>
+          <label className="form-label">Discount type</label>
           <select
             className="form-select"
             value={values.discountType}
@@ -189,10 +214,13 @@ export function FoodPromoForm({
           <label className="form-label">Expires (optional)</label>
           <input
             className="form-control"
-            type="datetime-local"
-            value={values.expiresAtLocal}
-            onChange={set("expiresAtLocal")}
+            type="date"
+            value={values.expiresAtDate}
+            onChange={set("expiresAtDate")}
           />
+          <span className="form-text small text-muted">
+            If set, promo ends at the end of that day (23:59:59 UTC).
+          </span>
         </div>
         <div className="col-12">
           <div className="food-promo-form-check form-check">
