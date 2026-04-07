@@ -51,4 +51,12 @@ export const ENDPOINTS = Object.freeze({
   GET_USERS: (page = 1, limit = 10) => `user/all-users?page=${page}&limit=${limit}`,
   CREATE_USER: "user/create-user",
   DELETE_USER: (id) => `user/delete-user/${id}`,
+
+  // FOOD PROMOS (admin)
+  FOOD_PROMOS: "discount/food-promos",
+  FOOD_PROMO_BY_ID: (id) => `discount/food-promos/${id}`,
+
+  /** Admin: unified Payments table (checkouts) */
+  PAYMENTS: (limit = 50, offset = 0) =>
+    `payments?limit=${limit}&offset=${offset}`,
 });

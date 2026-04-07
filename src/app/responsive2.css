@@ -647,7 +647,7 @@
   }
 
   .input-wrapper .input-div select,
-  input {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="hidden"]):not([type="image"]) {
     font-size: 14px;
   }
 
@@ -894,7 +894,7 @@
   }
 
   .input-wrapper .input-div select,
-  input {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="hidden"]):not([type="image"]) {
     width: 100%;
     padding: 12px 22px;
   }
@@ -1000,12 +1000,12 @@
 
   .textarea-wrapper textarea,
   .input-wrapper .input-div select,
-  input {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="hidden"]):not([type="image"]) {
     font-size: 13px;
   }
 
   .input-wrapper .input-div select,
-  input {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="hidden"]):not([type="image"]) {
     width: 100%;
     padding: 12px 22px;
   }
@@ -1121,7 +1121,7 @@
   }
 
   .input-wrapper .input-div select,
-  input {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="hidden"]):not([type="image"]) {
     width: 100%;
     padding: 12px 22px;
   }

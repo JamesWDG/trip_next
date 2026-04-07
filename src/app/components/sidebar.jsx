@@ -69,6 +69,24 @@ const Sidebar2 = () => {
                 <p className="sidebar-hd">User Management</p>
               </div>
             </Link>
+          </li>
+
+          <li>
+            <Link href={"/dashboard/food-promos"}>
+              <div className="custom-flex">
+                <Image src={sidebarImg2} alt="" className="img-fluid" />
+                <p className="sidebar-hd">Food promo codes</p>
+              </div>
+            </Link>
+          </li>
+
+          <li>
+            <Link href={"/dashboard/checkouts"}>
+              <div className="custom-flex">
+                <Image src={sidebarImg2} alt="" className="img-fluid" />
+                <p className="sidebar-hd">Checkouts</p>
+              </div>
+            </Link>
             {/* <i
               className={`fa-solid fa-play ${
                 openMenu === "user" ? "rotate" : ""

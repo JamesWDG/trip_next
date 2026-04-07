@@ -1,8 +1,9 @@
+import { useCallback } from "react";
 import Swal from "sweetalert2";
 // import "sweetalert2/src/sweetalert2.scss";
 
 export function useToast() {
-  const toast = (message, type = "success") => {
+  const toast = useCallback((message, type = "success") => {
     Swal.fire({
       toast: true,
       position: "top-end",
@@ -12,11 +13,14 @@ export function useToast() {
       timer: 3000,
       timerProgressBar: true,
     });
-  };
+  }, []);
 
-  const success = (message) => toast(message, "success");
-  const error = (message) => toast(message, "error");
-  const info = (message) => toast(message, "info");
+  const success = useCallback(
+    (message) => toast(message, "success"),
+    [toast],
+  );
+  const error = useCallback((message) => toast(message, "error"), [toast]);
+  const info = useCallback((message) => toast(message, "info"), [toast]);
 
   return { success, error, info };
 }
