@@ -32,6 +32,16 @@ export async function updateFoodPromo(id, payload) {
   return response?.data;
 }
 
+/** @param {boolean} isActive */
+export async function patchFoodPromoActive(id, isActive) {
+  const response = await api.patch(
+    ENDPOINTS.FOOD_PROMO_ACTIVE(id),
+    { isActive },
+    { headers: attachToken() },
+  );
+  return response?.data;
+}
+
 /** @returns {Promise<any>} */
 export async function deleteFoodPromo(id) {
   const response = await api.remove(ENDPOINTS.FOOD_PROMO_BY_ID(id), {

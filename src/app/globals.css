@@ -9,6 +9,12 @@
   --red: #ee4026;
   --gray: #a3a3a3;
   --blue2: #0162c0;
+  /* Primary CTA — deep navy → violet (app-wide buttons) */
+  --dashboard-btn-gradient: linear-gradient(135deg, #1e0a3d 0%, #6a1b9a 100%);
+  --dashboard-btn-gradient-hover: linear-gradient(135deg, #2a0f52 0%, #7b23b0 100%);
+  --dashboard-btn-gradient-active: linear-gradient(135deg, #18082f 0%, #5a1785 100%);
+  --dashboard-btn-shadow: 0 4px 16px rgba(30, 10, 61, 0.32);
+  --dashboard-btn-radius: 10px;
 }
 
 body {
@@ -673,10 +679,11 @@ td {
 }
 
 .page-btn.active {
-  background: linear-gradient(180deg, #3b0ef0, #6a00ff);
+  background: var(--dashboard-btn-gradient);
   color: #fff;
   border: none;
-  font-weight: bold;
+  font-weight: 600;
+  box-shadow: var(--dashboard-btn-shadow);
 }
 
 .pagination-ellipsis {
@@ -935,14 +942,36 @@ td {
 .gradient-button {
   padding: 17px 30px;
   border: none;
-  border-radius: 5px;
-  box-shadow: 7px 0px 80px 0px #0000000d;
-  background: linear-gradient(180deg, #120f34, #6d1697);
+  border-radius: var(--dashboard-btn-radius);
+  box-shadow: var(--dashboard-btn-shadow);
+  background: var(--dashboard-btn-gradient);
   display: flex;
   align-items: center;
   gap: 9px;
-  color: var(--background);
-  font-size: 31px;
+  color: #ffffff !important;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.gradient-button:hover {
+  background: var(--dashboard-btn-gradient-hover);
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(30, 10, 61, 0.4);
+}
+
+.gradient-button:active {
+  background: var(--dashboard-btn-gradient-active);
+  transform: translateY(0);
+}
+
+.gradient-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
 }
 
 /* Analytics & Reports page start */
@@ -1123,19 +1152,6 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="s
   margin-bottom: 20px;
 }
 
-.gradient-button {
-  padding: 17px 30px;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 7px 0px 80px 0px #0000000d;
-  background: linear-gradient(180deg, #120f34, #6d1697);
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  color: var(--background);
-  font-size: 31px;
-}
-
 .create-user-btn {
   padding: 12px 24px !important;
   font-size: 16px !important;
@@ -1256,20 +1272,23 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="s
 }
 
 .submit-btn {
-  background: linear-gradient(180deg, #120f34, #6d1697);
+  background: var(--dashboard-btn-gradient);
   color: #fff;
   border: none;
   padding: 12px 30px;
-  border-radius: 5px;
+  border-radius: var(--dashboard-btn-radius);
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
   cursor: pointer;
-  transition: opacity 0.3s ease;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
   margin-top: 20px;
+  box-shadow: var(--dashboard-btn-shadow);
 }
 
 .submit-btn:hover {
-  opacity: 0.9;
+  background: var(--dashboard-btn-gradient-hover);
+  transform: translateY(-1px);
 }
 
 .submit-btn:disabled {
@@ -1777,21 +1796,23 @@ main {
 .login-btn {
   width: 100%;
   padding: 16px;
-  background: linear-gradient(180deg, #3b0ef0, #6a00ff);
+  background: var(--dashboard-btn-gradient);
   color: #ffffff;
   border: none;
-  border-radius: 10px;
+  border-radius: var(--dashboard-btn-radius);
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
   margin-top: 10px;
+  box-shadow: var(--dashboard-btn-shadow);
 }
 
 .login-btn:hover {
-  background: linear-gradient(180deg, #2d0dd9, #5500cc);
+  background: var(--dashboard-btn-gradient-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(106, 0, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(30, 10, 61, 0.38);
 }
 
 .login-btn:disabled {
@@ -1807,33 +1828,39 @@ main {
 /* ===== SweetAlert2 Custom Styles ===== */
 
 .swal-confirm-btn {
-  background: linear-gradient(180deg, #120f34, #6d1697);
-  transition: all 0.3s ease !important;
+  background: var(--dashboard-btn-gradient) !important;
+  border: none !important;
+  border-radius: var(--dashboard-btn-radius) !important;
+  font-weight: 600 !important;
+  box-shadow: var(--dashboard-btn-shadow) !important;
+  transition: transform 0.15s ease, filter 0.2s ease !important;
 }
 
 .swal-confirm-btn:hover {
-  opacity: 0.9;
+  background: var(--dashboard-btn-gradient-hover) !important;
+  filter: brightness(1.03);
 }
 
-/* Food promo admin — single themed CTA (matches dashboard --blue) */
+/* Food promo admin — same CTA theme as dashboard */
 .food-promo-cta {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 1rem;
   color: #fff !important;
-  background: linear-gradient(135deg, #295568 0%, #1e3f4d 100%);
+  background: var(--dashboard-btn-gradient);
   border: none;
-  border-radius: 10px;
+  border-radius: var(--dashboard-btn-radius);
   padding: 0.85rem 1.75rem;
-  box-shadow: 0 4px 14px rgba(41, 85, 104, 0.28);
+  box-shadow: var(--dashboard-btn-shadow);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   white-space: nowrap;
 }
 
 .food-promo-cta:hover {
   color: #fff !important;
+  background: var(--dashboard-btn-gradient-hover);
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(41, 85, 104, 0.38);
+  box-shadow: 0 6px 20px rgba(30, 10, 61, 0.42);
 }
 
 .food-promo-cta:active {
@@ -1932,4 +1959,110 @@ main {
 
 .food-promo-form .food-promo-form-check .form-check-label {
   color: var(--black);
+}
+
+/* Food promos list table — align with other dashboard data tables */
+.main-content-area .food-promo-list-table thead th {
+  vertical-align: middle;
+  font-weight: 600;
+  color: #495057;
+}
+
+.main-content-area .food-promo-list-table tbody td {
+  vertical-align: middle;
+}
+
+.main-content-area .food-promo-list-table code.food-promo-code {
+  color: #7b23b0;
+  background: rgba(106, 27, 154, 0.08);
+  padding: 0.2rem 0.45rem;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+}
+
+.main-content-area .food-promo-active-col {
+  width: 1%;
+  white-space: nowrap;
+}
+
+/* Active column: purple toggle switch */
+.food-promo-active-switch.form-check {
+  margin-bottom: 0;
+  min-height: 0;
+}
+
+.food-promo-active-switch .form-check-input {
+  cursor: pointer;
+  width: 2.5em;
+  height: 1.25em;
+  margin-top: 0.125em;
+}
+
+.food-promo-active-switch .form-check-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(106, 27, 154, 0.28);
+  border-color: #7b23b0;
+}
+
+.food-promo-active-switch .form-check-input:checked {
+  background-color: #6a1b9a;
+  border-color: #6a1b9a;
+}
+
+.food-promo-active-switch .form-check-input:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Bootstrap buttons in dashboard — unified purple CTA */
+main .btn-primary,
+.main-content-area .btn-primary {
+  background: var(--dashboard-btn-gradient);
+  border: none;
+  color: #fff !important;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  border-radius: var(--dashboard-btn-radius);
+  box-shadow: var(--dashboard-btn-shadow);
+}
+
+main .btn-primary:hover,
+.main-content-area .btn-primary:hover,
+main .btn-primary:focus,
+.main-content-area .btn-primary:focus {
+  background: var(--dashboard-btn-gradient-hover);
+  color: #fff !important;
+}
+
+main .btn-primary:active,
+.main-content-area .btn-primary:active {
+  background: var(--dashboard-btn-gradient-active);
+}
+
+main .btn-outline-primary,
+.main-content-area .btn-outline-primary {
+  color: #6a1b9a !important;
+  border: 2px solid #7b23b0;
+  border-radius: var(--dashboard-btn-radius);
+  font-weight: 600;
+  background: transparent;
+}
+
+main .btn-outline-primary:hover,
+.main-content-area .btn-outline-primary:hover {
+  background: var(--dashboard-btn-gradient);
+  border-color: transparent;
+  color: #fff !important;
+}
+
+main .btn-outline-dark,
+.main-content-area .btn-outline-dark {
+  border-radius: var(--dashboard-btn-radius);
+  font-weight: 500;
+}
+
+main .btn-outline-dark:hover,
+.main-content-area .btn-outline-dark:hover {
+  border-color: #6a1b9a;
+  color: #6a1b9a;
+  background: rgba(106, 27, 154, 0.08);
 }

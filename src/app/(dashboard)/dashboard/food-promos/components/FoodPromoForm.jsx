@@ -15,6 +15,7 @@ export function toDateInputValue(iso) {
 function emptyState() {
   return {
     name: "",
+    note: "",
     code: "",
     discount: "",
     discountType: "percentage",
@@ -31,6 +32,7 @@ function fromRow(row) {
   if (!row) return emptyState();
   return {
     name: row.name ?? "",
+    note: row.note ?? "",
     code: row.code ?? "",
     discount: String(row.discount ?? ""),
     discountType: row.type === "fixed" ? "fixed" : "percentage",
@@ -62,6 +64,7 @@ export function buildPromoPayload(values) {
       : "food";
   return {
     name: values.name.trim(),
+    note: values.note?.trim() ? values.note.trim() : null,
     code: values.code.trim(),
     discount: Number(values.discount),
     discountType: values.discountType,
@@ -137,6 +140,16 @@ export function FoodPromoForm({
             onChange={set("name")}
             placeholder="Summer sale"
             autoFocus={!initialData}
+          />
+        </div>
+        <div className="col-12">
+          <label className="form-label">Note (optional)</label>
+          <textarea
+            className="form-control"
+            rows={2}
+            value={values.note}
+            onChange={set("note")}
+            placeholder="Internal or vendor-facing note (e.g. shown with ride promos)"
           />
         </div>
         <div className="col-md-6">

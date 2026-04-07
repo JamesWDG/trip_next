@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/useToast";
 import {
   deleteFoodPromo,
   getFoodPromos,
+  patchFoodPromoActive,
   updateFoodPromo,
 } from "@/services/discountService";
 import { FoodPromoForm } from "./components/FoodPromoForm";
@@ -18,55 +19,80 @@ function formatExpiry(iso) {
   return d.toLocaleString();
 }
 
+const NOTE_PREVIEW_LEN = 56;
+
+function notePreview(note) {
+  if (note == null || String(note).trim() === "") return { text: "—", full: null };
+  const full = String(note).trim();
+  if (full.length <= NOTE_PREVIEW_LEN) return { text: full, full: null };
+  return {
+    text: `${full.slice(0, NOTE_PREVIEW_LEN - 1)}…`,
+    full,
+  };
+}
+
 const FOOD_PROMO_SKELETON_ROWS = 8;
 
 function FoodPromosTableSkeleton() {
   return (
     <div className="table-responsive">
-      <table className="table table-sm align-middle mb-0 food-promo-table-skeleton">
-        <thead>
+      <table className="table table-hover table-sm align-middle mb-0 food-promo-list-table food-promo-table-skeleton">
+        <thead className="table-light">
           <tr>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Code</th>
-            <th>Value</th>
-            <th>Used</th>
-            <th>Expires</th>
-            <th>Active</th>
-            <th className="text-end">Actions</th>
+            <th className="small text-nowrap">Name</th>
+            <th className="small">Note</th>
+            <th className="small text-nowrap">Category</th>
+            <th className="small text-nowrap">Code</th>
+            <th className="small text-nowrap">Value</th>
+            <th className="small text-nowrap">Used</th>
+            <th className="small text-nowrap">Expires</th>
+            <th className="small text-center text-nowrap food-promo-active-col">
+              Active
+            </th>
+            <th className="small text-end text-nowrap">Actions</th>
           </tr>
         </thead>
         <tbody>
           {Array.from({ length: FOOD_PROMO_SKELETON_ROWS }, (_, i) => (
             <tr key={i}>
-              <td>
+              <td className="small">
                 <div
                   className="skeleton"
                   style={{ height: 14, width: `${68 + (i % 4) * 6}%` }}
                 />
               </td>
-              <td>
+              <td className="small food-promo-note-cell">
+                <div className="skeleton" style={{ height: 14, width: "88%" }} />
+              </td>
+              <td className="small">
                 <div className="skeleton" style={{ height: 14, width: 56 }} />
               </td>
-              <td>
+              <td className="small">
                 <div className="skeleton" style={{ height: 14, width: "52%" }} />
               </td>
-              <td>
+              <td className="small">
                 <div className="skeleton" style={{ height: 14, width: 40 }} />
               </td>
-              <td>
+              <td className="small">
                 <div className="skeleton" style={{ height: 14, width: 56 }} />
               </td>
-              <td>
+              <td className="small">
                 <div
                   className="skeleton"
                   style={{ height: 14, width: `${62 + (i % 3) * 8}%` }}
                 />
               </td>
-              <td>
-                <div className="skeleton" style={{ height: 14, width: 28 }} />
+              <td className="text-center align-middle food-promo-active-col">
+                <div
+                  className="skeleton mx-auto"
+                  style={{
+                    height: 22,
+                    width: 44,
+                    borderRadius: 999,
+                  }}
+                />
               </td>
-              <td className="text-end">
+              <td className="text-end small">
                 <div
                   className="skeleton ms-auto"
                   style={{ height: 28, width: 96, borderRadius: 6 }}
@@ -85,6 +111,7 @@ export default function FoodPromosPage() {
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [togglingId, setTogglingId] = useState(null);
   const [loadHint, setLoadHint] = useState(null);
 
   const [editingRow, setEditingRow] = useState(null);
@@ -166,19 +193,32 @@ export default function FoodPromosPage() {
 
   const handleDelete = async (row) => {
     const ok = window.confirm(
-      `Deactivate promo "${row.code}"? It will stop working for new checkouts.`,
+      `Delete promo "${row.code}" permanently? Past orders may lose the link to this code.`,
     );
     if (!ok) return;
     setSaving(true);
     try {
       await deleteFoodPromo(row.id);
-      success("Promo deactivated");
+      success("Promo deleted");
       if (editingRow?.id === row.id) closeModal();
       await load();
     } catch (e) {
-      error(e?.message || "Could not deactivate promo");
+      error(e?.message || "Could not delete promo");
     } finally {
       setSaving(false);
+    }
+  };
+
+  const handleToggleActive = async (row, nextActive) => {
+    setTogglingId(row.id);
+    try {
+      await patchFoodPromoActive(row.id, nextActive);
+      success(nextActive ? "Promo activated" : "Promo deactivated");
+      await load();
+    } catch (e) {
+      error(e?.message || "Could not update promo status");
+    } finally {
+      setTogglingId(null);
     }
   };
 
@@ -456,23 +496,39 @@ export default function FoodPromosPage() {
           </div>
         ) : (
           <div className="table-responsive">
-            <table className="table table-sm align-middle mb-0">
-              <thead>
+            <table className="table table-hover table-sm align-middle mb-0 food-promo-list-table">
+              <thead className="table-light">
                 <tr>
-                  <th>Name</th>
-                  <th>Category</th>
-                  <th>Code</th>
-                  <th>Value</th>
-                  <th>Used</th>
-                  <th>Expires</th>
-                  <th>Active</th>
-                  <th className="text-end">Actions</th>
+                  <th className="small text-nowrap">Name</th>
+                  <th className="small">Note</th>
+                  <th className="small text-nowrap">Category</th>
+                  <th className="small text-nowrap">Code</th>
+                  <th className="small text-nowrap">Value</th>
+                  <th className="small text-nowrap">Used</th>
+                  <th className="small text-nowrap">Expires</th>
+                  <th className="small text-center text-nowrap food-promo-active-col">
+                    Active
+                  </th>
+                  <th className="small text-end text-nowrap">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredRows.map((row) => (
                   <tr key={row.id}>
-                    <td>{row.name}</td>
+                    <td className="small">{row.name}</td>
+                    <td className="small food-promo-note-cell">
+                      {(() => {
+                        const { text, full } = notePreview(row.note);
+                        return (
+                          <span
+                            className="food-promo-note-text"
+                            title={full ?? undefined}
+                          >
+                            {text}
+                          </span>
+                        );
+                      })()}
+                    </td>
                     <td className="small">
                       {row.moduleScope === "ride"
                         ? "Ride"
@@ -480,23 +536,47 @@ export default function FoodPromosPage() {
                           ? "Both"
                           : "Food"}
                     </td>
-                    <td>
-                      <code>{row.code}</code>
+                    <td className="small">
+                      <code className="food-promo-code">{row.code}</code>
                     </td>
-                    <td>
+                    <td className="small fw-semibold">
                       {row.type === "percentage"
                         ? `${row.discount}%`
                         : row.discount}
                     </td>
-                    <td>
+                    <td className="small">
                       {row.usageCount ?? 0}
                       {row.usageLimit != null ? ` / ${row.usageLimit}` : ""}
                     </td>
                     <td className="small text-muted">
                       {formatExpiry(row.expiresAt)}
                     </td>
-                    <td>{row.isActive ? "Yes" : "No"}</td>
-                    <td className="text-end text-nowrap">
+                    <td className="text-center align-middle food-promo-active-cell food-promo-active-col">
+                      <div className="form-check form-switch food-promo-active-switch d-inline-block mb-0">
+                        <input
+                          id={`promo-active-${row.id}`}
+                          type="checkbox"
+                          role="switch"
+                          className="form-check-input"
+                          checked={!!row.isActive}
+                          disabled={saving || togglingId === row.id}
+                          onChange={(e) =>
+                            handleToggleActive(row, e.target.checked)
+                          }
+                          title={
+                            row.isActive
+                              ? "Switch off to deactivate"
+                              : "Switch on to activate"
+                          }
+                          aria-label={
+                            row.isActive
+                              ? "Active: on. Click to deactivate"
+                              : "Active: off. Click to activate"
+                          }
+                        />
+                      </div>
+                    </td>
+                    <td className="text-end text-nowrap small">
                       <button
                         type="button"
                         className="btn btn-sm btn-outline-primary me-1"
@@ -509,12 +589,8 @@ export default function FoodPromosPage() {
                         type="button"
                         className="btn btn-sm btn-outline-danger"
                         onClick={() => handleDelete(row)}
-                        disabled={saving || !row.isActive}
-                        title={
-                          !row.isActive
-                            ? "Already inactive"
-                            : "Deactivate promo"
-                        }
+                        disabled={saving}
+                        title="Delete promo permanently"
                       >
                         Delete
                       </button>

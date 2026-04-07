@@ -55,6 +55,7 @@ export const ENDPOINTS = Object.freeze({
   // FOOD PROMOS (admin)
   FOOD_PROMOS: "discount/food-promos",
   FOOD_PROMO_BY_ID: (id) => `discount/food-promos/${id}`,
+  FOOD_PROMO_ACTIVE: (id) => `discount/food-promos/${id}/active`,
 
   /** Admin: unified Payments table (checkouts) */
   PAYMENTS: (limit = 50, offset = 0) =>
