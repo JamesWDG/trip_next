@@ -81,6 +81,15 @@ const Sidebar2 = () => {
           </li>
 
           <li>
+            <Link href={"/dashboard/banners"}>
+              <div className="custom-flex">
+                <Image src={sidebarImg2} alt="" className="img-fluid" />
+                <p className="sidebar-hd">Banners</p>
+              </div>
+            </Link>
+          </li>
+
+          <li>
             <Link href={"/dashboard/checkouts"}>
               <div className="custom-flex">
                 <Image src={sidebarImg2} alt="" className="img-fluid" />

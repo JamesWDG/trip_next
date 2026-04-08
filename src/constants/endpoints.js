@@ -60,4 +60,8 @@ export const ENDPOINTS = Object.freeze({
   /** Admin: unified Payments table (checkouts) */
   PAYMENTS: (limit = 50, offset = 0) =>
     `payments?limit=${limit}&offset=${offset}`,
+
+  /** Home banners (admin CMS) — flow: hotel | ride | food */
+  CONTENT_ADMIN_BANNERS: "content/admin/banners",
+  CONTENT_ADMIN_BANNER_BY_ID: (id) => `content/admin/banners/${id}`,
 });
