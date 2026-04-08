@@ -64,4 +64,7 @@ export const ENDPOINTS = Object.freeze({
   /** Home banners (admin CMS) — flow: hotel | ride | food */
   CONTENT_ADMIN_BANNERS: "content/admin/banners",
   CONTENT_ADMIN_BANNER_BY_ID: (id) => `content/admin/banners/${id}`,
+
+  /** Admin multipart: field name `images` — returns { urls: string[] } (under content so it deploys with banner API) */
+  UPLOAD_ADMIN_BANNERS: "content/admin/banners/upload",
 });

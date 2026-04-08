@@ -13,13 +13,20 @@ export default function NewBannerPage() {
   const [saving, setSaving] = useState(false);
 
   const handleSubmit = async (payload) => {
+    const list = Array.isArray(payload) ? payload : [payload];
     setSaving(true);
     try {
-      await createBanner(payload);
-      success("Banner created");
+      for (const p of list) {
+        await createBanner(p);
+      }
+      success(
+        list.length > 1
+          ? `${list.length} banners created`
+          : "Banner created",
+      );
       router.push("/dashboard/banners");
     } catch (e) {
-      error(e?.message || "Could not create banner");
+      error(e?.message || "Could not create banner(s)");
     } finally {
       setSaving(false);
     }
@@ -36,8 +43,8 @@ export default function NewBannerPage() {
         </Link>
         <h1 className="dashboard-hd mb-2">Add banner</h1>
         <p className="text-muted mb-0" style={{ maxWidth: "42rem" }}>
-          Paste a public image URL. Pick which home flow it belongs to; ordering
-          is controlled by sort order within that flow.
+          Upload one or more images from your device. Pick the flow; sort order
+          sets the first slide, then increases by 1 for each extra image.
         </p>
       </div>
 

@@ -1,13 +1,17 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useToast } from "@/hooks/useToast";
+import { uploadBannerImages } from "@/services/bannerService";
 
 const FLOWS = [
   { value: "food", label: "Food delivery" },
   { value: "ride", label: "Ride / cab" },
   { value: "hotel", label: "Hotels / stay" },
 ];
+
+const MAX_FILES = 15;
+const ACCEPT = "image/jpeg,image/png,image/webp,image/gif";
 
 function emptyState() {
   return {
@@ -37,14 +41,21 @@ function fromRow(row) {
   };
 }
 
-export function buildBannerPayload(values) {
+/**
+ * @param {object} values
+ * @param {string} [imageUrlOverride]
+ */
+export function buildBannerPayload(values, imageUrlOverride) {
+  const urlRaw =
+    imageUrlOverride != null ? imageUrlOverride : values.imageUrl;
+  const url = String(urlRaw ?? "").trim();
   const sort =
     values.sortOrder === "" || values.sortOrder == null
       ? 0
       : Number(values.sortOrder);
   return {
     flow: values.flow,
-    imageUrl: values.imageUrl.trim(),
+    imageUrl: url,
     title: values.title?.trim() ? values.title.trim() : null,
     subtitle: values.subtitle?.trim() ? values.subtitle.trim() : null,
     linkUrl: values.linkUrl?.trim() ? values.linkUrl.trim() : null,
@@ -56,7 +67,7 @@ export function buildBannerPayload(values) {
 /**
  * @param {object} props
  * @param {object | null} [props.initialData]
- * @param {(payload: object) => Promise<void>} props.onSubmit
+ * @param {(payload: object | object[]) => Promise<void>} props.onSubmit — single banner or batch (create)
  * @param {() => void} [props.onCancel]
  * @param {boolean} props.saving
  * @param {string} props.submitLabel
@@ -72,9 +83,20 @@ export function BannerForm({
 }) {
   const { error } = useToast();
   const [values, setValues] = useState(() => fromRow(initialData));
+  const [pendingFiles, setPendingFiles] = useState([]);
+  const [replaceFile, setReplaceFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [dragOver, setDragOver] = useState(false);
+  const fileInputRef = useRef(null);
+  const replaceInputRef = useRef(null);
+
+  const isEdit = initialData != null;
+  const busy = saving || uploading;
 
   useEffect(() => {
     setValues(fromRow(initialData));
+    setPendingFiles([]);
+    setReplaceFile(null);
   }, [initialData]);
 
   const set = (key) => (e) => {
@@ -82,13 +104,88 @@ export function BannerForm({
     setValues((prev) => ({ ...prev, [key]: v }));
   };
 
+  const clearFiles = () => {
+    setPendingFiles([]);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
+  const addImageFiles = (fileList) => {
+    const list = Array.from(fileList || []).filter((f) =>
+      /^image\//i.test(f.type),
+    );
+    if (!list.length) return;
+    const next = [...pendingFiles, ...list].slice(0, MAX_FILES);
+    setPendingFiles(next);
+    setValues((prev) => ({ ...prev, imageUrl: "" }));
+  };
+
+  const onPickFiles = (e) => {
+    addImageFiles(e.target.files);
+    e.target.value = "";
+  };
+
+  const onDropFiles = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragOver(false);
+    addImageFiles(e.dataTransfer?.files);
+  };
+
+  const removeFileAt = (idx) => {
+    setPendingFiles((prev) => prev.filter((_, i) => i !== idx));
+  };
+
+  const onPickReplace = (e) => {
+    const f = e.target.files?.[0];
+    setReplaceFile(f || null);
+    e.target.value = "";
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!values.imageUrl.trim()) {
-      error("Image URL is required");
+
+    if (isEdit) {
+      let imageUrl = values.imageUrl.trim();
+      if (replaceFile) {
+        setUploading(true);
+        try {
+          const [u] = await uploadBannerImages([replaceFile]);
+          imageUrl = u;
+        } catch (err) {
+          error(err?.message || "Upload failed");
+          return;
+        } finally {
+          setUploading(false);
+        }
+      }
+      if (!imageUrl) {
+        error("Image URL or a new image file is required");
+        return;
+      }
+      await onSubmit(buildBannerPayload(values, imageUrl));
       return;
     }
-    await onSubmit(buildBannerPayload(values));
+
+    if (pendingFiles.length > 0) {
+      setUploading(true);
+      try {
+        const urls = await uploadBannerImages(pendingFiles);
+        const baseSort = Number(values.sortOrder) || 0;
+        const payloads = urls.map((url, i) => ({
+          ...buildBannerPayload(values, url),
+          sortOrder: baseSort + i,
+        }));
+        await onSubmit(payloads.length === 1 ? payloads[0] : payloads);
+      } catch (err) {
+        error(err?.message || "Upload failed");
+      } finally {
+        setUploading(false);
+      }
+      return;
+    }
+
+    error("Select at least one image from your device");
+    return;
   };
 
   const formInner = (
@@ -122,19 +219,153 @@ export function BannerForm({
             placeholder="0"
           />
           <span className="form-text small text-muted">
-            Lower numbers show first within the same flow.
+            {isEdit
+              ? "Lower numbers show first within the same flow."
+              : "Starting order; multiple uploads get 0, 1, 2… after this base."}
           </span>
         </div>
+
         <div className="col-12">
-          <label className="form-label">Image URL</label>
-          <input
-            className="form-control"
-            value={values.imageUrl}
-            onChange={set("imageUrl")}
-            placeholder="https://…"
-            autoFocus={!initialData}
-          />
+          <label className="form-label">
+            {isEdit ? "Image" : "Banner images (from device)"}
+          </label>
+          {!isEdit ? (
+            <>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept={ACCEPT}
+                multiple
+                className="d-none"
+                id="banner-files-input"
+                onChange={onPickFiles}
+              />
+              <div
+                className={`rounded-3 border border-2 p-4 mb-3 text-center ${
+                  dragOver
+                    ? "border-primary bg-primary bg-opacity-10"
+                    : "border-secondary border-opacity-25 bg-light"
+                }`}
+                style={{ cursor: busy ? "not-allowed" : "pointer" }}
+                onClick={() => !busy && fileInputRef.current?.click()}
+                onDragEnter={(e) => {
+                  e.preventDefault();
+                  if (!busy) setDragOver(true);
+                }}
+                onDragOver={(e) => {
+                  e.preventDefault();
+                  if (!busy) setDragOver(true);
+                }}
+                onDragLeave={() => setDragOver(false)}
+                onDrop={busy ? undefined : onDropFiles}
+              >
+                <p className="mb-2 fw-semibold text-body">
+                  Upload from your device
+                </p>
+                <p className="small text-muted mb-3 mb-md-2">
+                  Drag and drop images here, or tap to choose files (gallery /
+                  camera on phone).
+                </p>
+                <button
+                  type="button"
+                  className="food-promo-cta food-promo-cta--modal btn-sm px-4 py-2"
+                  disabled={busy}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    fileInputRef.current?.click();
+                  }}
+                >
+                  Choose images from device
+                </button>
+                {pendingFiles.length > 0 ? (
+                  <div className="mt-3">
+                    <button
+                      type="button"
+                      className="btn btn-link btn-sm p-0"
+                      disabled={busy}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        clearFiles();
+                      }}
+                    >
+                      Clear selected ({pendingFiles.length})
+                    </button>
+                  </div>
+                ) : null}
+              </div>
+              {pendingFiles.length > 0 ? (
+                <ul className="list-unstyled small mb-2 border rounded p-2 bg-light">
+                  {pendingFiles.map((f, idx) => (
+                    <li
+                      key={`${f.name}-${idx}`}
+                      className="d-flex justify-content-between align-items-center py-1 gap-2"
+                    >
+                      <span className="text-truncate" title={f.name}>
+                        {f.name}
+                      </span>
+                      <button
+                        type="button"
+                        className="btn btn-sm btn-outline-danger"
+                        disabled={busy}
+                        onClick={() => removeFileAt(idx)}
+                      >
+                        Remove
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+              <span className="form-text small text-muted d-block mt-2">
+                Select up to {MAX_FILES} images to create that many banners at
+                once (same title, subtitle, link, flow). Sort order increases by
+                1 for each.
+              </span>
+            </>
+          ) : (
+            <>
+              <div className="d-flex flex-wrap align-items-center gap-2 mb-2">
+                <input
+                  ref={replaceInputRef}
+                  type="file"
+                  accept={ACCEPT}
+                  className="d-none"
+                  id="banner-replace-input"
+                  onChange={onPickReplace}
+                />
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary btn-sm"
+                  disabled={busy}
+                  onClick={() => replaceInputRef.current?.click()}
+                >
+                  Replace with file from device
+                </button>
+                {replaceFile ? (
+                  <span className="small text-truncate" title={replaceFile.name}>
+                    {replaceFile.name}
+                    <button
+                      type="button"
+                      className="btn btn-link btn-sm p-0 ms-1"
+                      onClick={() => setReplaceFile(null)}
+                    >
+                      Clear
+                    </button>
+                  </span>
+                ) : null}
+              </div>
+              <label className="form-label small text-muted mb-1">
+                Image URL
+              </label>
+              <input
+                className="form-control"
+                value={values.imageUrl}
+                onChange={set("imageUrl")}
+                placeholder="https://…"
+              />
+            </>
+          )}
         </div>
+
         <div className="col-md-6">
           <label className="form-label">Title (optional)</label>
           <input
@@ -185,7 +416,7 @@ export function BannerForm({
             type="button"
             className="btn btn-outline-secondary"
             onClick={onCancel}
-            disabled={saving}
+            disabled={busy}
           >
             Cancel
           </button>
@@ -193,9 +424,9 @@ export function BannerForm({
         <button
           type="submit"
           className="food-promo-cta food-promo-cta--modal"
-          disabled={saving}
+          disabled={busy}
         >
-          {saving ? "Saving…" : submitLabel}
+          {uploading ? "Uploading…" : saving ? "Saving…" : submitLabel}
         </button>
       </div>
     </form>
