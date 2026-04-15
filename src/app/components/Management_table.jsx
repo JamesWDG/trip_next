@@ -54,7 +54,9 @@ const Management_table = ({
   total = 0,
   limit = 10,
   onPageChange = () => {},
-  onDelete = () => {}
+  onDelete = () => {},
+  onToggleStatus = null,
+  pendingStatusById = {},
 }) => {
 
   return (
@@ -77,7 +79,33 @@ const Management_table = ({
                 <td className={`${Roboto500.className}`}>{item.email}</td>
                 <td className={`${Roboto500.className}`}>{item.phone}</td>
                 <td className={`${Roboto500.className}`}>{item.date}</td>
-                <td className={`${Roboto500.className}`}>{item.status}</td>
+                <td className={`${Roboto500.className}`}>
+                  {onToggleStatus ? (
+                    <div className="user-status-cell">
+                      <div className="form-check form-switch user-status-switch d-inline-block mb-0">
+                        <input
+                          id={`user-status-${item.id}`}
+                          type="checkbox"
+                          role="switch"
+                          className="form-check-input"
+                          checked={!!item.isActive}
+                          disabled={!!pendingStatusById[item.id]}
+                          onChange={(e) => onToggleStatus(item, e.target.checked)}
+                          aria-label={
+                            item.isActive
+                              ? "Active: on. Click to deactivate"
+                              : "Active: off. Click to activate"
+                          }
+                        />
+                      </div>
+                      <span className={`user-status-text ${item.isActive ? "active" : "inactive"}`}>
+                        {item.isActive ? "Active" : "Inactive"}
+                      </span>
+                    </div>
+                  ) : (
+                    item.status
+                  )}
+                </td>
 
                 <td className={`${Roboto500.className}`}>
                   <button

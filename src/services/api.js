@@ -28,9 +28,12 @@ export async function request(endpoint, options = {}) {
   const parsedData = text ? JSON.parse(text) : text;
 
   if (!response.ok) {
-    throw new Error(
+    const error = new Error(
       parsedData?.message || `Request failed with status ${response.status}`,
     );
+    error.status = response.status;
+    error.data = parsedData;
+    throw error;
   }
 
   // COMMENT LATER

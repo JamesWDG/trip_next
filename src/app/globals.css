@@ -1340,6 +1340,47 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="s
   color: #666;
 }
 
+.user-status-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-status-switch.form-check {
+  margin-bottom: 0;
+  min-height: 0;
+}
+
+.user-status-switch .form-check-input {
+  cursor: pointer;
+  width: 2.8em;
+  height: 1.4em;
+  margin-top: 0;
+}
+
+.user-status-switch .form-check-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(106, 27, 154, 0.18);
+  border-color: #7b23b0;
+}
+
+.user-status-switch .form-check-input:checked {
+  background-color: #6a1b9a;
+  border-color: #6a1b9a;
+}
+
+.user-status-switch .form-check-input:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.user-status-text.active {
+  color: #04850d;
+}
+
+.user-status-text.inactive {
+  color: #7d7d7d;
+}
+
 /* side bar 2 css by anas*/
 
 .sidebar-panel {

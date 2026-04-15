@@ -86,3 +86,22 @@ export async function deleteUser(id) {
     headers: attachToken(),
   });
 }
+
+/**
+ * PATCH /user/status/:id
+ * Toggle user active status.
+ */
+export async function patchUserStatus(id, isActive) {
+  const updateStatusEndpoint =
+    typeof ENDPOINTS.UPDATE_USER_STATUS === "function"
+      ? ENDPOINTS.UPDATE_USER_STATUS(id)
+      : `user/status/${id}`;
+
+  return await api.patch(
+    updateStatusEndpoint,
+    { isActive },
+    {
+      headers: attachToken(),
+    },
+  );
+}

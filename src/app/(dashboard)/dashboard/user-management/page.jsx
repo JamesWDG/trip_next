@@ -3,7 +3,12 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Management_table from "@/app/components/Management_table";
-import { getUsers, createUser, deleteUser } from "@/services/userService";
+import {
+  getUsers,
+  createUser,
+  deleteUser,
+  patchUserStatus,
+} from "@/services/userService";
 import { useToast } from "@/hooks/useToast";
 import { format_phone, format_date } from "@/utils/helpers";
 import { ROLE } from "@/constants/role";
@@ -28,6 +33,7 @@ const page = () => {
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRole, setSelectedRole] = useState("");
+  const [pendingStatusById, setPendingStatusById] = useState({});
   const { error: toastError, success: toastSuccess } = useToast();
   const router = useRouter();
 
@@ -45,14 +51,18 @@ const page = () => {
       setLoading(true);
       const res = await getUsers(page, limit, role);
 
-      const formattedUsers = res?.data?.map((user) => ({
+      const formattedUsers = res?.data?.map((user) => {
+          const isActive = Boolean(user.isActive);
+          return {
           id: user.id,
           name: user.name ?? "(Empty)",
           phone: format_phone(user.phoneNumber),
           email: user.email ?? "(Empty)",
           date: format_date(user.createdAt),
-          status: user.isActive === 1 ? "Active" : "Inactive",
-        })) || [];
+          isActive,
+          status: isActive ? "Active" : "Inactive",
+        };
+      }) || [];
 
       setData(formattedUsers);
       setTotal(res?.total || 0);
@@ -128,6 +138,60 @@ const page = () => {
     }
   };
 
+  const getStatusToggleErrorMessage = (status, fallbackMessage) => {
+    if (status === 400) return fallbackMessage || "Invalid status payload.";
+    if (status === 401) return fallbackMessage || "Unauthorized. Please login again.";
+    if (status === 403) return fallbackMessage || "You do not have permission to update user status.";
+    if (status === 404) return fallbackMessage || "User not found.";
+    return fallbackMessage || "Failed to update user status.";
+  };
+
+  const handleToggleUserStatus = async (user, nextIsActive) => {
+    if (!user?.id) return;
+
+    const previousIsActive = !!user.isActive;
+
+    // Optimistically update row status in table.
+    setData((prev) =>
+      prev.map((row) =>
+        row.id === user.id
+          ? {
+              ...row,
+              isActive: nextIsActive,
+              status: nextIsActive ? "Active" : "Inactive",
+            }
+          : row,
+      ),
+    );
+    setPendingStatusById((prev) => ({ ...prev, [user.id]: true }));
+
+    try {
+      const res = await patchUserStatus(user.id, nextIsActive);
+      const backendMessage =
+        res?.message || res?.data?.message || "User status updated successfully";
+      toastSuccess(backendMessage);
+    } catch (error) {
+      // Revert optimistic update if request fails.
+      setData((prev) =>
+        prev.map((row) =>
+          row.id === user.id
+            ? {
+                ...row,
+                isActive: previousIsActive,
+                status: previousIsActive ? "Active" : "Inactive",
+              }
+            : row,
+        ),
+      );
+
+      const statusCode = error?.status;
+      const backendMessage = error?.data?.message || error?.message;
+      toastError(getStatusToggleErrorMessage(statusCode, backendMessage));
+    } finally {
+      setPendingStatusById((prev) => ({ ...prev, [user.id]: false }));
+    }
+  };
+
   const openModal = () => setIsModalOpen(true);
 
   const closeModal = () => {
@@ -184,6 +248,8 @@ const page = () => {
               limit={limit}
               onPageChange={handlePageChange}
               onDelete={handleDeleteUser}
+              onToggleStatus={handleToggleUserStatus}
+              pendingStatusById={pendingStatusById}
             />
           </>
         )}

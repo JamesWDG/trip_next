@@ -1,5 +1,6 @@
 export const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL || "https://api.trip-nxt.com/api/v1/";
+  // process.env.NEXT_PUBLIC_API_BASE_URL || "https://api.trip-nxt.com/api/v1/";
+  process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5003/api/v1/";
   
 if (!process.env.NEXT_PUBLIC_API_BASE_URL) {
   console.warn(
@@ -51,6 +52,7 @@ export const ENDPOINTS = Object.freeze({
   GET_USERS: (page = 1, limit = 10) => `user/all-users?page=${page}&limit=${limit}`,
   CREATE_USER: "user/create-user",
   DELETE_USER: (id) => `user/delete-user/${id}`,
+  UPDATE_USER_STATUS: (id) => `user/status/${id}`,
 
   // FOOD PROMOS (admin)
   FOOD_PROMOS: "discount/food-promos",
